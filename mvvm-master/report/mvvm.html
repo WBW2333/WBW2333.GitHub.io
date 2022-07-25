@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MVVM</title>
+    <script src="http://cdn.bootcss.com/vue/1.0.25/vue.js"></script>
+    <script src="./js/dep.js"></script>
+    <script src="./js/observer.js"></script>
+    <script src="./js/watcher.js"></script>
+    <script src="./js/compile.js"></script>
+    <script src="./js/mvvm.js"></script>
+</head>
+<body>
+
+<div id="mvvm-app">
+    <div id="双向绑定">
+        <p>双向绑定</p>
+        <input type="text" placeholder="字段1" v-model="someStr">
+        <input type="text" placeholder="字段2" v-model="child.someStr">
+    </div>
+
+    <div id="单向数据绑定">
+        <p>单向数据绑定</p>
+        <p>{{ getString }}</p>
+    </div>
+
+    <button v-on:click="clickBtn">修改字符串数据</button>
+</div>
+
+<script>
+    var vm = new MVVM({
+        el: '#mvvm-app',
+        data: {
+            someStr: '百度前端大作业',
+            child: {
+                someStr: '太难辣！！！'
+            }
+        },
+
+        computed: {
+            getString: function() {
+                return this.someStr + this.child.someStr;
+            }
+        },
+
+        methods: {
+            clickBtn: function(e) {
+                var randomStrArr = ['太难辣！！！', '助教捞捞我！！！', '呜呜 菜菜 捞捞'];
+                this.child.someStr = randomStrArr[parseInt(Math.random() * 3)];
+            }
+        }
+    });
+
+    vm.$watch('child.someStr', function() {
+        console.log(arguments);
+        console.log("watcher");
+    });
+</script>
+
+</body>
+</html>
