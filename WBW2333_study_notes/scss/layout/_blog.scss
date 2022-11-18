@@ -1,0 +1,19 @@
+// ONE BLOG TEMPLATE
+
+.blogpost-img-container {
+  @include spacePadding(0,50px,40px);
+  & img {
+    width: 100% ;
+  }
+}
+
+.blogpost-main-container {
+  @include spacePadding(0,50px,40px);
+  & h3 {
+    border-bottom: 4px solid darken($color-lightGray,1);
+    padding-bottom: 20px;
+  }
+  & article h1 {
+    font-size: 30px;
+  }
+}
