@@ -1,18 +1,14 @@
+/* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
 @font-face {
-  font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?vgdtmt');
-  src:  url('fonts/icomoon.eot?vgdtmt#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?vgdtmt') format('truetype'),
-    url('fonts/icomoon.woff?vgdtmt') format('woff'),
-    url('fonts/icomoon.svg?vgdtmt#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
+  font-family: 'iconfont';  /* Project id 3779178 */
+  src: url('//at.alicdn.com/t/c/font_3779178_hjxwvx1aom.woff2?t=1668756826804') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3779178_hjxwvx1aom.woff?t=1668756826804') format('woff'),
+       url('//at.alicdn.com/t/c/font_3779178_hjxwvx1aom.ttf?t=1668756826804') format('truetype');
 }
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family:"iconfont" !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -25,30 +21,4 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-youtube:before {
-  content: "\e900";
-}
-.icon-brand:before {
-  content: "\e900";
-}
-.icon-social:before {
-  content: "\e900";
-}
-.icon-linkedin:before {
-  content: "\e901";
-}
-.icon-brand1:before {
-  content: "\e901";
-}
-.icon-social1:before {
-  content: "\e901";
-}
-.icon-icon-instagram:before {
-  content: "\1f300";
-}
-.icon-twitter:before {
-  content: "\e902";
-}
-.icon-icon-facebook:before {
-  content: "\e903";
-}
+

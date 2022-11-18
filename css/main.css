@@ -65,7 +65,7 @@ header .header-icons-container {
 }
 
 header .header-icons-container .icons {
-  width: 300px;
+  width: 200px;
   height: auto;
   display: flex;
   justify-items: flex-end;
@@ -100,7 +100,7 @@ nav .profile-link a {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   height: 100%;
-  background-image: url("../../assets/img/cover.png");
+  background-image: url("../assets/img/99A.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -110,17 +110,18 @@ nav .profile-link a {
   display: grid;
   grid-column: 2;
   justify-items: center;
-  height: 350px;
-  margin-top: 80px;
+  height: 666px;
+  margin-top: 16px;
 }
 
 .home-main-text {
   font-family: "Roboto Mono", monospace;
-  font-size: 40px;
-  font-weight: 700px;
+  font-size: 60px;
+  /*font-weight: 700px;*/
   letter-spacing: 10px;
-  color: white;
+  color: #3399FF;
   text-align: center;
+  text-shadow: 3px 5px 5px #000000;
 }
 
 .blogs-main-new {
