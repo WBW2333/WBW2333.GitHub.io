@@ -164,6 +164,7 @@ nav .profile-link a {
 }
 
 .blogs-posts-container .post-container {
+  vertical-align: top;
   display: inline-block;
   padding-left: 10px;
   max-width: 30%;
