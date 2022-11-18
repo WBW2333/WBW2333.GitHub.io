@@ -1,0 +1,45 @@
+header {
+  width: $width-total;
+  height: 140px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+header .header-icons-container {
+  width: $width-total;
+  height: 50px;
+  display: grid;
+  background-color: $color-primary;
+}
+
+header .header-icons-container .icons {
+  width: 300px;
+  height: auto;
+  display: flex;
+  justify-items: flex-end;
+  justify-content: space-between;
+  justify-self: end;
+  align-items: center;
+  margin-right: 50px;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 90px;
+}
+
+nav .nav-logo-container {
+  margin-left: 50px;
+}
+
+nav .profile-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 50px;
+}
+
+nav .profile-link a {
+  color: $color-black;
+}
