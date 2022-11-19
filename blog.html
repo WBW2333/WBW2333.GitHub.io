@@ -6,84 +6,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/style.css">
-  <title>My Blogs</title>
+  <title>title</title>
 </head>
 
 <body>
-  <header>
-    <section class="header-icons-container">
-      <div class="icons">
-        <a href="https://space.bilibili.com/382240311">
-          <span class="icon-bilibili">&#xe75d;</span>
-        </a>
-        <a href="https://www.yuque.com/wbw2333">
-          <span class="icon-yuque">&#xeab5;</span>
-        </a>
-        <a href="https://tieba.baidu.com/home/main?id=tb.1.6433fdbf.2FqWgzyIaGR2BKenx54Wzw&fr=userbar">
-          <span class="icon-tieba">&#xe632;</span>
-        </a>
-      </div>
+
+<header>
+  <section class="header-icons-container">
+    <div class="icons">
+      <a href="https://space.bilibili.com/382240311">
+        <span class="icon-bilibili">&#xe75d;</span>
+      </a>
+      <a href="https://www.yuque.com/wbw2333">
+        <span class="icon-yuque">&#xeab5;</span>
+      </a>
+      <a href="https://tieba.baidu.com/home/main?id=tb.1.6433fdbf.2FqWgzyIaGR2BKenx54Wzw&fr=userbar">
+        <span class="icon-tieba">&#xe632;</span>
+      </a>
+    </div>
+  </section>
+  <nav>
+    <section class="nav-logo-container">
+      <a href="./index.html">
+        <img src="./assets/img/logo.png" alt="Logo blog">
+      </a>
     </section>
-    <nav>
-      <section class="nav-logo-container">
-        <a href="./index.html">
-          <img src="./assets/img/logo.png" alt="Logo blog">
-        </a>
-      </section>
-      <section class="profile-link">
-        <a href="./profile.html">关于我</a>
-      </section>
-    </nav>
-  </header>
-  <main>
-    <section class="grid-container blogpost-img-container">
-      <img src="https://images3.alphacoders.com/157/thumb-1920-157265.jpg" alt="future city">
+    <section class="profile-link">
+      <a href="./profile.html">关于我</a>
     </section>
-    <section class="blogpost-main-container">
-      <div class="grid-container">
-        <h3>News</h3>
-        <article>
-          <h1>Title of the Blog</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto harum quisquam minus in aperiam ullam ut
-            quod sequi vero assumenda repellendus corporis veritatis enim, quam soluta dolorum obcaecati, recusandae,
-            officia dolorem blanditiis velit debitis? Suscipit dolor impedit corporis accusantium facilis, sunt quod
-            laborum excepturi aliquam nihil dicta exercitationem quas voluptate qui optio odit totam porro, quis
-            perferendis enim! Vitae cupiditate in officiis magnam suscipit laborum adipisci reprehenderit, magni aperiam
-            et deleniti inventore, totam exercitationem. Laboriosam?</p>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro voluptatum soluta molestias officiis ut ab
-            quam unde. Deserunt aliquam maxime ipsam neque a, cupiditate facilis voluptatum, consequuntur odio debitis
-            voluptatibus doloribus cum ullam dolorum nihil saepe, dolores laboriosam praesentium ab?</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, in illo quas similique repellat
-            voluptatibus neque ab quaerat nam quae modi incidunt odio quod, vero porro, inventore voluptatem ducimus
-            nisi voluptas odit qui illum tempora.</p>
-        </article>
-      </div>
-    </section>
-    <section class="contact-main-container">
-      <div class="contact-left">
-        <img
-          src="https://images.vexels.com/media/users/3/155376/isolated/preview/4e371397e62ceccc637314ad5bbe701d-icono-de-contacto-de-correo-de-tel--fono-inteligente-by-vexels.png"
-          alt="contact">
-        <div>
-          <a href="">Contact</a>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus eligendi sed harum enim in quae.</p>
-        </div>
-      </div>
-      <div>
-        <div class="contact-right">
-          <img src="https://www.clker.com/cliparts/v/s/9/R/V/0/pencil-paper.svg" alt="write">
-          <div>
-            <a href="">Write</a>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus eligendi sed harum enim in quae.</p>
-          </div>
-        </div>
-      </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>Lorem ipsum dolor sit iis consequuntur accusantium eveniet? Quod dolor et saepe animi beatae.</p>
-  </footer>
+  </nav>
+</header>
+<main>
+  <section class="grid-container blogpost-img-container">
+    <img src="" alt="future city">
+  </section>
+  <section class="blogpost-main-container">
+    <div class="grid-container">
+      <h3>title</h3>
+      <article id="main-article" onload="load()">
+      </article>
+    </div>
+  </section>
+  <section class="contact-main-container">
+
+  </section>
+</main>
+<footer>
+  <p>如有任何问题，请通过QQ：1254783510联系我</p>
+</footer>
 </body>
+
+<script type="text/javascript">
+  function load () {
+    console.log("cndjksbcjdsbcjhd");
+    // 创建XMLHttpRequest请求
+    const xhrFile = new XMLHttpRequest();
+// 建立连接，第三个参数为同步或异步请求
+    xhrFile.open("GET", "./blogs/软工2.txt", false);
+    console.log("cndjksbcjdsbcjhd");
+// method 1
+    xhrFile.onload  = function() {
+      const allText = xhrFile.response;
+      console.log(allText);
+    }
+  }
+</script>
 
 </html>
