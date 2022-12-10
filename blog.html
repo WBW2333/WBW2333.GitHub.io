@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/style.css">
+  <script src="js/jquery.js"></script>
+  <script src="js/blog.js"></script>
   <title>title</title>
 </head>
 
 <body>
-
 <header>
   <section class="header-icons-container">
     <div class="icons">
@@ -50,6 +51,7 @@
     <div class="grid-container">
       <h3>title</h3>
       <article id="main-article" onload="load()">
+        <p></p>
       </article>
     </div>
   </section>
@@ -61,21 +63,5 @@
   <p>如有任何问题，请通过QQ：1254783510联系我</p>
 </footer>
 </body>
-
-<script type="text/javascript">
-  function load () {
-    console.log("cndjksbcjdsbcjhd");
-    // 创建XMLHttpRequest请求
-    const xhrFile = new XMLHttpRequest();
-// 建立连接，第三个参数为同步或异步请求
-    xhrFile.open("GET", "./blogs/软工2.txt", false);
-    console.log("cndjksbcjdsbcjhd");
-// method 1
-    xhrFile.onload  = function() {
-      const allText = xhrFile.response;
-      console.log(allText);
-    }
-  }
-</script>
 
 </html>
