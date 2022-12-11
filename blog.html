@@ -7,8 +7,29 @@
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/style.css">
   <script src="js/jquery.js"></script>
-  <script src="js/blog.js"></script>
-  <title>title</title>
+  <script>
+    function getQueryVariable() {
+      var query = window.location.search.substring(1);
+      var vars = query.split("&");
+      let ans = [];
+      for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        ans.push(pair[1]);
+      }
+      return ans;
+    }
+
+    $(document).ready(function(){
+      let blogPath = getQueryVariable();
+      //获取的url参数，第一个是加载的网页地址，第二个是tittle，第三个是img
+      console.log(blogPath);
+      $("#main-article").load("./blogs/" + blogPath[0]);
+      $("#html-tittle").text(decodeURI(blogPath[1]));
+      $("#h3").text(decodeURI(blogPath[1]));
+      $("#main-img").attr("src", "assets/img/" + decodeURI(blogPath[2]));
+    });
+  </script>
+  <title id="html-tittle">title</title>
 </head>
 
 <body>
@@ -45,13 +66,12 @@
 </header>
 <main>
   <section class="grid-container blogpost-img-container">
-    <img src="" alt="future city">
+    <img src="" alt="future city" id="main-img">
   </section>
   <section class="blogpost-main-container">
     <div class="grid-container">
-      <h3>title</h3>
-      <article id="main-article" onload="load()">
-        <p></p>
+      <h3 id="h3" style="font-size: 36px">title</h3>
+      <article id="main-article">
       </article>
     </div>
   </section>
