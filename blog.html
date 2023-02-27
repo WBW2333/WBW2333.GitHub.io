@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/style.css">
+<!--  <link rel="stylesheet" href="./css/g">-->
   <script src="js/jquery.js"></script>
   <script>
     function getQueryVariable() {
@@ -29,6 +30,12 @@
       $("#main-img").attr("src", "assets/img/" + decodeURI(blogPath[2]));
     });
   </script>
+  <style>
+    img{
+      /*zoom: 50%;*/
+      max-width: 666px;
+    }
+  </style>
   <title id="html-tittle">title</title>
 </head>
 
@@ -56,7 +63,7 @@
   <nav>
     <section class="nav-logo-container">
       <a href="./index.html">
-        <img src="./assets/img/logo.png" alt="Logo blog">
+        <img src="./assets/img/logo.png" alt="Logo blog" >
       </a>
     </section>
     <section class="profile-link">
@@ -66,7 +73,7 @@
 </header>
 <main>
   <section class="grid-container blogpost-img-container">
-    <img src="" alt="future city" id="main-img">
+    <img src="" alt="future city" id="main-img" style="zoom: 100%;max-width: 100000px;">
   </section>
   <section class="blogpost-main-container">
     <div class="grid-container">

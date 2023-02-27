@@ -13,6 +13,99 @@ body {
   padding: 0;
 }
 
+
+em {
+  font-style: normal;
+  background-color: #EBFFEB;
+  border-radius: 2px;
+  padding: 2px 4px;
+  margin: 0 2px;
+  color: black;
+}
+
+li::marker {
+  list-style: decimal;
+  color: #f22f27;
+}
+
+code {
+  /* padding: 1px 2px; */
+  /* border: 1px solid #e7eaed; */
+  padding: 2px 4px 0px 4px;
+  border-radius: 2px;
+  font-family: var(--font-monospace);
+  /* font-family: 'Source Code Pro', 'Microsoft YaHei'!important; */
+  font-size: 0.9rem;
+  color: #FF0000;
+  background-color: #FAEAEB;
+}
+
+pre {
+  background-color: lightgrey;
+}
+
+pre code{
+  color: black;
+  background-color: lightgrey;
+}
+
+tt {
+  margin: 0 2px;
+}
+
+
+table {
+  padding: 0;
+  word-break: initial;
+}
+
+
+/* tr元素定义表格行 */
+
+table tr {
+  border-top: 1px solid #dfe2e5;
+  margin: 0;
+  padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+  background-color: #F6F8FA;
+}
+
+
+/* th元素定义表头 */
+
+table tr th {
+  font-weight: bold;
+  border: 1px solid #dfe2e5;
+  border-bottom: 0;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+
+/* td元素定义表格单元格 */
+
+table tr td {
+  border: 1px solid #dfe2e5;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+  min-width: 50px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+  margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+  margin-bottom: 0;
+}
+
 a {
   text-decoration: none;
   display: inline;
