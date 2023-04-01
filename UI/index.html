@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/isotope.css" media="screen" />
+<link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+<link href="css/animate.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+<header class="header" id="header">
+  <div class="container">
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="navbar-header">
+        <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <p class="navbar-brand scroll-top logo  animated bounceInLeft"><b><i>SentiStrength</i></b></p> </div>
+      <!--/.navbar-header-->
+      <div id="main-nav" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav" id="mainNav">
+          <li><select id="services" class="drop-down-box" onchange="changeBlock()">
+<!--            <option value="a">选择分类任务</option>-->
+            <option value="b">对单个文本进行分类</option>
+            <option value="c">对文件中的文本行分类</option>
+            <option value="d">对文件中的一列文本进行分类</option>
+            <option value="e">对文件夹中的文本进行分类</option>
+          </select></li>
+          <li><select id="output" class="drop-down-box">
+<!--            <option value="a">选择输出方式</option>-->
+            <option value="b">积极-消极分类</option>
+            <option value="c">正-负-中三分类</option>
+            <option value="d">正-负二分类</option>
+            <option value="e">单一正-负尺度分类</option>
+          </select></li>
+          <li>
+            <div class="dropdown">
+              <button class="dropdown-btn">设置分类算法参数</button>
+              <div class="dropdown-content">
+                <label><input type="checkbox" value="explain1" id="option1">explain</label>
+                <label><input type="checkbox" value="alwaysSplitWordsAtApostrophes2" id="option2">alwaysSplitWordsAtApostrophes</label>
+                <label><input type="checkbox" value="noBoosters3" id="option3">noBoosters</label>
+                <label><input type="checkbox" value="noNegatingPositiveFlipsEmotion4" id="option4">noNegatingPositiveFlipsEmotion</label>
+                <label><input type="checkbox" value="noNegatingNegativeNeutralisesEmotion5" id="option5">noNegatingNegativeNeutralisesEmotion</label>
+                <label><input type="checkbox" value="negatedWordStrengthMultiplier6" id="option6">negatedWordStrengthMultiplier</label>
+                <label><input type="checkbox" value="maxWordsBeforeSentimentToNegate7" id="option7">maxWordsBeforeSentimentToNegate</label>
+                <label><input type="checkbox" value="noIdioms8" id="option8">noIdioms</label>
+                <label><input type="checkbox" value="questionsReduceNeg9" id="option9">questionsReduceNeg</label>
+                <label><input type="checkbox" value="noEmoticons10" id="option10">noEmoticons</label>
+                <label><input type="checkbox" value="exclamations211" id="option11">exclamations2</label>
+                <label><input type="checkbox" value="mood12" id="option12">mood</label>
+                <label><input type="checkbox" value="noMultiplePosWords13" id="option13">noMultiplePosWords</label>
+                <label><input type="checkbox" value="noMultipleNegWords14" id="option14">noMultipleNegWords</label>
+                <label><input type="checkbox" value="noIgnoreBoosterWordsAfterNegatives15" id="option15">noIgnoreBoosterWordsAfterNegatives</label>
+                <label><input type="checkbox" value="noDictionary16" id="option16">noDictionary</label>
+                <label><input type="checkbox" value="noDeleteExtraDuplicateLetters17" id="option17">noDeleteExtraDuplicateLetters</label>
+                <label><input type="checkbox" value="illegalDoubleLettersInWordMiddle18" id="option18">illegalDoubleLettersInWordMiddle</label>
+                <label><input type="checkbox" value="illegalDoubleLettersAtWordEnd19" id="option19">illegalDoubleLettersAtWordEnd</label>
+                <label><input type="checkbox" value="noMultipleLetters20" id="option20">noMultipleLetters</label>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<section id="contactUs" class="contact-parlex">
+  <div class="parlex-back" style="min-height: 100vh">
+    <div class="box" id="tempBox" style="height: 100px"></div>
+    <div class="container">
+      <div class="row">
+        <div class="heading text-center">
+          <!-- Heading -->
+          <h2>SentiStrength情感单词分类</h2>
+        </div>
+      </div>
+      <div class="row mrgn30">
+        <form method="post" action="" id="contactfrm" role="form">
+          <div class="col-sm-12">
+            <div class="form-group" style="display: none">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" title="Please enter your name (at least 2 characters)">
+              <button name="submit" type="button" class="btn btn-lg btn-primary" id="submit1" onclick="get()">Submit</button>
+            </div>
+            <div class="form-group" style="display: none" id="fileBox">
+              <input type="file" id="fileInput">
+              <label for="file">文件内容</label>
+              <textarea id="file" class="form-control" name="fileContext"></textarea>
+              <button name="submit" type="button" class="btn btn-lg btn-primary" id="submit2" onclick="get()">Submit</button>
+            </div>
+            <div class="form-group"  style="display: none" id="classifyBox">
+              <label for="comments">分类文本</label>
+              <textarea name="comment" class="form-control" id="comments" cols="3" rows="5" placeholder="Enter your message…" title="Please enter your message"></textarea>
+              <button name="submit" type="button" class="btn btn-lg btn-primary" id="submit3" onclick="get()">Submit</button>
+            </div>
+            <div class="form-group" id="scoreBox" style="display: none">
+              <label for="scoreText" id="score"></label>
+              <div class="ans-table" style="">
+                <p type="text" id="scoreText" name="fileContext" class="ans-table-text"></p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--/.container-->
+  </div>
+</section>
+<section class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center"> Copyright 2023 | All Rights Reserved -- Template by <a href="http://172.29.4.49/0031-_">07-_幸福团队</a> </div>
+    </div>
+  </div>
+</section>
+<script src="js/main.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="js/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="js/jquery.nav.js" type="text/javascript"></script>
+<script src="js/jquery.fittext.js"></script>
+</body>
+</html>
