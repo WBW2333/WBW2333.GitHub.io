@@ -130,7 +130,7 @@ em {
 /* 行内数学公式变橙 */
 
 .md-inline-math {
-    /*color: orange;*/
+    color: darkblue;
     font-size: 100%;
 }
 
