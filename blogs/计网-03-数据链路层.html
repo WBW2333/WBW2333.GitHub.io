@@ -1,0 +1,1084 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>计网-03-数据链路层</title>
+</head>
+<body><h1 id='计网-03-数据链路层'>计网-03-数据链路层</h1>
+<h2 id='一数据链路层的组成'>一、数据链路层的组成</h2>
+<ol start='' >
+<li><p>节点/结点：主机、路由器</p>
+</li>
+<li><p>链路：网络中两个节点之间的物理通道，链路的传输介质主要有......，分为有线链路、无线链路。</p>
+</li>
+<li><p>数据链路：网络中两个节点之间的逻辑通路，把实现控制数据传输协议的硬件和软件加到链路上就构成数据链路。</p>
+</li>
+<li><p>帧：链路层的协议数据单元，封装网络层数据报。</p>
+</li>
+<li><p>功能：</p>
+<ol start='' >
+<li>在物理层提供的服务的基础上向网络层提供服务。</li>
+<li>其主要作用是加强物理层传输原始比特流的功能，将物理层提供的可能出错的物理连接改造为逻辑上无差错的数据链路，使之对网络层表现为一条无差错的链路。</li>
+
+</ol>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+<h2 id='二数据链路层的功能'>二、数据链路层的功能</h2>
+<h3 id='1）为网络层提供服务'>（1）为网络层提供服务：</h3>
+<ol start='' >
+<li><p>无确认无连接服务</p>
+<ol start='' >
+<li>源机器发送数据帧不先建立链路连接，目的机器收到数据后也不确认。</li>
+<li>数据链路层不关心丢失的帧而交给上层处理。</li>
+<li>适用于实时通信或误码率较低的通信通道。</li>
+
+</ol>
+</li>
+<li><p>有确认无连接服务</p>
+<ol start='' >
+<li>源机器发送数据帧不先建立链路连接，目的机器收到数据后必须发回确认。</li>
+<li>源机器在限定时间内未收到确认信号则重传丢失的帧，可以提高传输的可靠性。</li>
+<li>适用于误码率较高的通信信道。</li>
+
+</ol>
+</li>
+<li><p>有确认面向连接服务（有连接服务则必定需要确认）</p>
+<ol start='' >
+<li>帧传输过程分为三个阶段：建立数据链路、传输帧、释放数据链路。</li>
+<li>目的机器对收到的每一帧都要给出确认，源机器确认收到才能发送下一帧，因而可靠性最高。</li>
+<li>适用于通信要求（可靠性、实时性）较高的场合。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='2）链路管理'>（2）链路管理</h3>
+<p>数据链路层连接的建立、维持、释放过程为链路管理。</p>
+<h3 id='3）组帧'>（3）组帧<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8A%E5%8D%888.55.15.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 上午8.55.15"></h3>
+<ol start='' >
+<li><p>封装成帧</p>
+<ol start='' >
+<li>在一段数据的前后部分添加首部和尾部，构成一个帧。接受端收到物理层上交的比特流之后就能根据首部和尾部的标记识别到帧的开始和结束。</li>
+<li>帧定界：根据首部和尾部包含的控制信息，确定帧的界限。</li>
+<li>帧同步：接收方应当能从接收到的二进制比特流中区分出帧的起始和终止。（如在HDLC协议中用标识位F（01111110）来表示开始和结束）<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8A%E5%8D%889.01.22.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 上午9.01.22"></li>
+
+</ol>
+</li>
+<li><p>组帧的四种方法</p>
+<ol start='' >
+<li><p>字符计数法<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8A%E5%8D%889.02.57.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 上午9.02.57"></p>
+<ol start='' >
+<li>帧首部使用一个计数字段（第一个字节，8位）标明帧内字符数</li>
+<li>缺点：长度信息全部放在开头，一旦第一字节出错则整个读取过程全部错误。</li>
+
+</ol>
+</li>
+<li><p>字符（节）填充法</p>
+<ol start='' >
+<li>使用特定字符来表示一帧的开始和结束，如果数据段出现了特殊字符，则可在特殊字符前填充一个转义字符（ESC）来实现透明传输。</li>
+<li>接收方受到数据后会自己删除ESC字符，结果仍得到原来的数据。</li>
+<li><img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8A%E5%8D%889.09.36.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 上午9.09.36"></li>
+
+</ol>
+</li>
+<li><p>零比特填充法</p>
+<ol start='' >
+<li>使用01111110表示一个帧的开始和结束（6个1）。</li>
+<li>在发送端，在信息字段的每个5个连续的1后面填充一个0，则此时无论是否有6个1都能破坏这个会被误判的字符。</li>
+<li>在接受端，进行逆操作，每5个连续的1则删除后面的0。</li>
+<li>零比特填充法很容易通过硬件实现，性能优于字符填充法。</li>
+<li><img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8A%E5%8D%889.14.18.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 上午9.14.18"></li>
+
+</ol>
+</li>
+<li><p>违规编码法</p>
+<ol start='' >
+<li>在物理层进行比特编码时通常采用违规编码法。</li>
+<li>如曼彻斯特编码通过电平高低变化表示0/1，而高-高、低-低的变化则是非法的，硬刺痛过这种违规编码序列来定界帧的起始和终止，局域网IEEE802标准就用了这种方法。</li>
+<li>违规编码法不需要任何填充技术，但只适用于采用冗余编码的特殊编码环境。</li>
+<li></li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>透明传输</p>
+<ol start='' >
+<li>指不管所传数据是什么比特组合，都能在链路上传输。因此链路层是不知道有什么会阻碍数据传输的东西。</li>
+<li>当所传数据的比特组合恰和某个控制信息一样时，就必须采取适当的措施使接收方不会将数据误以为是控制信息。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='4）差错控制帧错位错）'>（4）差错控制（帧错/位错）</h3>
+<ol start='' >
+<li><p>传输中由于噪声会产生差错</p>
+<ol start='' >
+<li>位错：比特位出错，1变成0、0变成1。</li>
+<li>帧错：丢失、重复、失序。</li>
+
+</ol>
+<p>本章节进讨论位错。</p>
+</li>
+<li><p>检错编码</p>
+<ol start='' >
+<li><p>检错编码都使用<strong>冗余编码</strong>技术：在数据发送之前，先按某种关系附加上一定的冗余位，构成一个符合某一规则的码字后再发送。当要发送的有效数据变化时，相应的冗余位也随之变化，使码字遵从不变的规则。接收端根据收到码字是否仍符合原规则，从而判断是否出错。</p>
+</li>
+<li><p>奇偶校验码</p>
+<ol start='' >
+<li>奇校验码和偶校验码的统称。</li>
+<li>在信息段的后面添加一位0/1表示信息段中“1”的数量为偶数/奇数。</li>
+<li>只能检测出奇数个比特的错误，检错能力为50%，也没有纠错能力。</li>
+
+</ol>
+</li>
+<li><p>CRC循环冗余码</p>
+<p><img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8A%E5%8D%889.40.45.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 上午9.40.45"></p>
+</li>
+<li><p>纠错编码——海明码</p>
+<p><img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8A%E5%8D%889.57.35.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 上午9.57.35"></p>
+<p><img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8A%E5%8D%889.57.50.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 上午9.57.50"></p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='5）流量控制与可靠传输机制'>（5）流量控制与可靠传输机制</h3>
+<ol start='' >
+<li><p>较高的发送速度和较低的接受能力的不匹配就会造成传输出错，因此流量控制也是数据链路层的重要工作。</p>
+</li>
+<li><p>数据链路层的流量控制是点对点的，而传输层的流量控制是端到端的。</p>
+<ol start='' >
+<li>数据链路层流量控制手段：接收方收不下则不回复确认信息。</li>
+<li>传输层流量控制手段：接受端发送一个窗口公告。</li>
+
+</ol>
+</li>
+<li><p>停止-等待控制</p>
+<ol start='' >
+<li>发送方每发送一帧，都要等待接收方的应答信号，之后才能发送下一帧。</li>
+<li>接收方每接收一帧，都要反馈一个应答信号，表示可接收下一帧，如果接收方不反馈应答信号，那么发送方必须一直等待。</li>
+<li>每次只允许发送一帧，然后就陷入等待接收方确认信息的过程中，因而传输效率很低。</li>
+<li><img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8A%E5%8D%8810.15.35.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 上午10.15.35"></li>
+
+</ol>
+</li>
+<li><p>滑动窗口控制</p>
+<ol start='' >
+<li><p>在任意时刻，发送方都维持一组连续的允许发送的帧的序号，称为发送窗口。</p>
+</li>
+<li><p>同时接收方也维持一组连续的允许接收帧的序号，称为接收窗口。</p>
+</li>
+<li><p>发送窗口用来对发送方进行流量控制，而发送窗口的大小W代表在还未收到对方确认信息的情况下发送方最多还可以发送多少个数据帧。</p>
+</li>
+<li><p>在接收端设置接收窗口是为了控制可以接收哪些数据帧和不可以接收哪些帧。在接收方，只有收到的数据帧的序号落入接收窗口内时，才允许将该数据帧收下。若接收到的数据帧落在接收窗口之外，则一律将其丢弃。</p>
+</li>
+<li><p>图示：<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8A%E5%8D%8810.19.01.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 上午10.19.01"></p>
+</li>
+<li><p>发送端每收到一个确认帧，发送窗口就向前滑动一个帧的位置，当发送窗口内没有可以发送的帧（即窗口内的帧全部是已发送但未收到确认的帧）时，发送方就会停止发送，直到收到接收方发送的确认帧使窗口移动，窗口内有可以发送的帧后，才开始继续发送。</p>
+</li>
+<li><p>接收端收到数据帧后，将窗口向前移一个位置，并发回确认帧，若收到的数据帧落在接收窗口之外，则一律丢弃。</p>
+</li>
+<li><p>滑动窗口有以下重要特性：</p>
+<ol start='' >
+<li><p>只有接收窗口向前滑动 （同时接收方发送了确认帧）时，发送窗口才有可能（只有发送方收到确认帧后才一定） 向前滑动。</p>
+</li>
+<li><p>从滑动窗口的概念看，停止-等待协议、后退N帧协议和选择重传协议只在发送窗口大小与接收窗口大小上有所差别：</p>
+<ol start='' >
+<li>停止-等待协议：发送窗口=1，接受窗口=1</li>
+<li>后退N帧协议：发送窗口&gt;1，接受窗口=1</li>
+<li>选择重传协议：发送窗口&gt;1，接受窗口&gt;1</li>
+
+</ol>
+</li>
+<li><p>接收窗口的大小为1时，可保证帧的有序接收。</p>
+</li>
+<li><p>数据链路层的滑动窗口协议中，窗口的大小在传输过程中是固定的(注意与第5章传输层的滑动窗口协议的区别）。</p>
+</li>
+
+</ol>
+</li>
+<li><p>滑动窗口机制可以解决流量控制和可靠传输两个问题。</p>
+</li>
+
+</ol>
+</li>
+<li><p>可靠传输机制：</p>
+<ol start='' >
+<li><p>数据链路层的可靠传输通常使用确认和超时重传两种机制来完成。</p>
+</li>
+<li><p>确认</p>
+<ol start='' >
+<li>确认是一种无数据的控制帧，这种控制帧使得接收方可以让发送方知道哪些内容被正确接收。</li>
+<li>有些情况下为了提高传输效率，将确认捎带在一个回复帧中，称为捎带确认。</li>
+
+</ol>
+</li>
+<li><p>超时重传</p>
+<ol start='' >
+<li>超时重传是指发送方在发送某个数据帧后就开启一个计时器，在一定时间内如果没有得到发送的数据帧的确认帧，那么就重新发送该数据帧，直到发送成功为止。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>自动重传请求 (Automatic Repeat reQuest, ARQ）</p>
+<ol start='' >
+<li>通过接收方请求发送方重传出错的数据帧来恢复出错的帧，是通信中用于处理信道所带来差错的方法之一。</li>
+<li>传统自动重传请求分为三种，即停止-等待 (Stop-and-Wait) ARQ、后退N帧(Go-Back-N) ARO 和选择性重传 (Selective Repeat)ARO。后两种协议是滑动窗口技术与请求重发技术的结合，由于窗口尺寸开到足够大时，帧在线路上可以连续地流动，因此又称其为连续 ARQ 协议。注意，在数据链路层中流量控制机制和可靠传输机制是交织在一起的。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='6）停止-等待协议'>（6）停止-等待协议</h3>
+<ol start='' >
+<li><p>停等协议中，源站发送单个帧后必须等待确认，目的站的应答到达之前不能发送新的帧。</p>
+</li>
+<li><p>可能出现的差错</p>
+<ol start='' >
+<li><p>数据帧丢失或出现帧出错</p>
+<ol start='' >
+<li>目的站点未收到数据帧，则不会发送确认信息。</li>
+<li>目的站点根据差错检查技术发现出错以后，简单的丢弃这个数据帧并不发送确认信息。</li>
+<li>源站设置一个计时器，当计时器满仍未收到确认信息后，则重新发送数据帧。</li>
+<li>计时器的重传时间应当比帧传输的平均RTT更长一些。</li>
+
+</ol>
+</li>
+<li><p>数据帧接受但是确认帧（ACK）丢失</p>
+<ol start='' >
+<li>目的站点发送的确认帧丢失，则源站回等待直到重新发送数据帧。</li>
+<li>目的站点如果收到同样的数据，则会丢弃上个数据帧接受这一个，并重新发送确认帧。</li>
+
+</ol>
+</li>
+<li><p>确认帧延迟</p>
+<ol start='' >
+<li>目的站点的确认帧延迟到达，源站会在时间超时后重新发送。</li>
+<li>源站收到的之前的数据帧的延迟确认帧会直接忽略。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>源站发送一个帧后必须保留副本，直到收到这个帧的确认帧后才能丢弃。</p>
+</li>
+<li><p>停等协议的信道利用率很低，性能差。<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8A%E5%8D%8810.53.21.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 上午10.53.21"></p>
+</li>
+
+</ol>
+<h3 id='7）后退n帧协议'>（7）后退N帧协议</h3>
+<ol start='' >
+<li><p>发送窗口：发送方维持一组连续的允许发送的帧的序号。</p>
+</li>
+<li><p>接受窗口：接收方维持一组连续的允许接受帧的序号。</p>
+</li>
+<li><p>发送方的窗口中的帧都可以发送，但是只有接收到接收方的确认信息才能移动窗口。</p>
+</li>
+<li><p>发送方的任务</p>
+<ol start='' >
+<li>上层的调用：上层要发送数据，发送方如果窗口未满则发送帧，否则提示上层等待或放入缓存。</li>
+<li>收到ACK：GBN协议中，对n号帧的确认采用<strong>累计确认</strong>的方式，表明接收方已经收到n号帧和之前的所有帧。</li>
+<li>超时事件：如果定时器超时，则后退n帧，重传所有未被确认的n个帧。</li>
+
+</ol>
+</li>
+<li><p>接收方的任务</p>
+<ol start='' >
+<li>如果正确收到n号帧，并且按序，则发送一个ACK。</li>
+<li>其余情况全部丢弃帧，并未最近按序接收的帧重新发送ACK。</li>
+
+</ol>
+</li>
+<li><p> <img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%881.19.10.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午1.19.10"></p>
+</li>
+<li><p>滑动窗口长度：若采用n个比特对帧编号，那么发送窗口尺寸W应满足：1&lt;=W&lt;=2^n-1（帧的编号从0开始）。因此发送窗口尺寸过大，就是使得接收方无法区分新帧和旧帧。</p>
+</li>
+<li><p>重点总结</p>
+<ol>
+<li>累计确认</li>
+<li>接收方只按顺序接收帧，不按序则丢弃</li>
+<li>接收方发送确认序列号最大的、按序到达的帧</li>
+<li>发送窗口最大为2^n-1，接受窗口大小为1</li>
+
+</ol>
+</li>
+<li><p>性能</p>
+<ol>
+<li>因连续发送数据帧而提高了信道利用率</li>
+<li>在重传时必须把原来已经传送的数据帧全部重传，降低了效率</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='8）选择重传协议'>（8）选择重传协议</h3>
+<ol>
+<li><p>滑动窗口： <img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%881.38.34.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午1.38.34"></p>
+</li>
+<li><p>发送方的任务</p>
+<ol>
+<li>上层的调用</li>
+<li>收到ACK：将收到ACK对应的帧标记为已接收，如果该帧时窗口左边界，则窗口向前移动到第一个未被确认的帧。</li>
+<li>超时事件：每个帧都有定时器，一个超时事件后只重传一个帧。</li>
+
+</ol>
+</li>
+<li><p>接收方的任务</p>
+<ol>
+<li>接受所有帧，不论是否按序。</li>
+<li>失序的帧放在缓存区，并返回一个确认帧。</li>
+<li>直到所有帧都按序接收到再将这些帧按序交付上层，然后向前滑动窗口。</li>
+
+</ol>
+</li>
+<li><p>流程：<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%881.45.34.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午1.45.34"></p>
+</li>
+<li><p>窗口的长度：</p>
+<ol>
+<li>发送窗口和接收窗口应相等。</li>
+<li><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="37.185ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 16435.7 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-1-TEX-I-1D44A" d="M436 683Q450 683 486 682T553 680Q604 680 638 681T677 682Q695 682 695 674Q695 670 692 659Q687 641 683 639T661 637Q636 636 621 632T600 624T597 615Q597 603 613 377T629 138L631 141Q633 144 637 151T649 170T666 200T690 241T720 295T759 362Q863 546 877 572T892 604Q892 619 873 628T831 637Q817 637 817 647Q817 650 819 660Q823 676 825 679T839 682Q842 682 856 682T895 682T949 681Q1015 681 1034 683Q1048 683 1048 672Q1048 666 1045 655T1038 640T1028 637Q1006 637 988 631T958 617T939 600T927 584L923 578L754 282Q586 -14 585 -15Q579 -22 561 -22Q546 -22 542 -17Q539 -14 523 229T506 480L494 462Q472 425 366 239Q222 -13 220 -15T215 -19Q210 -22 197 -22Q178 -22 176 -15Q176 -12 154 304T131 622Q129 631 121 633T82 637H58Q51 644 51 648Q52 671 64 683H76Q118 680 176 680Q301 680 313 683H323Q329 677 329 674T327 656Q322 641 318 637H297Q236 634 232 620Q262 160 266 136L501 550L499 587Q496 629 489 632Q483 636 447 637Q428 637 422 639T416 648Q416 650 418 660Q419 664 420 669T421 676T424 680T428 682T436 683Z"></path><path id="MJX-1-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-1-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-1-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-1-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-1-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-1-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-1-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D44A" xlink:href="#MJX-1-TEX-I-1D44A"></use></g><g data-mml-node="TeXAtom" transform="translate(977,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45A" xlink:href="#MJX-1-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(878,0)"><use data-c="1D44E" xlink:href="#MJX-1-TEX-I-1D44E"></use></g><g data-mml-node="mi" transform="translate(1407,0)"><use data-c="1D465" xlink:href="#MJX-1-TEX-I-1D465"></use></g></g></g><g data-mml-node="mo" transform="translate(2704.1,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mo" transform="translate(3759.9,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(4148.9,0)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-1-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-1-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(600,0)"><use data-c="2212" xlink:href="#MJX-1-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1378,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g></g></g><g data-mml-node="mo" transform="translate(6059.9,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"></use></g><g data-mml-node="mi" transform="translate(6448.9,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="884px" font-family="serif" font-style="italic">，</text></g><g data-mml-node="mi" transform="translate(7327.6,0)"><use data-c="1D45B" xlink:href="#MJX-1-TEX-I-1D45B"></use></g><g data-mml-node="mtext" transform="translate(7927.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">表</text></g><g data-mml-node="mtext" transform="translate(8806.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">示</text></g><g data-mml-node="mtext" transform="translate(9684.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">用</text></g><g data-mml-node="mi" transform="translate(10563.6,0)"><use data-c="1D45B" xlink:href="#MJX-1-TEX-I-1D45B"></use></g><g data-mml-node="mtext" transform="translate(11163.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">比</text></g><g data-mml-node="mtext" transform="translate(12042.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">特</text></g><g data-mml-node="mtext" transform="translate(12921,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">来</text></g><g data-mml-node="mtext" transform="translate(13799.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">编</text></g><g data-mml-node="mtext" transform="translate(14678.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">号</text></g><g data-mml-node="mtext" transform="translate(15557.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">帧</text></g></g></g></svg></mjx-container><script type="math/tex">W_{max}=(2^{n-1})，n表示用n比特来编号帧</script>。</li>
+
+</ol>
+</li>
+<li><p>重点：</p>
+<ol>
+<li>对数据帧注意确认，接收一个确认一个</li>
+<li>只重传出错帧</li>
+<li>接收方有缓存</li>
+<li><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="12.83ex" height="2.244ex" role="img" focusable="false" viewBox="0 -833.9 5670.9 991.7" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.357ex;"><defs><path id="MJX-2-TEX-I-1D44A" d="M436 683Q450 683 486 682T553 680Q604 680 638 681T677 682Q695 682 695 674Q695 670 692 659Q687 641 683 639T661 637Q636 636 621 632T600 624T597 615Q597 603 613 377T629 138L631 141Q633 144 637 151T649 170T666 200T690 241T720 295T759 362Q863 546 877 572T892 604Q892 619 873 628T831 637Q817 637 817 647Q817 650 819 660Q823 676 825 679T839 682Q842 682 856 682T895 682T949 681Q1015 681 1034 683Q1048 683 1048 672Q1048 666 1045 655T1038 640T1028 637Q1006 637 988 631T958 617T939 600T927 584L923 578L754 282Q586 -14 585 -15Q579 -22 561 -22Q546 -22 542 -17Q539 -14 523 229T506 480L494 462Q472 425 366 239Q222 -13 220 -15T215 -19Q210 -22 197 -22Q178 -22 176 -15Q176 -12 154 304T131 622Q129 631 121 633T82 637H58Q51 644 51 648Q52 671 64 683H76Q118 680 176 680Q301 680 313 683H323Q329 677 329 674T327 656Q322 641 318 637H297Q236 634 232 620Q262 160 266 136L501 550L499 587Q496 629 489 632Q483 636 447 637Q428 637 422 639T416 648Q416 650 418 660Q419 664 420 669T421 676T424 680T428 682T436 683Z"></path><path id="MJX-2-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-2-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-2-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path id="MJX-2-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-2-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-2-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-2-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-2-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D44A" xlink:href="#MJX-2-TEX-I-1D44A"></use></g><g data-mml-node="TeXAtom" transform="translate(977,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45A" xlink:href="#MJX-2-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(878,0)"><use data-c="1D44E" xlink:href="#MJX-2-TEX-I-1D44E"></use></g><g data-mml-node="mi" transform="translate(1407,0)"><use data-c="1D465" xlink:href="#MJX-2-TEX-I-1D465"></use></g></g></g><g data-mml-node="mo" transform="translate(2704.1,0)"><use data-c="3D" xlink:href="#MJX-2-TEX-N-3D"></use></g><g data-mml-node="msup" transform="translate(3759.9,0)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-2-TEX-N-32"></use></g><g data-mml-node="TeXAtom" transform="translate(533,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-2-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(600,0)"><use data-c="2212" xlink:href="#MJX-2-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1378,0)"><use data-c="31" xlink:href="#MJX-2-TEX-N-31"></use></g></g></g></g></g></svg></mjx-container><script type="math/tex">W_{max}=2^{n-1}</script></li>
+
+</ol>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+<h2 id='三介质访问控制'>三、介质访问控制</h2>
+<h3 id='1）介质访问控制的任务'>（1）介质访问控制的任务</h3>
+<p>介质访问控制任务就是：为使用介质的每个结点隔离来自同一信道上其他结点所传送的信号，以协调活动结点的传输。即采取一定的措施，使得两对节点之间的通信不会互相干扰。</p>
+<p>用来决定广播信道中信道分配的协议属于数据链路层的一个子层，称为介质访问控制 (Medium Access Control, MAC)子层。</p>
+<h3 id='2）信道划分介质访问控制------静态划分信道'>（2）信道划分介质访问控制——静态划分信道</h3>
+<ol>
+<li><p>信道划分介质访问控制：将使用介质的每个设备与来自同一信道上的其他设备的通信隔离开，把<strong>时域和频域资源</strong>合理地分配给网络上的设备。</p>
+</li>
+<li><p>多路复用技术</p>
+<ol>
+<li>把多个信号组合在一条物理信道进行传播，使得多个计算机或终端设备共享信道资源，提高信道利用率。</li>
+<li>把一条广播信道，逻辑上分成几条用于两个节点之间通信互不干扰的子信道，就是把广播信道转变为点对点信道。</li>
+<li> <img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%882.00.51.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午2.00.51"></li>
+
+</ol>
+</li>
+<li><p>频分多路复用FDM</p>
+<ol>
+<li><p>将多路基带信号调制到不同频率载波上，再叠加形成一个复合信号的多路复用技术。</p>
+</li>
+<li><p>图示：<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%882.01.39.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午2.01.39"></p>
+</li>
+<li><p>优点：</p>
+<ol>
+<li>充分利用传输介质带宽，系统效率高。</li>
+<li>技术成熟，实现简单。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>时分多路复用TDM</p>
+<ol>
+<li><p>将一条物理信道按时间分成若干时间片，轮流地分配给多个信号使用。</p>
+</li>
+<li><p>每个时间片只有一个信号占用。</p>
+</li>
+<li><p>图示：<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%882.05.09.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午2.05.09"></p>
+</li>
+<li><p>改进——统计时分多路复用STDM</p>
+<ol>
+<li>目的：提高信道的利用率。</li>
+<li>采用STDM帧，并不固定分配时隙，而是按需分配，当终端有数据需要发送时才会分配到时间片。</li>
+<li> <img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%882.33.47.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午2.33.47"></li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>波分多路复用WDM</p>
+<ol>
+<li>光的频分多路复用，在一根光纤中传输多种不同波长（频率）的光信号，由于波长不同，所以各路光信号互不干扰，最后再用波长分解复用器将各路波长分解出来。</li>
+<li> <img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%882.36.47.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午2.36.47"></li>
+
+</ol>
+</li>
+<li><p>码分多路复用CDM</p>
+<ol>
+<li>采用不同的编码来区分各路原始信号的一种复用方式，即共享信道频率又共享时间。</li>
+<li>也叫码分多路复用：<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%882.41.26.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午2.41.26"></li>
+<li>S和T分别是两个站点发送的码片序列，站点要发送比特1，就发送码片序列本身，发送0就发送码片序列的反码。</li>
+
+</ol>
+</li>
+<li><p>信道利用率</p>
+<ol>
+<li>信道的效率，也称信道利用率：指发送方在一个发送周期的时间内，有效地发送数据所需要的时间占整个发送周期的比率。</li>
+<li>发送方从开始发送数据到收到第一个确认帧为止，称为一个发送周期，设为T，发送方在这个周期内共发送L比特的数据，发送方的数据传输速率为C，则发送方用于发送有效数据的时间为L/C，在这种情况下，信道的利用率为(L/C)/T。</li>
+<li>信道吞吐率=信道利用率x发送方的发送速率。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='3）随机访问介质访问控制------动态分配信道'>（3）随机访问介质访问控制——动态分配信道</h3>
+<ol>
+<li><p>在随机访问介质访问控制下，不用集中控制的方式解决发送信息的次序问题，而是直接让用户随机发送信息，占用信道全部速率。为了解决随即介入的碰撞，用户按照一定规则重复发送帧，知道帧成功发送。这些规则就是介质访问控制协议。</p>
+</li>
+<li><p>ALOHA协议</p>
+<ol>
+<li><p>夏威夷大学早起研制的随机接入系统称为ALOHA，分为纯ALOHA协议和时隙ALOHA协议两种。</p>
+</li>
+<li><p>纯ALOHA协议</p>
+<ol>
+<li>当任何站点要发送数据时，可以不监听信道，不按时间槽发送，随机重发</li>
+<li>冲突检测：如果发生冲突，接收方就会检测差错并不予确认，发送方一段时间收不到就判断发生冲突。</li>
+<li>冲突解决：超时后等待一<em>随机时间</em>再重传。</li>
+<li> <img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%882.53.34.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午2.53.34"></li>
+<li>纯ALOHA协议的吞吐量和信道利用率极低。</li>
+
+</ol>
+</li>
+<li><p>时隙ALOHA协议</p>
+<ol>
+<li>思想：把时间分成若干个相同的时时隙，所有用户在时隙开始时刻接入网络信道，并规定用户只能在每个时隙开始时才能发送帧。减少了数据冲突的概率，提高了信道的利用率。</li>
+<li>碰撞后的重传手段和纯ALOHA协议一样。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>CSMA协议</p>
+<ol>
+<li><p>CS：载波监听</p>
+</li>
+<li><p>MA：多点接入</p>
+</li>
+<li><p>思想：发送帧之前监听信道。</p>
+</li>
+<li><p>CSMA协议是在ALOHA协议的基础上的改进，增加一个载波监听装置，每个站点发送数据之前要检测一下总线上是否有其他站点在发送数据。CSMA协议根据监听方式和监听到信道忙后的处理方式分为三种。</p>
+</li>
+<li><p>1-坚持CSMA</p>
+<ol>
+<li><p>思想：</p>
+<ol>
+<li>一个节点要发送数据时，首先监听信道，如果信道空闲，那么马上发送数据。</li>
+<li>如果信道忙，那么等待并一直坚持监听信道至空闲。</li>
+<li>如果发生冲突，随机等待一段时间后再开始监听。</li>
+
+</ol>
+</li>
+<li><p>优点：只要信道空闲则马上发送，避免信道利用率损失。</p>
+</li>
+<li><p>缺点：假如有多个站点有数据要发送则冲突不可避免。</p>
+</li>
+
+</ol>
+</li>
+<li><p>非坚持CSMA</p>
+<ol>
+<li><p>思想：</p>
+<ol>
+<li>结点发送数据时先监听信道，如果信道空闲，那么马上发送数据。</li>
+<li>如果信道忙，则等待一个随机时间后再进行监听。</li>
+
+</ol>
+</li>
+<li><p>优点：采用随机的重发延迟时间可以减少冲突。</p>
+</li>
+<li><p>缺点：可能存在大家都在延迟等待的过程，信道就会处于空闲，降低利用率。</p>
+</li>
+
+</ol>
+</li>
+<li><p>p-坚持CSMA</p>
+<ol>
+<li><p>思想：</p>
+<ol>
+<li>适用于时分信道。</li>
+<li>一个节点要发送数据时，首先监听信道，如果信道空闲，那么以概率p发送数据，以概率1-p推迟到下一个间隙，并在下一个间隙重复监听尝试。</li>
+<li>如果信道忙，则到下一个间隙再进行监听。</li>
+
+</ol>
+</li>
+<li><p>优点：既能减少冲突也能减少信道空闲时间。</p>
+</li>
+<li><p>缺点：发生冲突后还是要把数据帧发完，造成了浪费。</p>
+</li>
+
+</ol>
+</li>
+<li><p>对比：<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%883.11.37.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午3.11.37"></p>
+</li>
+
+</ol>
+</li>
+<li><p>CSMA/CD协议</p>
+<ol>
+<li><p>CS：载波监听，CSMA/CD协议的站点在<strong>发送数据之前</strong>和<strong>发送数据时</strong>都需要检测信道上是否有站点在发送数据。</p>
+</li>
+<li><p>CD：碰撞检测，“边发送边监听”，适配器边发送数据边检测信道上信号电压变化，以便判断其他站点是否在发送数据。</p>
+</li>
+<li><p>适用于总线型网络或半双工网络。</p>
+</li>
+<li><p>由于传播时延，因此某个时刻站点检测到信道空闲时，实际上此时信道未必是空闲的。</p>
+</li>
+<li><p>设<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.17ex" height="1.005ex" role="img" focusable="false" viewBox="0 -431 517 444" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.029ex;"><defs><path id="MJX-7-TEX-I-1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D70F" xlink:href="#MJX-7-TEX-I-1D70F"></use></g></g></g></svg></mjx-container><script type="math/tex">\tau</script>为单程传播时延。在t=0时，A发送数据，在t=<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="4.94ex" height="1.808ex" role="img" focusable="false" viewBox="0 -717 2183.4 799" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-4-TEX-I-1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path><path id="MJX-4-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-4-TEX-I-1D6FF" d="M195 609Q195 656 227 686T302 717Q319 716 351 709T407 697T433 690Q451 682 451 662Q451 644 438 628T403 612Q382 612 348 641T288 671T249 657T235 628Q235 584 334 463Q401 379 401 292Q401 169 340 80T205 -10H198Q127 -10 83 36T36 153Q36 286 151 382Q191 413 252 434Q252 435 245 449T230 481T214 521T201 566T195 609ZM112 130Q112 83 136 55T204 27Q233 27 256 51T291 111T309 178T316 232Q316 267 309 298T295 344T269 400L259 396Q215 381 183 342T137 256T118 179T112 130Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D70F" xlink:href="#MJX-4-TEX-I-1D70F"></use></g><g data-mml-node="mo" transform="translate(739.2,0)"><use data-c="2212" xlink:href="#MJX-4-TEX-N-2212"></use></g><g data-mml-node="mi" transform="translate(1739.4,0)"><use data-c="1D6FF" xlink:href="#MJX-4-TEX-I-1D6FF"></use></g></g></g></svg></mjx-container><script type="math/tex">\tau-\delta</script>时，A 发送的数据还未到达B，由于B检测到信道空闲而发送数据。经过时间<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="3.267ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 1444 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-5-TEX-I-1D6FF" d="M195 609Q195 656 227 686T302 717Q319 716 351 709T407 697T433 690Q451 682 451 662Q451 644 438 628T403 612Q382 612 348 641T288 671T249 657T235 628Q235 584 334 463Q401 379 401 292Q401 169 340 80T205 -10H198Q127 -10 83 36T36 153Q36 286 151 382Q191 413 252 434Q252 435 245 449T230 481T214 521T201 566T195 609ZM112 130Q112 83 136 55T204 27Q233 27 256 51T291 111T309 178T316 232Q316 267 309 298T295 344T269 400L259 396Q215 381 183 342T137 256T118 179T112 130Z"></path><path id="MJX-5-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path id="MJX-5-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D6FF" xlink:href="#MJX-5-TEX-I-1D6FF"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(444,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-5-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(944,0)"><use data-c="32" xlink:href="#MJX-5-TEX-N-32"></use></g></g></g></svg></mjx-container><script type="math/tex">\delta/2</script>后，即在t=<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.202ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 3183.4 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-6-TEX-I-1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path><path id="MJX-6-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-6-TEX-I-1D6FF" d="M195 609Q195 656 227 686T302 717Q319 716 351 709T407 697T433 690Q451 682 451 662Q451 644 438 628T403 612Q382 612 348 641T288 671T249 657T235 628Q235 584 334 463Q401 379 401 292Q401 169 340 80T205 -10H198Q127 -10 83 36T36 153Q36 286 151 382Q191 413 252 434Q252 435 245 449T230 481T214 521T201 566T195 609ZM112 130Q112 83 136 55T204 27Q233 27 256 51T291 111T309 178T316 232Q316 267 309 298T295 344T269 400L259 396Q215 381 183 342T137 256T118 179T112 130Z"></path><path id="MJX-6-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path id="MJX-6-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D70F" xlink:href="#MJX-6-TEX-I-1D70F"></use></g><g data-mml-node="mo" transform="translate(739.2,0)"><use data-c="2212" xlink:href="#MJX-6-TEX-N-2212"></use></g><g data-mml-node="mi" transform="translate(1739.4,0)"><use data-c="1D6FF" xlink:href="#MJX-6-TEX-I-1D6FF"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2183.4,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-6-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(2683.4,0)"><use data-c="32" xlink:href="#MJX-6-TEX-N-32"></use></g></g></g></svg></mjx-container><script type="math/tex">\tau-\delta/2</script>时，A 发送的数据和B发送的数据发生碰撞，但这时A和B都不知道。在t=<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.17ex" height="1.005ex" role="img" focusable="false" viewBox="0 -431 517 444" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.029ex;"><defs><path id="MJX-7-TEX-I-1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D70F" xlink:href="#MJX-7-TEX-I-1D70F"></use></g></g></g></svg></mjx-container><script type="math/tex">\tau</script>时，B检测到碰撞，于是停止发送数据。在t=<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="6.071ex" height="1.808ex" role="img" focusable="false" viewBox="0 -717 2683.4 799" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-8-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-8-TEX-I-1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path><path id="MJX-8-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-8-TEX-I-1D6FF" d="M195 609Q195 656 227 686T302 717Q319 716 351 709T407 697T433 690Q451 682 451 662Q451 644 438 628T403 612Q382 612 348 641T288 671T249 657T235 628Q235 584 334 463Q401 379 401 292Q401 169 340 80T205 -10H198Q127 -10 83 36T36 153Q36 286 151 382Q191 413 252 434Q252 435 245 449T230 481T214 521T201 566T195 609ZM112 130Q112 83 136 55T204 27Q233 27 256 51T291 111T309 178T316 232Q316 267 309 298T295 344T269 400L259 396Q215 381 183 342T137 256T118 179T112 130Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-8-TEX-N-32"></use></g><g data-mml-node="mi" transform="translate(500,0)"><use data-c="1D70F" xlink:href="#MJX-8-TEX-I-1D70F"></use></g><g data-mml-node="mo" transform="translate(1239.2,0)"><use data-c="2212" xlink:href="#MJX-8-TEX-N-2212"></use></g><g data-mml-node="mi" transform="translate(2239.4,0)"><use data-c="1D6FF" xlink:href="#MJX-8-TEX-I-1D6FF"></use></g></g></g></svg></mjx-container><script type="math/tex">2\tau-\delta</script>时，A检测到碰撞，也停止发送数据。<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-28%20%E4%B8%8B%E5%8D%883.29.16.png" referrerpolicy="no-referrer" alt="截屏2023-06-28 下午3.29.16">站A在发送帧后<em>至多经过时间<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.301ex" height="1.536ex" role="img" focusable="false" viewBox="0 -666 1017 679" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.029ex;"><defs><path id="MJX-12-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-12-TEX-I-1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-12-TEX-N-32"></use></g><g data-mml-node="mi" transform="translate(500,0)"><use data-c="1D70F" xlink:href="#MJX-12-TEX-I-1D70F"></use></g></g></g></svg></mjx-container><script type="math/tex">2\tau</script>（端到端传播时延的2倍）</em>就能知道所发送的帧有没有发生碰撞（当<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.099ex" height="1.672ex" role="img" focusable="false" viewBox="0 -717 3137.6 739" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.05ex;"><defs><path id="MJX-10-TEX-I-1D6FF" d="M195 609Q195 656 227 686T302 717Q319 716 351 709T407 697T433 690Q451 682 451 662Q451 644 438 628T403 612Q382 612 348 641T288 671T249 657T235 628Q235 584 334 463Q401 379 401 292Q401 169 340 80T205 -10H198Q127 -10 83 36T36 153Q36 286 151 382Q191 413 252 434Q252 435 245 449T230 481T214 521T201 566T195 609ZM112 130Q112 83 136 55T204 27Q233 27 256 51T291 111T309 178T316 232Q316 267 309 298T295 344T269 400L259 396Q215 381 183 342T137 256T118 179T112 130Z"></path><path id="MJX-10-TEX-N-27F6" d="M84 237T84 250T98 270H1444Q1328 357 1301 493Q1301 494 1301 496T1300 499Q1300 511 1317 511H1320Q1329 511 1332 510T1338 506T1341 497T1344 481T1352 456Q1374 389 1425 336T1544 261Q1553 258 1553 250Q1553 244 1548 241T1524 231T1486 212Q1445 186 1415 152T1370 85T1349 35T1341 4Q1339 -6 1336 -8T1320 -11Q1300 -11 1300 0Q1300 7 1305 25Q1337 151 1444 230H98Q84 237 84 250Z"></path><path id="MJX-10-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D6FF" xlink:href="#MJX-10-TEX-I-1D6FF"></use></g><g data-mml-node="mo" transform="translate(721.8,0)"><use data-c="27F6" xlink:href="#MJX-10-TEX-N-27F6"></use></g><g data-mml-node="mn" transform="translate(2637.6,0)"><use data-c="30" xlink:href="#MJX-10-TEX-N-30"></use></g></g></g></svg></mjx-container><script type="math/tex">\delta \longrightarrow 0</script>时)。因此把以太网端到端往返时间<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.301ex" height="1.536ex" role="img" focusable="false" viewBox="0 -666 1017 679" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.029ex;"><defs><path id="MJX-12-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-12-TEX-I-1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-12-TEX-N-32"></use></g><g data-mml-node="mi" transform="translate(500,0)"><use data-c="1D70F" xlink:href="#MJX-12-TEX-I-1D70F"></use></g></g></g></svg></mjx-container><script type="math/tex">2\tau</script>称为<strong>争用期</strong>（又称沖突窗口或碰撞窗口)。</p>
+</li>
+<li><p>每个站在自己发送数据之后的一小段时间内，存在发生碰撞的可能性，因此此时由于时延，有些站点可能检测到的信息时该站点发送数据之前的信息，会误以为信道空闲。只有经过争用期这段时间还未检测到碰撞时，才能确定这次发送不会发生碰撞。</p>
+</li>
+<li><p>最小帧长问题：</p>
+<ol>
+<li>现考虑一种情况，某站点发送一个很短的帧，但在发送完毕之前并没有检测出碰撞。假定这个帧在继续向前传播到达目的站之前和别的站发送的帧发生了碰撞，因而目的站将收到有差错的帧(当然会把它丢弃)。可是发送站却不知道发生了碰撞，因而不会重传这个帧。</li>
+<li>为了避免发生这种情况，以太网规定了一个最短帧长（争用期内可发送的数据长度）。</li>
+<li>在争用期内如果检测到碰撞，站点就会停止发送，此时己发送出去的数据一定小于最短帧长，因此<em>凡长度小于这个最短帧长的帧都是由于冲突而异常中止的无效帧</em>。</li>
+<li>最小帧长的计算公式为：最小帧长=总线传播时延x数据传输速率×2。</li>
+
+</ol>
+</li>
+<li><p>CSMA/CD采用<strong>截断二进制指数规避算法</strong>解决碰撞问题</p>
+<ol>
+<li><p>确定基本退避（推迟）时间为争用期<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.301ex" height="1.536ex" role="img" focusable="false" viewBox="0 -666 1017 679" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.029ex;"><defs><path id="MJX-12-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-12-TEX-I-1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-12-TEX-N-32"></use></g><g data-mml-node="mi" transform="translate(500,0)"><use data-c="1D70F" xlink:href="#MJX-12-TEX-I-1D70F"></use></g></g></g></svg></mjx-container><script type="math/tex">2\tau</script>。</p>
+</li>
+<li><p>定义参数k，一开始它等于重传次数，但k不超过10，即k=min[重传次数，10]。</p>
+<ol>
+<li>当重传次数不超过10时，k等于重传次数。</li>
+<li><strong>当重传次数大于10时，k就不再增大而一直等于10。</strong></li>
+
+</ol>
+</li>
+<li><p>从离散的整数集合[0,1，.... ，2^k-1]中随机取出一个数r，重传所需要退避的时间就是<strong>r倍的基本退避时间</strong>，即
+<mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="3.321ex" height="1.536ex" role="img" focusable="false" viewBox="0 -666 1468 679" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.029ex;"><defs><path id="MJX-13-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-13-TEX-I-1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-13-TEX-I-1D70F" d="M39 284Q18 284 18 294Q18 301 45 338T99 398Q134 425 164 429Q170 431 332 431Q492 431 497 429Q517 424 517 402Q517 388 508 376T485 360Q479 358 389 358T299 356Q298 355 283 274T251 109T233 20Q228 5 215 -4T186 -13Q153 -13 153 20V30L203 192Q214 228 227 272T248 336L254 357Q254 358 208 358Q206 358 197 358T183 359Q105 359 61 295Q56 287 53 286T39 284Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-13-TEX-N-32"></use></g><g data-mml-node="mi" transform="translate(500,0)"><use data-c="1D45F" xlink:href="#MJX-13-TEX-I-1D45F"></use></g><g data-mml-node="mi" transform="translate(951,0)"><use data-c="1D70F" xlink:href="#MJX-13-TEX-I-1D70F"></use></g></g></g></svg></mjx-container><script type="math/tex">2r\tau</script>。</p>
+</li>
+<li><p><strong>当重传达16次仍不能成功</strong>时，说明网络太拥挤，认为此帧永远无法正确发出，抛弃此帧并向高层报告出错。</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>CSMA/CA协议（408非重点）</p>
+<ol>
+<li><p>为什么要用CSMA/CA：</p>
+<ol>
+<li>无线局域网无法做到全面检测碰撞。</li>
+<li>无线通信中并非所有站点都能监听其他站点，因此会存在“隐蔽站”问题。</li>
+
+</ol>
+</li>
+<li><p>CA：碰撞避免</p>
+</li>
+<li><p>思想：</p>
+<ol>
+<li>发送数据前，先检测信道是否空闲。</li>
+<li>空闲则发出RTS（request to send），包括发送端地址、接受端地址、下一份数据将持续发送的时间等信息。</li>
+<li>信道忙则等待。</li>
+<li>接受端收到RTS后，将响应CST（clear to send）。接受端响应后不会响应其余站点发送的RTS。</li>
+<li>发送端收到CTS后，开始发送数据帧，同时预约信道，告知其他站点需要传输数据的时间。</li>
+<li>接受端收到数据帧后，检验数据正确后则相应ACK帧。</li>
+<li>发送方收到ACK则发送下一个数据帧，否则一直重传直至规定重发次数为止。</li>
+<li>采用二进制指数退避算法来确定随机的推迟时间。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>CSMA/CD和CSMA/CA：</p>
+<ol>
+<li><p>相同点：CSMA/CD 与CSMA/ CA机制都从属于 CSMA的思路，其核心是先听再说。换言之，两个在接入信道之前都须要进行监听。当发现信道空闲后，才能进行接入。</p>
+</li>
+<li><p>不同点：</p>
+<ol>
+<li>传输介质不同：CSMA/CD 用于总线式以太网【有线】，而CSMA/ CA用于无线局域网【无线】。</li>
+<li>载波检测方式不同：因传输介质不同，CSMA/CD与CSMA/ CA的检测方式也不同。CSMA/CD通过电缆中电压的变化来检测，当数据发生碰撞时，电缆中的电压就会随着发生变化；而CSMA/CA采用能量检测 (ED
+载波检测（cs）和能量载波混合检测三种检测信道空闲的方式</li>
+<li>CSMA/CD检测冲突，CSMA/CA避免冲突，二者出现冲突后都会进行有上限的重传。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='4）轮询访问介质访问控制协议'>（4）轮询访问介质访问控制协议</h3>
+<ol>
+<li><p>在轮询访问中，用户不能随机地发送信息，而要通过一个集中控制的监控站，以循环方式轮询每个结点，再决定信道的分配。当某结点使用信道时，其他结点都不能使用信道。</p>
+</li>
+<li><p>问题：轮询开销；等待延迟；单点故障</p>
+</li>
+<li><p>典型的轮询访问介质访问控制协议是令牌传递协议，它主要用在令牌环局域网中。</p>
+</li>
+<li><p>令牌传递协议</p>
+<ol>
+<li><p>在会牌传递协议中，一个令牌（Token）沿着环形总线在各结点计算机间依次传递。</p>
+</li>
+<li><p>令牌：一个特殊的 MAC 控制帧，令牌本身并不包含信息，仅控制信道的使用，确保同一时刻只有一个站点独占信道。</p>
+</li>
+<li><p>当环上的一个站点希望传送帧时，必须等待令牌。一旦收到令牌，站点便可启动发送帧。帧中包括目的站点地址，以标识哪个站点应接收此帧。</p>
+</li>
+<li><p>站点只有取得令牌后才能发送数据帧，因此令牌环网不会发生碰撞。</p>
+</li>
+<li><p>站点在发送完一帧后，应释放令牌，以便让其他站使用。</p>
+</li>
+<li><p>由于令牌在网环上是按顺序依次传递的，因此对所有入网计算机而言，访问权是公平的。</p>
+</li>
+<li><p>需要发送数据的计算机只有在拿到该令牌后才能发送数据帧，因此不会发送冲突（因为令牌只有一个)。</p>
+</li>
+<li><p>过程：</p>
+<ol>
+<li>网络空闲时，环路中只有令牌帧在循环传递。</li>
+<li>令牌传递到有数据要发送的站点时，该站点就修改令牌中的一个标志位，并在令牌中附加自己需要传输的数据，将令牌变成一个数据帧，然后将这个数据帧发送出去。</li>
+<li>数据帧沿着环路传输，接收到的站点一边转发数据，一边查看帧的目的地址。如果目的地址和自己的地址相同，那么接收站就复制该数据帧以便进一步处理。</li>
+<li>数据帧沿着环路传输，直到到达该帧的源站点，源站点收到自己发出去的帧后便不再转发。同时，通过检验返回的帧来查看数据传输过程中是否出错，若有错则重传。</li>
+<li>源站点传送完数据后，重新产生一个令牌，并传递给下一站点，以交出信道控制权。</li>
+<li>会设置最长时间，如果取得令牌的站点需要发送的数据过大，则只能发送限定时间，剩余的数据需要等待下次取得令牌发送，即每个站点只能持有令牌一段时间。</li>
+
+</ol>
+</li>
+<li><p>优势：非常适合负载较重、通信量大的网络中。</p>
+</li>
+<li><p>问题：令牌开销；等待延迟；单点故障</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+<h2 id='四局域网'>四、局域网</h2>
+<h3 id='1）基本概念和体系结构'>（1）基本概念和体系结构</h3>
+<ol>
+<li><p>局域网（LAN，Local Area Network）：指在某一区域内由多台计算机互连成的计算机组，使用<em>广播信道</em>。</p>
+</li>
+<li><p>特点</p>
+<ol>
+<li>覆盖的地理范围较小，只在一个相对独立的局部范围内联，如一座或集中的建筑群内。</li>
+<li>使用专门铺设的传输介质进行联网，数据传输率高（10Mb/s～10Gb/s）。</li>
+<li>通信延迟时间短，误码率低，可靠性高。</li>
+<li>各站点为平等关系，共享传输信道。</li>
+<li>多采用分布式控制和广播式通信，能进行广播和组播。</li>
+
+</ol>
+</li>
+<li><p>决定局域网的主要要素：网络拓扑、传输介质、介质访问控制方法。</p>
+</li>
+<li><p>拓扑结构</p>
+<ol>
+<li><p>星型拓扑<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8A%E5%8D%889.39.10.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 上午9.39.10"></p>
+<ol>
+<li>中心节点是控制中心，任意两个节点间的通信最多只需两步，传输速度快，网络构型简单、建网容易、便于控制和管理。</li>
+<li>但是星型拓扑网络可靠性差，网络共享能力差，有单点故障问题。</li>
+
+</ol>
+</li>
+<li><p>总线型拓扑<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8A%E5%8D%889.37.41.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 上午9.37.41"></p>
+<ol>
+<li>网络可靠性高、网络节点间响应速度快、共享资源能力强、设备投入量少、成本低、安装使用方便。</li>
+<li>当某个节点出现故障时，对整体网络的影响较小。</li>
+
+</ol>
+</li>
+<li><p>环型拓扑<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8A%E5%8D%889.38.42.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 上午9.38.42"></p>
+<ol>
+<li>系统中通信设备和线路比较节省，有单点故障问题。</li>
+<li>由于环路是封闭的，所以不便于扩充，系统响应延时长。</li>
+<li>信息传输效率较低。</li>
+
+</ol>
+</li>
+<li><p>树型拓扑<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8A%E5%8D%889.40.30.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 上午9.40.30"></p>
+<ol>
+<li>易于扩展，易于隔离故障，也容易有单点故障。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>传输介质</p>
+<ol>
+<li>有线局域网：双绞线、同轴电缆、光纤。</li>
+<li>无线局域网：电磁波。</li>
+
+</ol>
+</li>
+<li><p>介质访1问控制方法</p>
+<ol>
+<li>CSMA/CD：常用总线型局域网，也用于树型网络。</li>
+<li>令牌总线：常用总线型局域网，也用于树型网络。</li>
+<li>令牌环：用于环型局域网，如令牌环网。</li>
+
+</ol>
+</li>
+<li><p>分类</p>
+<ol>
+<li><p>以太网</p>
+<ol>
+<li>以太网是应用最为广泛的局域网，包括标准以太网（10Mbps）、快速以太网 （100Mbps）、千兆以太网 （1000 Mbps）和10G以太网，它们都符合IEEE802.3系列标准规范。</li>
+<li>逻辑拓扑总线型，物理拓扑是星型或拓展星型。</li>
+<li>使用CSMA/CD。</li>
+
+</ol>
+</li>
+<li><p>令牌环网</p>
+<ol>
+<li>物理上采用了星形拓扑结构，逻辑上是环形拓扑结构。</li>
+<li>己过时</li>
+
+</ol>
+</li>
+<li><p>FDDI网（Fiber Distriburted Data Interface）</p>
+<ol>
+<li>物理上采用了双环拓扑结构，逻辑上是环形拓扑结构。</li>
+
+</ol>
+</li>
+<li><p>ATM网（Asynchronous Transfer Mode）</p>
+<ol>
+<li>较新型的单元交换技术，使用53字节固定长度的单元进行交换。</li>
+
+</ol>
+</li>
+<li><p>无线局域网（Wireless Local Area Netwrorks WLAN）</p>
+<ol>
+<li>采用IEEE 802.11标准。</li>
+<li>WiFi就是无线局域网的一种应用。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='2）ieee-802标准'>（2）IEEE 802标准</h3>
+<ol>
+<li><p>IEEE 802：IEEE 802系列标准是IEEE 802 LAN/MAN 标准委员会制定的局域网、城域网技术标准（1980年2月成立）。其中最广泛使用的有以太网、令牌环、无线局域网等。这一系列标准中的每一个子标准都由委员会中的专门工作组负责。</p>
+</li>
+<li><p>IEEE 802现有标准：<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8A%E5%8D%889.51.48.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 上午9.51.48"></p>
+</li>
+<li><p>IEEE 802标准所描述的局域网参考模型只对应OSI参考模型的数据链路层与物理层，它将数据链路层划分为逻辑链路层LLC子层和介质访问控制MAC子层。<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8A%E5%8D%889.54.50.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 上午9.54.50"></p>
+<ol>
+<li>LLC负责识别网络层协议，然后对它们进行封装。LLC报头告诉数据链路层一旦帧被接收到时，应当对数据包做何处理。为网络层提供服务：无确认无连接、面向连接、带确认无连接、高速传送。</li>
+<li>MAC子层的主要功能包括数据帧的封装/卸装，帧的寻址和识别，帧的接收与发送，链路的管理，帧的差错控制等。MAC子层的存在屏蔽了不同物理链路种类的差异性。</li>
+
+</ol>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+<h2 id='五以太网'>五、以太网</h2>
+<h3 id='1）概述'>（1）概述</h3>
+<ol>
+<li><p>以太网(Ethernet)指的是由Xerox公司创建并由Xerox、Intel和DEC公司联合开发的基带总线局域网规范，是当今现有局域网采用的最通用的通信协议标准。以太网络使用CSMA/CD（载波监听多路访问及冲突检测）技术。</p>
+</li>
+<li><p>以太网在局域网各种技术中占统治性地位：</p>
+<ol>
+<li>造价低廉（以太网网卡不到100块）。</li>
+<li>是应用最广泛的局域网技术。</li>
+<li>比令牌环网、ATM网便宜，简单。</li>
+<li>满足网络速率要求：10Mb/s~10Gb/s。</li>
+
+</ol>
+</li>
+<li><p>以太网两个标准</p>
+<ol>
+<li>DIX Ethernet V2：第一个局域网产品（以太网）规约。</li>
+<li>IEEE 802.3：IEEE 802委员会802.3工作组制定的第一个IEEE的以太网标准。</li>
+
+</ol>
+</li>
+<li><p>以太网采用两项措施以简化通信</p>
+<ol>
+<li>采用<strong>无连接</strong>的工作方式，不对发送的数据帧编号，也不要求接收方发送确认，即以太网尽最大努力交付数据，提供的是<strong>不可靠服务</strong>，对于差错的纠正则
+由高层完成。</li>
+<li>发送的数据都使用曼彻斯特编码的信号，每个码元的中间出现一次电压转换，接收端利用这种电压转换方便地把位同步信号提取出来。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='2）以太网传输介质和网卡'>（2）以太网传输介质和网卡</h3>
+<ol>
+<li><p>以太网传输介质和适用情况<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8A%E5%8D%8810.02.03.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 上午10.02.03"></p>
+</li>
+<li><p>物理拓扑</p>
+<ol>
+<li>总线型 -&gt; 星型。</li>
+<li>使用集线器的以太网在逻辑上仍是一个总线网，各站共享逻辑上的总线，使用的还是CSMA/CD协议。</li>
+<li>以太网拓扑：逻辑上总线型，物理上星型。</li>
+
+</ol>
+</li>
+<li><p>10BASE-T以太网<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8A%E5%8D%8810.06.17.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 上午10.06.17"></p>
+</li>
+<li><p>网卡<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8A%E5%8D%8810.09.03.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 上午10.09.03"></p>
+</li>
+
+</ol>
+<h3 id='3）以太网mac帧'>（3）以太网MAC帧</h3>
+<ol>
+<li><p>MAC地址也称物理地址，MAC地址长6字节，一般用由连字符/冒号分隔的12个十六进制数表示，如 02-60-8c-e4-b1-21。</p>
+</li>
+<li><p>由于总线上使用的是广播通信，因此网卡从网络上每收到一MAC帧，首先要用硬件检查MAC 帧中的 MAC 地址。如果是发往本站的帧，那么就收下，否则丢弃。</p>
+</li>
+<li><p>以太网MAC帧格式有两种标准：DIX Ethernet v2 标准（即以太网V2标准）和IEEE 802.3标准。</p>
+</li>
+<li><p>以太网V2标准<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8A%E5%8D%8810.16.05.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 上午10.16.05"></p>
+<ol>
+<li>前导码：使接收端与发送端时钟同步。在帧前面插入的8B可再分为两个字段：第一个字段共7B，是前同步码，用来快速实现 MAC 帧的比特同步；第二个字段是帧开始定界符，表示后面的信息就是MAC帧。</li>
+<li>地址：通常使用6B（48bit）地址 （MAC地址）。</li>
+<li>类型：2B，指出数据域中携带的数据应交给哪个协议实体处理。</li>
+<li>数据：46~1500B，包含高层的协议消息（CSMA/CD协议要求帧最少64B，其余数据已有18B，故数据部分最少46B）。</li>
+<li>校验码(FCS)：4字节，校验范围从目的地址段到数据段的末尾，算法采用 32 位CRC（不但需要检验MAC 帧的数据部分，还要检验目的地址、源地址和类型字段，但不校验前导码）。</li>
+<li>MAC帧并不需要帧结束符，因为以太网在传送帧时，各帧之问必须有一定的间隙。因此，接收端只要找到帧开始定界符，其后面连续到达的比特流就都属于同一个MAC 帧，所以只有帧开始定界符。以太网MAC帧仍旧需要尾部，在数据链路层上，帧既要加首部，也要加尾部。</li>
+
+</ol>
+</li>
+<li><p>802.3帧格式与DIX以太帧格式的不同之处在于用长度域替代了DIX帧中的类型域，指出数据域的长度。在实践中，前述长度/类型两种机制可以并存，由于IEEE 802.3数据段的最大字节数是1500，所以长度段的最大值是1500，因此从1501到65535 的值可用于类型段标识符。</p>
+</li>
+
+</ol>
+<h3 id='4）高速以太网'>（4）高速以太网</h3>
+<ol>
+<li><p>速率&gt;=100Mb/s的以太网称为高速以太网。</p>
+</li>
+<li><p>100BASE-T以太网</p>
+<ol>
+<li><p>在双绞线上传送100Mb/s基带信号的星形拓扑结构以太网，使用CSMA/CD协议。</p>
+</li>
+<li><p>支持全双工方式和半双工方式，可在全双工方式下工作而无冲突发生。</p>
+</li>
+<li><p>吉比特以太网</p>
+<ol>
+<li>又称千兆以太网，在光纤或双绞线上传输1Gb/s信号。</li>
+<li>支持全双工和半双工两种方式工作，可在全双工方式下工作而无冲突发生。</li>
+
+</ol>
+</li>
+<li><p>10吉比特以太网</p>
+<ol>
+<li>在光纤上传送10Gb/s信号。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+<h2 id='六ieee-80211无线局域网'>六、IEEE 802.11无线局域网</h2>
+<h3 id='1）无线局域网的分类'>（1）无线局域网的分类</h3>
+<ol>
+<li><p>无线局域网分为有固定基础设施无线局域网和无固定基础设施的移动自组织网络。</p>
+</li>
+<li><p>有固定基础设施无线局域网</p>
+<ol>
+<li>对于有固定基础设施的无线局域网，IEEE制定了无线局域网的802.11系列协议标准，包802.11a/b/g/n 等。802.11使用星形拓扑，<strong>其中心称为接入（Access Point, AP）</strong>，在MAC 层使用CSMA/CA 协议。</li>
+<li>使用802.11系列协议的局域网又称 Wi-Fi。</li>
+<li>802.11标准规定无线局域网的最小构件是基本服务集BSS（Basic Service Set）。</li>
+<li>一个基本服务集包括一个接入点和若干移动站。各站在本BSS内之间的通信，或与本BSS外部站的通信，都必须通过本BSS的AP。AP 就是基本服务集中的基站 (base station）。</li>
+<li>一个基本服务集可以是孤立的，也可通过 AP 连接到一个分配系统DS（Distribution System），然后再连接到另一个基本服务集，就构成了一个护展的服务集 （Extended Service Set, ESS）。<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8B%E5%8D%882.05.19.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 下午2.05.19"></li>
+
+</ol>
+</li>
+<li><p>无固定基础设施的移动自组织网络</p>
+<ol>
+<li>又称自组网络（ad hoc network）。自组网络没有上述基本服务集中的 AP，而是由一些平等状态的移动站相互通信组成的临时网络。各结点之间地位平等，中间结点都为转发结点，因此都具有路由器的功能。</li>
+<li> <img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8B%E5%8D%882.06.25.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 下午2.06.25"></li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='2）mac帧'>（2）MAC帧</h3>
+<ol>
+<li><p>802.11帧分为数据帧、控制帧和管理帧三部分。</p>
+</li>
+<li><p>数据帧<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8B%E5%8D%881.47.40.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 下午1.47.40"></p>
+<ol>
+<li>MAC首部：共30字节（帧的复杂性都在MAC首部）。</li>
+<li>帧主体：帧的数据部分，不超过2312字节（比以太网的帧大很多）。</li>
+<li>MAC尾部：帧检验序列FCS，共4字节。</li>
+<li>这里地址1、2、3会在转发过程中不断变化，这3个地址分别代表什么依赖于去往AP和来自AP：<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8B%E5%8D%881.57.41.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 下午1.57.41"></li>
+
+</ol>
+</li>
+
+</ol>
+<h2 id='七vlan'>七、VLAN</h2>
+<ol>
+<li><p>传统局域网的局限：</p>
+<ol>
+<li>缺乏流量隔离：广播流量会跨越整个机构网络。</li>
+<li>管理用户不便</li>
+<li>路由器成本高</li>
+
+</ol>
+</li>
+<li><p>VLAN：虚拟局域网（Virtual LAN）是一种将局域网内的设备划分成与物理位置无关的逻辑组的技术，这些逻辑组有某些共同的需求，每个VLAN是一个单独的广播域/不同的子网。<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8B%E5%8D%882.10.10.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 下午2.10.10"></p>
+</li>
+<li><p>VLAN实现</p>
+<ol>
+<li>虚拟网络是<strong>通过软件的方式</strong>在<strong>交换机</strong>上建立的。</li>
+<li>同一个VLAN的设备之间通信可以通过交换机直接通信，通信方式有通过端口和MAC地址两种。</li>
+<li>交换机上不同的VLAN之间互不相同，实现通信需要借助路由器和三层交换机实现。</li>
+<li>VLAN可以跨越交换机构建，不同交换机、同一VLAN的设备交互需要经过交换机的交换。</li>
+
+</ol>
+</li>
+<li><p>802.1Q帧</p>
+<ol>
+<li>802.1Q帧是在原本的以太网帧上插入一个VLAN标签。<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8B%E5%8D%882.24.45.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 下午2.24.45"></li>
+<li>VLAN标签的前2个字节表明是IEEE 802.1Q帧，接下来4位无意义，后面12位是VLAN标识符VID，唯一表示了该以太网帧属于哪个VLAN。</li>
+<li>VID取值范围为0～4095，但0和4095不用来表示VLAN，所以有效取值范围为1～4094。</li>
+<li>IEEE 802.1Q帧是由交换机处理而不是主机处理的，主机和交换机之间交互的都是标准以太网帧。同一个交换机之间传递帧不需要加入Q帧，直接向其他交换机传递帧才需要加入Q帧。<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-06-30%20%E4%B8%8B%E5%8D%882.28.38.png" referrerpolicy="no-referrer" alt="截屏2023-06-30 下午2.28.38"></li>
+
+</ol>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+<h2 id='八广域网'>八、广域网</h2>
+<h3 id='1）基本概念'>（1）基本概念</h3>
+<ol>
+<li>广域网：指<strong>覆盖范围很广的长距离网络</strong>，所覆盖范围从几十公里到几千公里，能连接过个城市和国家或跨越大洲并提供远距离通信，形成国际性的远程网络。</li>
+<li>广域网的通信子网主要是用分组交换技术，广域网将分布在不同地区的局域网或计算机系统连接起来，达到资源共享的目的，如因特网就是最大的广域网。<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-07-01%20%E4%B8%8A%E5%8D%888.56.31.png" referrerpolicy="no-referrer" alt="截屏2023-07-01 上午8.56.31"></li>
+
+</ol>
+<h3 id='2）广域网协议'>（2）广域网协议</h3>
+<ol>
+<li><p>PPP协议</p>
+<ol>
+<li><p>点对点协议（Point-to-Point Protocol）是目前使用最广泛的数据链路层协议，拨号电话上网就是PPP协议。</p>
+</li>
+<li><p>PPP协议的组成</p>
+<ol>
+<li>链路控制协议（LCP）：扩展链路控制协议，用于建立、配置、测试和管理数据链路。</li>
+<li>网络控制协议（NCP）：PPP允许多种网络层协议，每个不同的协议都要一个对应的NCP配置，为网络层协议建立和配置逻辑连接。</li>
+<li> 一个将IP数据报封装到串行链路的方法。</li>
+
+</ol>
+</li>
+<li><p>PPP协议的状态图<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-07-01%20%E4%B8%8A%E5%8D%889.03.47.png" referrerpolicy="no-referrer" alt="截屏2023-07-01 上午9.03.47"></p>
+</li>
+<li><p>帧格式<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-07-01%20%E4%B8%8A%E5%8D%889.04.43.png" referrerpolicy="no-referrer" alt="截屏2023-07-01 上午9.04.43"></p>
+<ol>
+<li>控制转义字符为7D，若标志字符出现在信息字段中，必须做字节填充。</li>
+<li>PPP是面向字节的。</li>
+<li>协议段占2字节，说明信息段运载的是什么种类的分组。</li>
+<li>信息段大小为0～1500B。</li>
+
+</ol>
+</li>
+<li><p>PPP协议的特点</p>
+<ol>
+<li>简单</li>
+<li>封装成帧</li>
+<li>透明性</li>
+<li>多种网络层协议</li>
+<li>多种类型链路</li>
+<li>差错检测</li>
+<li>检测连接状态</li>
+<li>最大传送单元</li>
+<li>网络层地址协商</li>
+<li>数据压缩协商</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>HDLC协议（408不考，谢希仁的计网也没有这个，略过）</p>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+<h2 id='九链路层设备'>九、链路层设备</h2>
+<h3 id='1）物理层扩展以太网'>（1）物理层扩展以太网</h3>
+<ol>
+<li>由于以太网上的主机距离不能超过100m，否则信号就会衰减到无法使用，因此需要引入扩展手段实现扩展以太网。</li>
+<li>光纤扩展：扩展主机和集线器之间距离的一种简单方法就是使用光纤和一对光纤调解器。<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-07-01%20%E4%B8%8A%E5%8D%889.18.47.png" referrerpolicy="no-referrer" alt="截屏2023-07-01 上午9.18.47"></li>
+<li>多层集线器：使用多个集线器就可以连接覆盖成更大范围的多级星型结构的以太网。<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-07-01%20%E4%B8%8A%E5%8D%889.29.49.png" referrerpolicy="no-referrer" alt="截屏2023-07-01 上午9.29.49"><img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-07-01%20%E4%B8%8A%E5%8D%889.22.16.png" referrerpolicy="no-referrer" alt="截屏2023-07-01 上午9.22.16"></li>
+
+</ol>
+<h3 id='2）链路层扩展以太网'>（2）链路层扩展以太网</h3>
+<ol>
+<li><p>网桥<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-07-01%20%E4%B8%8A%E5%8D%889.29.23.png" referrerpolicy="no-referrer" alt="截屏2023-07-01 上午9.29.23"></p>
+<ol>
+<li><p>网桥根据MAC帧的目的地址对帧进行转发和过滤。当网桥收到一个帧时，先检查帧的目的MAC地址在确定转发到哪个接口或直接丢弃（即过滤），而不是直接广播。</p>
+</li>
+<li><p>网段：一般指一个计算机网络中使用同一物理层设备能够直接通信的那一部分。</p>
+</li>
+<li><p>优点</p>
+<ol>
+<li>过滤通信量，增大吞吐量。</li>
+<li>扩大了物理范围。</li>
+<li>提高了可靠性。</li>
+<li>可互连不同物理层、不同MAC子层和不同速率的以太网。</li>
+
+</ol>
+</li>
+<li><p>网桥分类</p>
+<ol>
+<li><p>透明网桥：“透明”指以太网上的站点并不知道所发送的帧将经过哪几个网桥，是一种即插即用的设备。</p>
+</li>
+<li><p>源路由网桥：</p>
+<ol>
+<li>在发送帧时，发详细的最佳路由信息放在帧首部。</li>
+<li>源站以广播的方式向欲通信的目的站发送一个发现帧。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>以太网交换机</p>
+<ol>
+<li><p>以太网交换机实际上就是一个多接口的网桥，通常都有十几个或更多的接口，和工作在物理层的转发器、集线器有很大的差别。以太网交换机的每个接口都直接与一个单台主机或另一个以太网交换机相连，并且一般都工作在全双工方式。</p>
+</li>
+<li><p>以太网交换机还具有并行性，即能同时连通多对接口，使多对主机能同时通信（而网桥只能一次分析和转发一个帧）。相互通信的主机都是<strong>独占传输媒体</strong>，无碰撞地传输数据。</p>
+</li>
+<li><p>交换方式</p>
+<ol>
+<li>直通式交换机：查询目的地址直接转发，延迟小，可靠性低，无法支持不同速率的端口交换。</li>
+<li>存储转发式交换机：将帧放入高速缓存并检查是否正确，正确则转发否则丢弃。延迟大，可靠性高，可以支持不同速率的端口交换。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>冲突域：在同一个冲突域中的每一个节点都能收到所有被发送的帧。简单的说就是同一时间内只能有一台设备发送信息的范围</p>
+<p>广播域：网络中能接收任一设备发出的广播帧的所有设备的集合。简单的说如果站点发出一个广播信号，所有能接收收到这个信号的设备范围称为一个广播域。<img src="./assets/imgs/%E6%88%AA%E5%B1%8F2023-07-01%20%E4%B8%8A%E5%8D%889.55.43.png" referrerpolicy="no-referrer" alt="截屏2023-07-01 上午9.55.43"></p>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>
