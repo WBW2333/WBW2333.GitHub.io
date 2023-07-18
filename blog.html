@@ -31,6 +31,27 @@
       $("#h3").text(decodeURI(blogPath[1]));
       $("#main-img").attr("src", "assets/img/" + decodeURI(blogPath[2]));
     });
+
+    function adjustFontSize() {
+      var contentDiv = document.getElementById('content');
+      var fontSize = window.getComputedStyle(contentDiv).fontSize;
+      var newFontSize = parseFloat(fontSize) * 0.9; // 缩小10%
+
+      contentDiv.style.fontSize = newFontSize + 'px';
+    }
+
+    function adjustImageSize() {
+      var contentDiv = document.getElementById('main-content');
+      var images = contentDiv.getElementsByTagName('img');
+
+      for (var i = 0; i < images.length; i++) {
+        var image = images[i];
+        var width = window.getComputedStyle(image).width;
+        var newWidth = parseFloat(width) * 0.9; // 缩小10%
+
+        image.style.width = newWidth + 'px';
+      }
+    }
   </script>
   <style>
     img{

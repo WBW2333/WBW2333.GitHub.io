@@ -1,0 +1,4030 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>OS</title>
+</head>
+<body><h1 id='os-1'>OS</h1>
+<h2 id='一操作系统'>一、操作系统</h2>
+<h3 id='1）操作系统的概念'>（1）操作系统的概念</h3>
+<ol start='' >
+<li>裸机（纯硬件）-&gt;操作系统-&gt;应用程序（软件）-&gt;用户</li>
+<li>操作系统： 是指控制和管理整个计算机系统的硬件和软件资源，并合理的组织调度计算机的工作和资源的分配，以提供给用户和其他软件方便的接口和环境，他是计算机系统中最基本的系统软件。<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-10-15 下午3.14.49.png" alt="截屏2022-10-15 下午3.14.49"  /></li>
+<li>进程：一个程序的执行过程，执行前需要将该程序放到内存中，才能被CPU处理。</li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 上午9.51.40.png" alt="截屏2022-09-08 上午9.51.40"  /></li>
+
+</ol>
+<h3 id='2）操作系统的功能和目标'>（2）操作系统的功能和目标</h3>
+<ol start='' >
+<li><p>作为用户和计算机硬件之间的接口</p>
+</li>
+<li><p>用户接口</p>
+<ol start='' >
+<li><p>命令接口（允许用户直接使用）</p>
+<ol start='' >
+<li>联机命令接口（交互式命令接口）：用户说一句系统做一句</li>
+<li>脱机命令接口（批处理命令接口）：用户对操作系统说一堆，操作系统做一堆</li>
+
+</ol>
+</li>
+<li><p>程序接口（用户通过程序间接调用）：由一组系统调用组成（大多数情况下程序接口=系统调用/广义命令）</p>
+</li>
+
+</ol>
+</li>
+<li><p>GUI：图形用户界面</p>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 上午10.11.36.png" alt="/./截屏2022-09-08 上午10.11.36.png"  /></p>
+</li>
+<li><p>操作系统是最接近硬件的层次</p>
+</li>
+
+</ol>
+<h3 id='3）操作系统的特性'>（3）操作系统的特性</h3>
+<ol start='' >
+<li><p>操作系统的特征：并发、共享、虚拟、异步</p>
+</li>
+<li><p>并发：指两个或多个事件在同一时间间隔内发生，这些事件宏观上是同时发生的，但是微观上是交替发生的。</p>
+<p>并行——两个或多个事件在同一时刻同时发生（宏观和微观上都是同时的）。</p>
+<ol start='' >
+<li>操作系统的并发性指操作系统中同时存在着多个运行着的程序。</li>
+<li></li>
+
+</ol>
+</li>
+<li><p>共享：资源共享，指系统中的资源可供内存中多个并发执行的进程共同使用。</p>
+<ol start='' >
+<li><p>资源共享方式</p>
+<ol start='' >
+<li>互斥共享（独占使用）：系统中的某些资源，虽然可以提供给多个进程使用，但一个时间段内只允许一个进程访问该资源。</li>
+<li>同时共享（并发分享）：系统中的某些资源，可以提供给多个进程使用，一个时间段内可允许多个进程访问该资源。<strong>（所谓的同时往往是宏观上的，在微观上这些进程可能是交替的对该资源进行访问的——分时共享）</strong></li>
+
+</ol>
+</li>
+<li><p>资源分配方式</p>
+<ol start='' >
+<li><strong>静态</strong>分配方式，运行程序进入内存前已经将所有的内存完成分配，好处是不会死锁，坏处是效率低，使用效率低。</li>
+<li><strong>动态</strong>分配方式，随用随分配，可能导致死锁。</li>
+<li><strong>资源抢占</strong>方式，如果你在使用，我的优先级高，我可以抢过来使用，但是涉及到保存状态的问题，被抢夺资源的进程需要回滚执行。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>虚拟：将物理上的实体变成若干个逻辑上的对应物，物理实体是实际存在的，而逻辑上的对应物是用户感受到的。（虚拟技术中的“空分复用技术”、“时分复用技术”）——虚拟性依赖于并发性。</p>
+</li>
+<li><p>异步：在多道程序的环境下，允许多个程序并发执行，但由于资源有限，进程的执行不是一贯到底的，而是走走停停，以不可预知的速度向前推进。</p>
+</li>
+<li><p>操作系统的三层抽象：</p>
+<ol start='' >
+<li>进程-&gt;程序的抽象</li>
+<li>文件系统-&gt;磁盘的抽象</li>
+<li>虚拟内存-&gt;主存的抽象</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='4）操作系统的发展和分类'>（4）操作系统的发展和分类</h3>
+<ol start='' >
+<li><p>手工操作阶段：计算机刚发明的阶段，操作系统未被发明</p>
+<ol start='' >
+<li>主要缺点：用户独占全机，<strong>人机速度矛盾</strong>导致资源利用率极低。</li>
+
+</ol>
+</li>
+<li><p>批处理阶段</p>
+<ol start='' >
+<li><p>单道批处理阶段：引入脱机输入输出技术（基于磁带），并监督程序负责控制作业的输入输出。</p>
+<ol start='' >
+<li>优点：<strong>缓解了一定程度的人机速度矛盾</strong>，资源利用率有所提升。</li>
+<li>缺点：内存中仅能运行一道程序，只有该程序运行结束以后才能调入下一道程序。CPU有大量时间是在空闲等待I/O完成，<strong>资源利用率依旧很低</strong>。</li>
+
+</ol>
+</li>
+<li><p>多道批处理阶段：每次往内存中输入多道程序，操作系统正式诞生，并引入了中断技术，由操作系统负责管理这些程序的运行，各个程序并发执行。</p>
+<ol start='' >
+<li>优点：<strong>多道程序并发执行</strong>，共享计算机资源，<strong>资源利用率大幅提升</strong>，CPU和其他资源保持忙碌状态，系统吞吐量大。</li>
+<li>缺点：用户响应时间长，<strong>没有人机交互功能</strong>（用户提交自己的操作以后就只能等待计算机完成，中间不能控制自己的操作执行）。</li>
+<li>多道批处理技术将计算机、I/O设备等分离，各个设备同一时间可以处理不同的程序的作业。<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 下午2.37.03.png" alt="/./截屏2022-09-08 下午2.37.03.png"  /></li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>分时操作系统：计算机以时间片为单位轮流为各个用户/作业服务，各个用户可以通过终端与计算机交互。</p>
+<ol start='' >
+<li>核心：交互控制，划分CPU的时间。</li>
+<li>优点：用户请求可以被及时响应，<strong>解决了人机交互问题</strong>，允许多个用户同时使用一台计算机，并且用户对计算机的操作相互独立，感受不到人的存在。</li>
+<li>缺点：<strong>不能优先处理一些紧急任务</strong>，操作系统对各个用户/作业的优先级相同，循环地为每个处理，不区分任务的紧急性。</li>
+
+</ol>
+</li>
+<li><p>实时操作系统：<strong>主要特点是及时性和可靠性</strong></p>
+<ol start='' >
+<li>即支持分时交互，又有大量进程处理突发任务。</li>
+<li>优点：<strong>能够优先响应一些紧急任务</strong>，某些紧急任务不需要时间片排队。</li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 下午2.40.34.png" alt="/./截屏2022-09-08 下午2.40.34.png"  /></li>
+
+</ol>
+</li>
+<li><p>其他几种操作系统：<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 下午2.41.03.png" alt="/./截屏2022-09-08 下午2.41.03.png"  /></p>
+</li>
+<li><p>只有一个操作系统同时具备批处理、分时和实时处理的两种以上才被称为<em>通用操作系统</em>。</p>
+</li>
+<li><p>操作系统的功能</p>
+<ol start='' >
+<li><p>处理器管理：对处理器的管理和调度最终归结为对进程和线程的管理和调度，最大限度提高处理器利用率。</p>
+</li>
+<li><p>存储管理：管理内存资源，提供存储空间利用率。</p>
+</li>
+<li><p>设备管理：管理各种外部设备，完成用户提出的 I/O 请求;加快数据传输速度，发挥设备的并行性，提高设备的利用率;提供设备驱动程序和中断处理程序,为用户隐蔽硬件操作细节，提供简单的设备使用方法</p>
+</li>
+<li><p>文件管理：针对信息资源的管理。</p>
+</li>
+<li><p>联网与通信管理：</p>
+<ol start='' >
+<li>网络资源管理</li>
+<li>数据通信管理</li>
+<li>应用服务</li>
+<li>网络管理</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>操作系统实现的层次结构</p>
+<ol start='' >
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/./8.png" alt="8"  /></li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/./9.png" alt="9"  /></li>
+
+</ol>
+<p>   </p>
+</li>
+
+</ol>
+<h3 id='5）os的运行机制和体系结构'>（5）OS的运行机制和体系结构</h3>
+<ol start='' >
+<li><p>运行机制：两种指令、两种处理器状态、两种程序</p>
+<ol start='' >
+<li><p>两种指令</p>
+<ol start='' >
+<li><p>特权指令（需要核心态）：只有操作系统本身可以使用的指令，在内核态才能调用的命令，不仅仅影响运行程序本身，还会干扰其他程序及操作系统，比如修改机器状态、修改寄存器值等。</p>
+<p>如果应用程序执行特权指令则会导致非法执行而产生保护中断，进而转向操作系统的“用户非法执行特权指令”的异常处理程序处理。</p>
+</li>
+<li><p>非特权指令：所有的用户程序都能够使用的指令，在用户态和内核态都可以调用的命令，在管态和目态下都可以工作。</p>
+</li>
+
+</ol>
+</li>
+<li><p>两种处理器状态</p>
+<ol start='' >
+<li>核心态——管态</li>
+<li>用户态——目态</li>
+
+</ol>
+</li>
+<li><p>两种程序</p>
+<ol start='' >
+<li>内核程序（只能在核心态下执行）：系统的管理者，既可以执行特权指令，也可以执行非，运行在核心态。</li>
+<li>应用程序：为保障系统能安全运行，普通应用程序只能执行非特权指令，运行在用户态。</li>
+
+</ol>
+</li>
+<li><p>操作系统中的哪些功能需要内核程序执行？-&gt;内核</p>
+</li>
+<li><p>内核 <img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 下午4.13.40.png" alt="/./截屏2022-09-08 下午4.13.40.png"  /></p>
+<ol start='' >
+<li><p>内核是计算机上配置的底层如那件，是操作系统最基本、最核心的部分。<strong>实现操作系统内核功能的程序就是内核程序</strong>。</p>
+</li>
+<li><p>功能：<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 下午4.15.31.png" alt="/./截屏2022-09-08 下午4.15.31.png"  /></p>
+<ol start='' >
+<li>中断处理</li>
+<li>时钟管理</li>
+<li>短程调度</li>
+<li>原语管理</li>
+
+</ol>
+</li>
+<li><p>内核的属性</p>
+<ol start='' >
+<li>内核是由中断驱动的</li>
+<li>内核是不可抢占的</li>
+<li>内核可以在屏蔽中断状态下进行</li>
+<li>内核可以使用特权指令</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>操作系统的体系结构：大内核和微内核</p>
+<ol start='' >
+<li><p>操作系统的体系结构经典的分法就是将操作系统分成大内核和微内核。</p>
+</li>
+<li><p>大内核（单内核）：将操作系统的主要功能模块都作为系统内核，运行在核心态。广泛使用，如windows（自称采用混合式）、Unix/Linux等</p>
+<ol start='' >
+<li>优点：高性能</li>
+<li>缺点：内核代码庞大，结构混乱，难以维护</li>
+
+</ol>
+</li>
+<li><p>微内核：只把最基本的功能保留在内核，强调结构性部件与功能性部件的分离。</p>
+<ol start='' >
+<li>优点：内核功能少，结构清晰、方便维护</li>
+<li>缺点：需要频繁的在核心态和用户态之间切换，带来性能损耗。</li>
+
+</ol>
+</li>
+<li><p>混合内核：微内核和单内核的折中，较多组件在内核态运行以获得更快地执行速度。</p>
+</li>
+<li><p>外内核：尽可能减少内核的软件抽象化和传统微内核的消息传递机制，使得开发者专注于硬件的抽象化；部分嵌入式系统使用。</p>
+</li>
+<li><p>类比：操作系统的体系结构问题与企业的管理问题很相似。
+内核就是企业的管理层，负责一些重要的工作。只有管理层才能执行特权指令，普通员工只能执行非特权指令。用户态、核心态之间的切换相当于普通员工和管理层之间的工作交接
+大内核：企业初创时体量不大，管理层的人会负责大部分的事情。优点是效率高；缺点是组织
+结构混乱，难以维护。
+微内核：随着企业体量越来越大，管理层只负责最核心的一些工作。优点是组织结构清晰，方
+便维护；缺点是效率低</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='6）中断和异常'>（6）中断和异常</h3>
+<ol start='' >
+<li><p>中断机制的诞生</p>
+<ol start='' >
+<li>早期计算机只能串行执行，人们发明操作系统引入中断机制，实现了多道程序并发执行。</li>
+<li>本质：发生中断就意味着需要操作系统介入，开展管理工作。</li>
+
+</ol>
+</li>
+<li><p>中断的概念和作用</p>
+<ol start='' >
+<li><p>过程：</p>
+<ol start='' >
+<li>CPU收到计时部件发出的<strong>中断信号</strong>，切换为核心态该进行处理。</li>
+<li>操作系统内核对中断信号进行处理。</li>
+<li>进程1时间片已用完，换进程2执行。</li>
+<li>进程2发出系统调用（内中断信号），请求输出，CPU切换为核心态，对中断进行处理。</li>
+<li>同2。</li>
+<li>OS要求I/O设备工作，进程2中断，进程3运行。</li>
+<li>当I/O完成后，发送中断信号......</li>
+<li>进程2I/O操作完成，恢复进程2的操作</li>
+
+</ol>
+</li>
+<li><p>特点<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 下午4.50.11.png" alt="/./截屏2022-09-08 下午4.50.11.png"  /></p>
+</li>
+
+</ol>
+</li>
+<li><p>中断的分类</p>
+<ol start='' >
+<li><p>广义上的中断（=内中断+外中断）：指程序执行过程中，遇到急需处理的事件时，暂时中止 CPU 上现行程序的运行，转去执行相应的事件处理程序，待处理完成后再返回原程序被中断处或调度其他程序执行的过程。</p>
+</li>
+<li><p>内中断（<strong>异常</strong>、例外、陷入）：信号来源是CPU内部，是因为<em>当前执行的指令引起的</em>。</p>
+<ol start='' >
+<li>自愿中断——指令中断（如<strong>系统调用</strong>时使用的访管指令导致的访管中断）</li>
+<li>强迫中断：硬件故障、软件/程序性中断（如地址越界、非法操作、页面故障）</li>
+<li><strong>系统异常</strong>指执行陷入指令而触发系统调用引起的中断事件，如请求设备、请求 I/O、创建进程等，与硬件无关（通过系统异常请求服务），<em>系统异常可以被认为是异常中的一类</em></li>
+
+</ol>
+</li>
+<li><p>外中断（<strong>中断</strong>，狭义上的中断）：信号来源是CPU外部，与当前执行的指令无关。</p>
+<ol start='' >
+<li>外设请求</li>
+<li>人工干预</li>
+<li>I/O中断、时钟中断、外部信号中断。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>操作系统是中断驱动的/中断是激活操作系统的唯一方式，硬件系统设置中断激活的硬件机制，配合操作系统的内核程序完成中断驱动方式（中断处理需要借助硬件电路）——操作系统实现的根本基础。</p>
+</li>
+<li><p>外中断处理过程：<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 下午5.42.28.png" alt="/./截屏2022-09-08 下午5.42.28.png"  /></p>
+</li>
+<li><p>恢复正常操作</p>
+<ol start='' >
+<li>对于某些中断，在处理完成后直接返回刚刚被中断的进程。</li>
+<li>对于其他的一些中断，需要中断当前进程的运行，调整进程队列，启动进程调度，选择下一个执行的进程并恢复其执行。</li>
+
+</ol>
+</li>
+<li><p>中断可以嵌套，在中断处理过程中可以再响应其他中断，但是中断的嵌套层数应该有限制，同时中断的嵌套处理改变了中断处理的次序。</p>
+</li>
+<li><p>中断和异常的区别</p>
+<figure><table>
+<thead>
+<tr><th>中断</th><th>异常</th></tr></thead>
+<tbody><tr><td>CPU 异步</td><td>CPU 同步</td></tr><tr><td>内核态、用户态</td><td>大部分在用户态，内核态唯一的异常是“缺页异常”</td></tr><tr><td>一般中断处理程序提供的服务不是当前进程需要的</td><td>是当前的进程需要的</td></tr><tr><td>快速处理，不可以被打断</td><td>可以被阻塞</td></tr><tr><td>允许嵌套</td><td>大多为一重等</td></tr><tr><td>不可以被异常打断</td><td>可以被中断中断</td></tr></tbody>
+</table></figure>
+</li>
+<li><p>中断处理</p>
+<ol start='' >
+<li><p>中断源：程序性中断事件</p>
+<p>该中断处理器执行机器指令引起。</p>
+<ol start='' >
+<li>除数为零、操作数溢出等算术异常：简单处理，报告用户；也可以由用户编写中断续元程序处理。</li>
+<li>非法指令、用户态使用特权指令、地址越界、非法存取等指令异常：终止进程。</li>
+<li>终止进程指令：终止进程。</li>
+<li>虚拟地址异常：指令和数据不在内存当中，调整内存后重新执行指令。</li>
+
+</ol>
+</li>
+<li><p>中断源：处理器硬件故障中断事件（硬中断）</p>
+<ol start='' >
+<li>由处理器、内存储器、总线等硬件故障引起，除了极少类的校验错误可以恢复以外，是非常严重的中断。</li>
+<li>处理原则为：保护现场，停止设备，停止 CPU，向操作员报告，等待人工干预。电脑会配置一个小电容保证尽可能较少硬件损伤。</li>
+
+</ol>
+</li>
+<li><p>中断源：自愿性中断事件（访管中断）</p>
+<p>处理器执行陷入指令请求 OS 服务引起；在操作系统中，它一般又被称作<strong>系统调用</strong>，比如请求分配外设、请求 I/O 等等。</p>
+<p>处理流程是：</p>
+<ol start='' >
+<li>程序执行访管指令，并通过适当方式指明系统调用号。</li>
+<li>通过中断机制进入访管中断处理程序，现场信息被保护到<strong>核心栈</strong>，按功能号实现跳转。</li>
+<li>通过系统调用入口地址表找到对应中断服务历程的入口地址。</li>
+<li>执行终端服务例程。</li>
+
+</ol>
+</li>
+<li><p>中断源：I/O 中断事件（狭义中断事件）</p>
+<p>来源于外围设备报告 I/O 状态的中断事件</p>
+<ol start='' >
+<li>I/O 完成：调整进程状态，释放等待进程；</li>
+<li>I/O 出错：先向设备发命令索取状态字，分析产生故障的确切原因，再执行复执或请求人工干预；</li>
+<li>I/O 异常：等待人工干预，如缺纸中断等待人工加纸；</li>
+<li>设备报道或设备结束：表示有设备接入可供使用或设备断开暂停使用。</li>
+
+</ol>
+</li>
+<li><p>中断源：外部中断事件</p>
+<p>由外围设备发出的信号引起的中断事件：</p>
+<ol start='' >
+<li>时钟中断、间隔时钟中断：记时与时间片处理，最常见。</li>
+<li>设备报到与结束中断：调整设备表。</li>
+<li>键盘/鼠标信号中断：根据信号作出相应反应。</li>
+<li>关机/重启动中断：写回文件，停止设备与 CPU。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>中断系统：想用和处理中断的系统，包括软/硬件子系统两部分，中断响应有硬件子系统完成，中断处理有软件子系统完成。中断系统是操作系统的基础，中断系统也是软硬件协同的经典例子。</p>
+</li>
+<li><p>中断的响应：指令执行周期最后增加一个微操作，以响应中断，CPU 在完成执行阶段后，如果允许中断，则进入中断阶段<img src="https://wbw2333.github.io/assets/OS_b_images/./11.png" referrerpolicy="no-referrer" alt="11"></p>
+</li>
+<li><p>中断装置：发现并相应中断/异常的装置。</p>
+</li>
+<li><p>中断处理过程<img src="https://wbw2333.github.io/assets/OS_b_images/./12.png" referrerpolicy="no-referrer" alt="12"></p>
+<ol start='' >
+<li><p>发现中断源，提出中断请求（选择响应哪一个程序）</p>
+<ol start='' >
+<li>发现中断寄存器中记录的中断</li>
+<li>决定这些中断是否被屏蔽</li>
+<li>当有多个要响应的中断源时，根据规定的优先级选择一个</li>
+
+</ol>
+</li>
+<li><p>中断当前程序的执行（保护现场）：保存当前程序的 PSW/PC 到核心栈</p>
+</li>
+<li><p>转向操作系统的中断处理程序：处理器状态已从用户态转换至内核态。</p>
+</li>
+<li><p>恢复现场：恢复原运行程序的 PSW，重新返回中断点，以便执行后续指令。</p>
+</li>
+
+</ol>
+</li>
+<li><p>多中断</p>
+<ol start='' >
+<li>中断屏蔽：当计算机检测到中断时，中断装置通过中断屏蔽决定是否响应已发生的中断。</li>
+<li>中断优先级：多个中断发生时中断装置响应中断的顺序，不同操作系统有不同的中断优先级（PC做出关机操作/重启操作一般是最高级的中断）。</li>
+<li>中断的嵌套处理：当计算机处理中断的过程中可能再响应其他中断，嵌套可能会改变中断的处理次序（先响应的后处理），但是考虑到系统效率和实现代价，嵌套一般限制在3层以内。</li>
+
+</ol>
+</li>
+<li><p>多中断处理</p>
+<ol start='' >
+<li>顺序处理（串行处理）：X、Y两个中断同时发生，先响应X、屏蔽Y，待X处理完成后再响应Y。<img src="https://wbw2333.github.io/assets/OS_b_images/./2-2.png" alt="2-2"  /></li>
+<li>嵌套处理：X、Y 两个中断同时发生，根据中断有限级，先响应中断 X，因为没有屏蔽 Y，则响应并处理 Y，处理 Y 完成后，再处理 X。<img src="https://wbw2333.github.io/assets/OS_b_images/./3.png" referrerpolicy="no-referrer" alt="3"></li>
+<li>即时处理：在运行中断处理程序时，如果出现程序性中断事件，在一般情况下，表明此时中断程序有异常，应对其立即响应并处理。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='7）系统调用'>（7）系统调用</h3>
+<ol start='' >
+<li><p>什么是系统调用</p>
+<ol start='' >
+<li><em>操作系统的程序接口由一组系统调用组成</em>，系统调用就是由操作系统提供给应用程序/程序员/编程者使用的接口，操作系统所实现的完成某种特定功能的过程。可以理解成一种可供应用程序调用的特殊函数，应用程序可以发出系统调用请求来获得操作系统的服务。<img src="https://wbw2333.github.io/assets/OS_b_images/./24.png" alt="24"  /></li>
+<li>应用程序通过系统调用请求OS的服务，系统中的各种共享资源都有OS统一掌管。<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 下午6.01.24.png" alt="/./截屏2022-09-08 下午6.01.24.png"  /></li>
+
+</ol>
+</li>
+<li><p>目的：对上层如果暴露过于细粒度的操作违背了软件复用的原则，所以将一系列的操作封装起来当作系统调用暴露。</p>
+</li>
+<li><p>系统调用和库函数的区别</p>
+<ol start='' >
+<li>OS提供系统调用函数，应用程序调用高级计算机语言的库函数，而高级计算机语言的库函数包装了系统调用函数<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 下午6.05.50.png" alt="/./截屏2022-09-08 下午6.05.50.png"  /></li>
+
+</ol>
+</li>
+<li><p>系统调用的过程</p>
+<ol start='' >
+<li>有硬件和操作系统合作完成：中断有硬件完成、查入口地址和调用由操作系统完成。</li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-08 下午6.23.34.png" alt="/./截屏2022-09-08 下午6.23.34.png"  /></li>
+
+</ol>
+</li>
+<li><p><strong>凡是与资源相关的操作、会直接影响到其他进程的操作，一定需要操作系统介入，需要通过系统调用实现</strong>。</p>
+</li>
+<li><p>实现机制</p>
+<ol start='' >
+<li><p>陷入处理机制：计算机系统中控制和实现系统调用的机制</p>
+</li>
+<li><p>陷入指令：也称<strong>访管指令</strong>，或<strong>异常中断指令</strong>，计算机系统为实现系统调用而引起处理器中断的指令</p>
+</li>
+<li><p>每个系统调用都事先规定了<strong>编号</strong>，并在<strong>约定</strong>寄存器中规定了传递给内部处理程序的参数</p>
+</li>
+<li><p>参数传递方法</p>
+<ol start='' >
+<li>访管指令或自陷指令自带参数，参数放置在指令后的若干单元，叫直接参数</li>
+<li>指令后放置参数的地址，叫间接指令</li>
+<li>通过 CPU 的通用寄存器传递参数，不适用于大量参数传递</li>
+<li>在内存中开辟专门堆栈区传递参数</li>
+
+</ol>
+</li>
+<li><p>操作系统实现系统调用的机制被称为陷阱或异常处理机制。</p>
+</li>
+<li><p>由系统调用引起处理器中断的机器指令称为访管指令、自陷指令或中断指令，其中访管指令为非特权指令。</p>
+</li>
+
+</ol>
+</li>
+<li><p>实现的要点：</p>
+<ol start='' >
+<li>编写系统调用处理程序。</li>
+<li>设计一张<strong>系统调用入口地址表</strong>，每个入口地址指向一个系统调用的处理程序，并包含系统调用自带参数的个数。</li>
+<li>陷入处理机制需开辟现场保护区，以保存发生系统调用时的处理器现场。</li>
+
+</ol>
+</li>
+<li><p>和函数调用的区别：</p>
+<figure><table>
+<thead>
+<tr><th>&nbsp;</th><th>系统调用</th><th>函数调用</th></tr></thead>
+<tbody><tr><td>调用形式</td><td>按地址转向</td><td>功能号调用</td></tr><tr><td>实现方式</td><td>用户态转换内核态，在内核态执行访问核心栈</td><td>用户态</td></tr><tr><td>被调用代码位置</td><td>动态调用，服务例程位于操作系统内</td><td>静态调用，调用程序和被调用程序在同一程序内</td></tr><tr><td>提供方式</td><td>由操作系统提供</td><td>编程语言提供</td></tr></tbody>
+</table></figure>
+</li>
+
+</ol>
+<h1 id='os-2'>OS</h1>
+<h2 id='二处理机'>二、处理机</h2>
+<h3 id='1）进程'>（1）进程</h3>
+<ol start='' >
+<li><p>进程的定义</p>
+<ol start='' >
+<li><p>程序：一个指令序列，一个<em>具有一定独立功能的</em>程序关于某个数据集合的<em>一次运行活动</em>。</p>
+</li>
+<li><p>引入多道程序技术以后，计算机中同时可以有多个程序运行，内存里同时放入多道程序，每个程序的代码、数据等存放的位置都不同，操作系统如何才能找到具体位置呢？</p>
+</li>
+<li><p>程序段、数据段、PCB三部分组成了进程实体（进程映像）。一般来说把进程实体简称为进程。</p>
+<p>所谓创造进程，就是创造进程实体中的PCB，撤销进程就是撤销进程实体中的PCB</p>
+<p><strong>PCB是进程存在的唯一标志</strong><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-09 上午10.06.38.png" alt="/./截屏2022-09-09 上午10.06.38.png"  /></p>
+</li>
+<li><p>进程是进程实体的<strong>运行过程</strong>，是<em>系统进行资源分配和调度的一个独立单位</em>。<strong>进程实体和进程并不一样，进程实体是静态的，进程是动态的，运行过程更加强调于他这这个生命周期。</strong></p>
+</li>
+
+</ol>
+</li>
+<li><p>进程的组成：<code>进程由程序段、数据段、PCB组成</code>。</p>
+<ol start='' >
+<li><p>进程映像：</p>
+<ol start='' >
+<li>进程映像是某一时刻进程的内容及其执行状态的集合。</li>
+<li><em>进程映像的组成部分是进程控制块（PCB）、进程执行的程序（code） / 程序块、进程执行时所用的数据（data） / 数据块、进程执行时使用的工作区/核心栈</em>。</li>
+<li>进程映像是内存级的物理实体，又称为进程的内存映像。</li>
+
+</ol>
+</li>
+<li><p>PCB（Process Control Block）：</p>
+<ol start='' >
+<li>进程管理者（操作系统）所需的数据都在PCB中，<strong>PCB是进程存在的唯一标志</strong>。</li>
+<li>PCB是操作系统刻画进程的执行状态及环境信息的数据结构，是进程动态特征的汇集，是操作系统掌握进程的唯一资料结构和进程调度的主要依据。</li>
+<li>主要包含标识信息、现场信息和控制信息。<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-09 上午10.48.52.png" alt="/./截屏2022-09-09 上午10.48.52.png"  /></li>
+
+</ol>
+</li>
+<li><p>程序段：存放要执行的代码</p>
+</li>
+<li><p>数据段：存放程序运行过程中处理的各种数据</p>
+</li>
+<li><p>进程的组织：在一个系统中有成千上万个进程及其PCB，所以我们需要将他们组织起来。</p>
+<ol start='' >
+<li>链接方式：按照进程状态将PCB分成多个队列；操作系统持有指向各个队列的指针。<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-09 上午10.57.08.png" alt="/./截屏2022-09-09 上午10.57.08.png"  /></li>
+<li>索引方式：根据进程状态的不同，建立几张索引表；操作系统持有指向各个索引表的指针。<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-09 上午11.00.02.png" alt="/./截屏2022-09-09 上午11.00.02.png"  /></li>
+
+</ol>
+</li>
+<li><p>进程上下文：</p>
+<ol start='' >
+<li>进程物理实体和支持进程运行的环境和成进程上下文。</li>
+<li>包括用户级上下文、寄存器上下文、系统级上下文。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>进程的特征</p>
+<ol start='' >
+<li>动态性：进程是程序的一次执行过程，动态的产生、变化和消亡。-&gt;<strong>动态性是进程最基本的特征</strong></li>
+<li>并发性；进程中有多个进程实体，各进程可并发执行。</li>
+<li>独立性：进程是能独立运行、独立获得资源、独立接受调度的基本单位。-&gt;<strong>进程是资源分配、接受调度的基本单位</strong></li>
+<li>异步性：各进程按各自独立的、不可预知的速度向前推进，操作系统要提供“进程同步机制”来解决异步问题。-&gt;<strong>异步性会导致并发程序执行结果的不确定性</strong></li>
+<li>结构性：每个进程都会配置一个PCB。结构上看，进程由程数P组成。</li>
+<li>制约性：进程因共享资源或协同工作而相互制约，造成进程执行速度的不可预测性，必须对执行次序予以协调。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='2）进程的状态'>（2）进程的状态</h3>
+<ol start='' >
+<li><p>三种基本状态</p>
+<ol start='' >
+<li>运行态（Running）：占有CPU，并在CPU上运行（CPU的每一个核只能运行一个进程）。</li>
+<li>就绪态（Ready）：已经具备运行条件，但没有空闲CPU，而暂时不能运行。</li>
+<li>等待/阻塞态（Waiting/Blocked）：：因等待某一事件而暂时不能运行。<strong>CPU是计算机中最宝贵的资源，为了提高CPU的使用率，需要先分配其他资源再得到CPU的服务</strong></li>
+
+</ol>
+</li>
+<li><p>另外两种状态</p>
+<ol start='' >
+<li>新建态（New）：进程正在被创建，操作系统为进程分配资源，初始化PCB。</li>
+<li>终止态（Terminated）：进程正在从系统中撤销，操作系统会回收进程拥有的资源、撤销PCB。</li>
+
+</ol>
+</li>
+<li><p>挂起态：随着不断创建进程，当系统资源尤其是内存资源已经不能满足进程运行的要求时，必须把某些进程<strong>挂起（suspend）</strong>，对换到磁盘对换区中，释放它占有的某些资源，暂时不参与低级调度，起到平滑系统负荷的目的；也可能系统出现故障，需要暂时挂起一些进程，以便故障消除后再接触挂起并恢复进程运行。进程挂起的原因是多种多样的。</p>
+</li>
+<li><p>进程状态的转换</p>
+<p><img src="../assets/OS_b_images/截屏2022-09-11 上午10.40.18.png" alt="/截屏2022-09-11 上午10.40.18.png"  /></p>
+<p><font color=green><strong>842书里面使用的五状态模型是就绪态、阻塞态、运行态、挂起就绪态、挂起阻塞态。</strong></font><img src="../assets/OS_b_images/截屏2023-02-08 下午1.39.24.png" alt="/截屏2023-02-08 下午1.39.24.png"  /></p>
+</li>
+
+</ol>
+<h3 id='3）-进程控制'>（3） 进程控制</h3>
+<ol start='' >
+<li><p>什么是进程控制：进程控制的主要功能就是对系统中的所有进程实施有效的管理，它具有创建新进程、撤销已有进程、实现进程状态转换等功能。-&gt;进程控制就是实现进程状态转换。</p>
+</li>
+<li><p>为了避免进程的一个状态没有执行完毕就进入其他状态导致错误，使用<strong>原语</strong>实现进程控制，原语的特点是执行期间不允许中断，只能一次执行完毕，这种不可被中断操作即<strong>原子操作</strong>。</p>
+<p>原语采用“关中断指令”和“开中断指令”实现。</p>
+<p><strong>开/关中断指令的权限非常大，必然是只允许在核心态下执行的特权指令</strong></p>
+</li>
+<li><p>进程控制会导致状态的切换，无论哪个原语，无非都是要做三件事：</p>
+<ol start='' >
+<li><p>更新PCB信息</p>
+<ol start='' >
+<li>所有进程控制原语都一定会修改进程状态标志</li>
+<li>剥夺当前运行进程的CPU使用权必然需要保存其运行环境</li>
+<li>某进程开始运行前必然要恢复其运行环境</li>
+
+</ol>
+</li>
+<li><p>将PCB插入合适的队列</p>
+</li>
+<li><p>分配/回收资源</p>
+</li>
+
+</ol>
+</li>
+<li><p>进程的创建</p>
+<ol start='' >
+<li><p>创建原语：申请空白PCB；为新进程分配所需资源；初始化PCB；将PCB插入就绪队列。</p>
+</li>
+<li><p>引起进程创建的事件：</p>
+<ol start='' >
+<li>用户登录：分时系统中，用户登录成功，系统会为其建立一个新的进程。</li>
+<li>作业调度：多道批处理系统中，有新的作业放入内存时，会为其建立一个新的进程。</li>
+<li>提供服务：用户向操作系统提出某些请求时，会新建一个进程处理该请求。</li>
+<li>应用请求：有用户进程主动请求创建一个子进程。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>进程的终止</p>
+<ol start='' >
+<li><p>撤销原语：从PCB集合中找到终止进程的PCB；若进程正在运行，立即剥夺CPU，将CPU分配给其他进程；终止其所有子进程；将该进程拥有的所有资源归还给父进程或者操作系统；删除PCB。</p>
+</li>
+<li><p>引起进程终止的事件：</p>
+<ol start='' >
+<li>正常结束</li>
+<li>异常结束</li>
+<li>外界干预</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>进程的阻塞</p>
+<ol start='' >
+<li>阻塞原语：阻塞原语：保存现场信息、修改 PCB、移入等待队列、调度其他进程执行。</li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-13 上午10.03.46.png" alt="/./截屏2022-09-13 上午10.03.46.png"  /></li>
+<li>阻塞和唤醒原语应该成对使用。</li>
+
+</ol>
+<p>&nbsp;</p>
+</li>
+<li><p>进程的切换<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-13 上午10.05.24.png" alt="/./截屏2022-09-13 上午10.05.24.png"  /></p>
+</li>
+<li><p>进城的挂起：</p>
+<ol start='' >
+<li><p>概念：OS 无法预期进程的数目与资源需求，计算机系统在运行过程中可能出现资源不足的情况，此时系统就会表现出<em>性能低</em>和<em>死锁</em>。<img src="../assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-09-16%20%E4%B8%8A%E5%8D%889.03.22.png" alt="/./截屏2022-09-16 上午9.03.22.png"  /></p>
+</li>
+<li><p>解决方法：剥夺某些进程的内存和资源，调入对换区。</p>
+</li>
+<li><p>挂起态与等待态有着本质区别：</p>
+<ol start='' >
+<li>进程挂起：<strong>没有任何资源</strong></li>
+<li>进程等待：<strong>占有已申请到的资源处于等待</strong></li>
+
+</ol>
+</li>
+<li><p>结束挂起状态的命令只能由<strong>操作系统和父进程</strong>发出。</p>
+</li>
+<li><p>注意到这里挂起进程可能是会有等待时间的，但是等待事件是独立于挂起事件的，即使挂起的时候等待时间也可以正常进行。</p>
+</li>
+
+</ol>
+</li>
+<li><p>进程的唤醒：</p>
+<ol start='' >
+<li>等待时间完成时产生一个中断，激活操作系统，在系统的控制下将被阻塞进程唤醒。</li>
+<li>唤醒原语：唤醒原语：等待队列中移出、修改 PCB、移入就绪队列（该进程优先级高于运行进程触发抢占）。</li>
+
+</ol>
+</li>
+<li><p>进程的激活</p>
+</li>
+
+</ol>
+<h3 id='4）进程通信'>（4）进程通信</h3>
+<ol start='' >
+<li><p>进程通信就是进程之间的信息交换</p>
+<p>进程是分配系统资源的单位（包括内存地址空间），因此各进程拥有的内存地址空间相互独立。</p>
+<p>为了保证安全，一个进程不能直接访问另一个进程的地址空间，但是有的时候进程之间的信息交换是需要实现的，所以操作系统提供了方法来保障进程间的安全通信。</p>
+</li>
+<li><p>进程通信</p>
+<ol start='' >
+<li><p>共享存储：操作系统在进程的私有空间之外，设立一个共享空间，而两个进程对共享空间的访问是互斥的。</p>
+<ol start='' >
+<li>基于数据结构的共享：如空间只能放一个10的数组，共享方式速度慢，限制多，是一种<strong>低级通信方式</strong>。</li>
+<li>基于存储区的共享：在内存中划出一块共享存储区，数据的形式、存放位置都有进程控制而不是OS，相比之下速度更快，是一种<strong>高级通信方式</strong>。</li>
+
+</ol>
+</li>
+<li><p>管道通信</p>
+<ol start='' >
+<li>“管道”就是用于连接写进程的一个共享文件（又名pipe文件），其实就是在内存中开辟一个大小固定的缓冲区。</li>
+<li>管道只能“半双工通信”，某段时间内只能实现单向传输。如果要同时双向传输，需要两条管道。</li>
+<li>各进程应该互斥的访问管道。</li>
+<li>数据以字符流的形式写入管道，当管道写满时，写进程的write()系统调用的调用将被阻塞，等待读进程将数据取走，当读进程被取走以后，管道变空，此时read()系统调用被阻塞。</li>
+<li><strong>如果写满，就不能再写，如果读空，就不能再读，如果没有写满，就不允许读，如果没有读空，就不允许写</strong>。</li>
+<li>数据一旦被读出，就从管道中抛弃，意味着读进程最多有一个（如果有多个读进程，那个另外的进程可能会错误的读别的进程的数据，而这些被错误读的数据就会被抛弃），否则可能会有读错数据的情况</li>
+
+</ol>
+</li>
+<li><p>消息传递：进程间的数据交换以格式化的消息（Message）为单位。进程通过操作系统提供的“发送消息/接收消息”两个原语进行数据交换。</p>
+<ol start='' >
+<li>消息头：发送进程ID、接受进程ID、消息类型、消息长度等格式化的消息。</li>
+<li>直接通信方式：消息直接挂到接受进程的消息缓冲队列上。</li>
+<li>间接通信方式：消息要先发送到中间实体（信箱）中，由接受进程自己在信箱中读取信息，因此也称“信箱通信方式”。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='5）线程'>（5）线程</h3>
+<ol start='' >
+<li><p>为什么要引入线程：在引入进程之前，系统中的程序只能串行，进程使得程序可以并行，但是进程是程序的一次执行，显然不是一次执行就可以完成的，有的进程可能需要“同时”做很多事情，而传统的进程都只能串行的执行一系列程序，为此引入线程来增加并发性。</p>
+<p>线程就是在进程之下的程序的执行流的最小单位，是基本的CPU执行单元。</p>
+<p>引入了线程以后，进一步提高系统的并发性，</p>
+<p><strong>在线程以后，进程只作为除CPU之外的系统资源分配单元</strong>。</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-15 上午9.42.25.png" alt="/./截屏2022-09-15 上午9.42.25.png"  />
+<strong><font color=red>引入线程以后，原本的进程成为了除CPU外资源分配的最小单元，因为不同进程之间的切换是需要改变运行环境的，所以同一个进程中间的线程切换时，就不需要更换运行环境</font></strong></p>
+</li>
+
+</ol>
+<ol start='2' >
+<li>线程的属性<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-15 下午1.31.27.png" alt="/./截屏2022-09-15 下午1.31.27.png"  /></li>
+
+</ol>
+<p><font color=blue>注意这里线程几乎不占有系统资源，这是区分线程和进程的重要区别。</font></p>
+<ol start='3' >
+<li><p>线程的实现方式</p>
+<ol start='' >
+<li><p>用户级线程</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-15 下午2.19.06.png" alt="/./截屏2022-09-15 下午2.19.06.png"  /></p>
+<ol start='' >
+<li>用户级线程由应用程序通过线程库实现，所有线程管理工作都由应用程序负责。</li>
+<li>用户级线程在用户态下就可以切换，不需要OS去干预，因此<strong>用户级线程的切换OS是看不见的，即用户看来有多个线程，但是OS眼里并看不到线程的存在。</strong></li>
+
+</ol>
+</li>
+<li><p>内核级线程：内核级线程的管理由操作系统内核完成，线程调度、切换等工作由内核完成，因此需要在内核态下进行切换。</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-15 下午2.49.53.png" alt="/./截屏2022-09-15 下午2.49.53.png"  /></p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<ol start='3' >
+<li><p>在同时支持用户级和内核级的系统中，采用二者结合的方式：将n个用户级线程映射到m个内核级线程上</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-15 下午3.08.31.png" alt="/./截屏2022-09-15 下午3.08.31.png"  />（n&gt;=m)</p>
+</li>
+<li><p><font color=blue>OS只能看见内核级线程，因此内核级线程才是处理机分配的单位</font></p>
+</li>
+<li><p>多线程模型：由几个用户级线程映射到几个内核级线程的问题，引出了“多线程模型”问题。</p>
+</li>
+<li><p>多对一模型：多个用户级线程映射到一个内核级线程。</p>
+<ol start='' >
+<li>优点：用户级线程的切换在用户空间即可完成，不需要切换到核心态，线程管理的系统开销小，效率高。</li>
+<li>缺点：当一个用户级线程被阻塞以后，整个进程都会被阻塞，并发度不高，多个线程不可在多核处理机上并行运行。</li>
+
+</ol>
+</li>
+
+</ol>
+<ol start='7' >
+<li><p>一对一模型：一个对一个，就是变成了纯粹的内核级线程。</p>
+<ol start='' >
+<li>优点：当一个线程被阻塞以后，别的线程也可以继续执行，并发能力强，多线程可在多核处理机上执行。</li>
+<li>缺点：一个用户级进程会占用多个内核级线程，线程切换操作由系统内核完成，需要切换到核心态，因此线程管理的成本高开销大。</li>
+
+</ol>
+</li>
+
+</ol>
+<ol start='8' >
+<li><p>多对多模型：n对m</p>
+<ol start='' >
+<li>优点：克服了多对一模型并发度不高的缺点和一对一开销大的缺点。</li>
+
+</ol>
+</li>
+
+</ol>
+<ol start='9' >
+<li><p>Jacketing技术：Jacketing的目标是把一个产生阻塞的系统调用转化成一个非阻塞的系统调用。例如,当进程中的一个线程调用IO中断前，先调用一个应用级的I/O jacket例程，而不是直接调用一个系统I/O。让这个jacket例程检查并确定I/O设备是否忙。如果忙，则jacketing将控制权交给该进程的线程调度程序，决定该线程进入阻塞状态并将控制权传送给另一个线程（若无就绪态线程咋可能执行进程切换）。</p>
+</li>
+<li><p>Solaris多线程技术：引入了轻量级线程，将轻量级线程和内核级线程映射，是混合式线程。<img src="../assets/OS_b_images/28.png" alt="28"  /></p>
+<ol start='' >
+<li>Process 1：单进程单线程，内核级多线程；</li>
+<li>Process 2：单进程双线程，进程映射到两个轻量级线程，相当于用户级多线程；</li>
+<li>Process 3：两进程三线程，内核级多线程；</li>
+<li>Process 4：两进程两线程，内核级多线程；</li>
+<li>Process 5：三进程四线程，混合级线程，直接做指派意味着线程非常重要，需要单独指派。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='6）处理机调度'>（6）处理机调度</h3>
+<ol start='' >
+<li><p>基本概念</p>
+<p>当有一堆的任务需要处理，但由于资源有限，需要按某种规则来决定处理的顺序，这就是调度要解决的。</p>
+</li>
+<li><p>高级调度（作业调度）</p>
+<ol start='' >
+<li>概念：按一定的原则从外存上处于后备队列的作业中选一个或多个作业，给他们分配内存等必要的资源，并建立相应的进程（建立PCB），以使其获得竞争处理机的机会。</li>
+<li>高级调度事内外存之间的调度，每个作业只会调入调出一次，调入时创建PCB，调出时撤销PCB。</li>
+
+</ol>
+</li>
+<li><p>中级调度（内存调度）</p>
+<ol start='' >
+<li>概念：中级调度就是要决定将那个处于挂起状态的进程重新调入内存。</li>
+<li>一个进程可能会多次调入、调出内存，因此会有多次中级调度，中级调度的频率比高级调度高得多。</li>
+<li>挂起态与七状态模型<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-16 上午9.13.17.png" alt="/./截屏2022-09-16 上午9.13.17.png"  /></li>
+
+</ol>
+</li>
+
+</ol>
+<ol start='4' >
+<li><p>低级调度（进程调度）</p>
+<ol start='' >
+<li>概念：按照某种方法和策略从就绪队列中选取一个进程，将处理机分配给他。</li>
+<li>低级调度是OS最基本的一种调度，一般的操作系统中都必须配置低级调度。</li>
+<li>低级调度的频率很高，一般几十毫秒一次。</li>
+
+</ol>
+</li>
+<li><p>三级调度的对比</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-16 上午9.21.25.png" alt="/./截屏2022-09-16 上午9.21.25.png"  /><img src="../assets/OS_b_images/22.png" alt="22"  /></p>
+</li>
+
+</ol>
+<h3 id='7）进程调度'>（7）进程调度</h3>
+<ol start='' >
+<li><p>进程调度的时机</p>
+<ol start='' >
+<li><p>需要进行进程调度与切换的情况</p>
+<ol start='' >
+<li>当前运行的进程主动放弃处理机。</li>
+<li>当前运行的进程被动放弃处理机。</li>
+
+</ol>
+</li>
+<li><p>不能进行进程调度与切换的情况</p>
+<ol start='' >
+<li>在处理中断的过程中。</li>
+<li>进程在操作系统<strong>内核程序</strong>临界区中。<font color=red>（为什么在临界区不能切换）</font></li>
+<li>在原子操作过程中（原语）。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>进程调度的方式</p>
+<ol start='' >
+<li>非剥夺调度方式（非抢占方式）：只允许进程主动放弃处理机，在运行过程中即使有更紧迫的任务到达，当前进程依然会继续使用处理机，直到该进程终止或主动要求进入阻塞态。</li>
+<li>剥夺调度方式（抢占方式）：当一个进程在处理机上执行时，如果有一个更重要的进程需要使用处理机，则立即暂停该进程，将处理机分配给更紧急的进程。</li>
+
+</ol>
+</li>
+<li><p>进程的切换与过程<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-16 上午10.37.37.png" alt="/./截屏2022-09-16 上午10.37.37.png"  /></p>
+</li>
+
+</ol>
+<h3 id='8）调度算法的评价指标'>（8）调度算法的评价指标</h3>
+<ol start='' >
+<li><p>CPU利用率：指CPU“忙碌”的时间占总时间的比例，<mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="17.005ex" height="3.447ex" role="img" focusable="false" viewBox="0 -1011.8 7516.2 1523.5" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">利</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">用</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">率</text></g><g data-mml-node="mo" transform="translate(2913.8,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(3969.6,0)"><g data-mml-node="mrow" transform="translate(220,481.4) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">忙</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">碌</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">的</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><g data-mml-node="mrow" transform="translate(841.3,-370.3) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">总</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><rect width="3306.6" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container><script type="math/tex">利用率=\frac{忙碌的时间}{总时间}</script>。<strong>某些题目会要求计算某些其他设备的利用率</strong></p>
+</li>
+<li><p>系统吞吐量：单位时间内完成的作业的数量，<mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="23.792ex" height="3.447ex" role="img" focusable="false" viewBox="0 -1011.8 10516.3 1523.5" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-2-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">系</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">统</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">吞</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">吐</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">量</text></g><g data-mml-node="mo" transform="translate(4671.2,0)"><use data-c="3D" xlink:href="#MJX-2-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(5727,0)"><g data-mml-node="mrow" transform="translate(220,481.4) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">总</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">共</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">完</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">成</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(4393.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(5272.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">数</text></g></g><g data-mml-node="mrow" transform="translate(530.7,-370.3) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">总</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">共</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">所</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">需</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(4393.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><rect width="4549.3" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container><script type="math/tex">系统吞吐量=\frac{总共完成作业数}{总共所需时间}</script>。</p>
+</li>
+<li><p>周转时间：指从作业被提交给系统开始到被完成的时间间隔。<strong>如果作业9:00被提交给系统，9:10获得进入多道程序等待队列，9:30开始执行，10:00结束，那么周转时间就是60分钟，是从作业被提交给程序开始算而不是进入等待队列或者开始执行算。</strong></p>
+<p>周转时间包括四个部分：作业在外存后背队列等待调度时间、在就绪队列等待调度时间、CPU执行时间、等待I/O时间，其中后三项在一个作业中可能会发生多次。</p>
+<p><mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="37.59ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 16615 950" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-3-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-3-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">周</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">转</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g><g data-mml-node="mo" transform="translate(3792.5,0)"><use data-c="3D" xlink:href="#MJX-3-TEX-N-3D"></use></g><g data-mml-node="mtext" transform="translate(4848.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(5727,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(6605.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">完</text></g><g data-mml-node="mtext" transform="translate(7484.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">成</text></g><g data-mml-node="mtext" transform="translate(8363.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(9241.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g><g data-mml-node="mo" transform="translate(10342.7,0)"><use data-c="2212" xlink:href="#MJX-3-TEX-N-2212"></use></g><g data-mml-node="mtext" transform="translate(11342.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(12221.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(13100.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">提</text></g><g data-mml-node="mtext" transform="translate(13978.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">交</text></g><g data-mml-node="mtext" transform="translate(14857.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(15736.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g></g></svg></mjx-container><script type="math/tex">周转时间=作业完成时间-作业提交时间</script></p>
+<p><mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="28.592ex" height="3.447ex" role="img" focusable="false" viewBox="0 -1011.8 12637.6 1523.5" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-4-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">平</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">均</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">周</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">转</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(4393.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g><g data-mml-node="mo" transform="translate(5549.9,0)"><use data-c="3D" xlink:href="#MJX-4-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(6605.7,0)"><g data-mml-node="mrow" transform="translate(220,481.4) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">各</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">周</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">转</text></g><g data-mml-node="mtext" transform="translate(4393.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(5272.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g><g data-mml-node="mtext" transform="translate(6150.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">之</text></g><g data-mml-node="mtext" transform="translate(7029.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">和</text></g></g><g data-mml-node="mrow" transform="translate(2084,-370.3) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">数</text></g></g><rect width="5791.9" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container><script type="math/tex">平均周转时间=\frac{各作业周转时间之和}{作业数}</script>，OS会更关心系统的整体表现，因此会更倾向于周转时间的平均值。</p>
+<p><mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="49.312ex" height="3.447ex" role="img" focusable="false" viewBox="0 -1011.8 21795.9 1523.5" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-5-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-5-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">带</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">权</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">周</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">转</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(4393.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g><g data-mml-node="mo" transform="translate(5549.9,0)"><use data-c="3D" xlink:href="#MJX-5-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(6605.7,0)"><g data-mml-node="mrow" transform="translate(841.3,481.4) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">周</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">转</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(4393.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><g data-mml-node="mrow" transform="translate(220,-370.3) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">实</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">际</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">运</text></g><g data-mml-node="mtext" transform="translate(4393.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">行</text></g><g data-mml-node="mtext" transform="translate(5272.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(6150.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><rect width="5170.6" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(12294.1,0)"><use data-c="3D" xlink:href="#MJX-5-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(13349.8,0)"><g data-mml-node="mrow" transform="translate(220,481.4) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">完</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">成</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(4393.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g><g data-mml-node="mo" transform="translate(5272.1,0)"><use data-c="2212" xlink:href="#MJX-5-TEX-N-2212"></use></g><g data-mml-node="mtext" transform="translate(6050.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(6928.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(7807.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">提</text></g><g data-mml-node="mtext" transform="translate(8686.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">交</text></g><g data-mml-node="mtext" transform="translate(9564.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(10443.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><g data-mml-node="mrow" transform="translate(1737.7,-370.3) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">实</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">际</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">运</text></g><g data-mml-node="mtext" transform="translate(4393.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">行</text></g><g data-mml-node="mtext" transform="translate(5272.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(6150.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><rect width="8206" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container><script type="math/tex">带权周转时间=\frac{作业周转时间}{作业实际运行时间}=\frac{作业完成时间-作业提交时间}{作业实际运行时间}</script>，带权周转时间必定大于等于1。</p>
+<p><mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="35.379ex" height="3.447ex" role="img" focusable="false" viewBox="0 -1011.8 15637.6 1523.5" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-6-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">平</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">均</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">带</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">权</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">周</text></g><g data-mml-node="mtext" transform="translate(4393.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">转</text></g><g data-mml-node="mtext" transform="translate(5272.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(6150.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g><g data-mml-node="mo" transform="translate(7307.3,0)"><use data-c="3D" xlink:href="#MJX-6-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(8363.1,0)"><g data-mml-node="mrow" transform="translate(220,481.4) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">各</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">带</text></g><g data-mml-node="mtext" transform="translate(3514.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">权</text></g><g data-mml-node="mtext" transform="translate(4393.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">周</text></g><g data-mml-node="mtext" transform="translate(5272.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">转</text></g><g data-mml-node="mtext" transform="translate(6150.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(7029.5,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g><g data-mml-node="mtext" transform="translate(7908.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">之</text></g><g data-mml-node="mtext" transform="translate(8786.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">和</text></g></g><g data-mml-node="mrow" transform="translate(2705.3,-370.3) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">作</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">业</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">数</text></g></g><rect width="7034.6" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container><script type="math/tex">平均带权周转时间=\frac{各作业带权周转时间之和}{作业数}</script></p>
+</li>
+<li><p>等待时间：指进程/作业处于等待处理机状态时间之和。对进程来说，等待时间就是进程被建立以后等待被服务的时间之和。对作业来说，不仅要考虑建立进程以后的等待时间，还要加上作业在后备队列中的等待时间。</p>
+</li>
+<li><p>响应时间：指从用户提交请求到首次产生响应的时间。</p>
+</li>
+
+</ol>
+<h3 id='9）调度算法'>（9）调度算法</h3>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-17 上午10.31.43.png" alt="/./截屏2022-09-17 上午10.31.43.png"  /></p>
+<ol start='' >
+<li><p>先来先服务（FCFS）</p>
+<ol start='' >
+<li>弊端：（1）一个短进程可能不得不等待很长时间才能获得执行，导致吞吐率很难提高，加权中转时间会上升，最差的情况就是计算型死循环，导致完全无法调度。（2）偏袒计算为主的进程：I/O 多的进程不得不等待计算为主的进程做完，因为需要等待资源，离开后需要重新排队。</li>
+<li>算法性能较差，不会被现在的系统使用。</li>
+
+</ol>
+</li>
+<li><p>短作业优先（SPN，shortest process next）：</p>
+<ol start='' >
+<li><p>一种<strong>非抢占式</strong>调度，会选择处理时间最短的进程，短进程将会越过长进程，优先获得调度，又称为 SJF。</p>
+</li>
+<li><p>问题：</p>
+<ol start='' >
+<li>需要预知作业所需的 CPU 运行时间</li>
+<li>忽略了作业的等待时间：只要持续不断地提供更短的进程，长进程就有可能饿死，同样也会服务不到。</li>
+<li>分时、实时处理仍然不理想。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>抢占式短作业优先（SRTN）：在SPF的基础上的并非将一个进程放入处理机就一直处理结束，当进入一个比当前进程更短的进程时，处理机就会切换进程。</p>
+<ol start='' >
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-17 下午4.32.57.png" alt="截屏2022-09-17 下午4.32.57"  /></li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-17 下午4.35.46.png" alt="/./截屏2022-09-17 下午4.35.46.png"  /></li>
+
+</ol>
+</li>
+<li><p>高响应比优先（HRRN）：非抢占式算法，性能比SPN略差，每次调度时计算一次当前所有算法响应比最高的。</p>
+<ol start='' >
+<li>出发点是兼顾公平：长作业在等待过程中响应比会越来越高，时间足够长时长作业也可以获得处理机，解决了饥饿问题。</li>
+<li>对短作业有利：等待时间相同时短作业响应比较高。</li>
+<li>服务时间相同时等待时间越长响应比越高，类似于FCFS。</li>
+<li><mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="28.646ex" height="11.249ex" role="img" focusable="false" viewBox="0 -2736 12661.6 4972" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-7-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-7-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-7-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtable"><g data-mml-node="mtr" transform="translate(0,1310)"><g data-mml-node="mtd"></g><g data-mml-node="mtd"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">响</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">应</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">比</text></g><g data-mml-node="mo" transform="translate(2913.8,0)"><use data-c="3D" xlink:href="#MJX-7-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(3969.6,0)"><g data-mml-node="mrow" transform="translate(220,676)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">等</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">待</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g><g data-mml-node="mo" transform="translate(3737,0)"><use data-c="2B" xlink:href="#MJX-7-TEX-N-2B"></use></g><g data-mml-node="mtext" transform="translate(4737.2,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">服</text></g><g data-mml-node="mtext" transform="translate(5615.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">务</text></g><g data-mml-node="mtext" transform="translate(6494.6,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(7373.3,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><g data-mml-node="mrow" transform="translate(2588.6,-710)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">服</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">务</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><rect width="8451.9" height="60" x="120" y="220"></rect></g></g></g><g data-mml-node="mtr" transform="translate(0,-1326)"><g data-mml-node="mtd"></g><g data-mml-node="mtd"><g data-mml-node="mstyle"><g data-mml-node="mspace"></g></g><g data-mml-node="mstyle" transform="translate(2000,0)"><g data-mml-node="mspace"></g></g><g data-mml-node="mo" transform="translate(4000,0)"><use data-c="3D" xlink:href="#MJX-7-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(5055.8,0)"><use data-c="31" xlink:href="#MJX-7-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(5778,0)"><use data-c="2B" xlink:href="#MJX-7-TEX-N-2B"></use></g><g data-mml-node="mfrac" transform="translate(6778.2,0)"><g data-mml-node="mrow" transform="translate(220,676)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">等</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">待</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><g data-mml-node="mrow" transform="translate(220,-710)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">服</text></g><g data-mml-node="mtext" transform="translate(878.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">务</text></g><g data-mml-node="mtext" transform="translate(1757.4,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(2636.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><rect width="3714.8" height="60" x="120" y="220"></rect></g></g></g></g></g></g></svg></mjx-container><script type="math/tex">\begin{aligned} &响应比 = \frac{等待时间 + 服务时间}{服务时间}\\ &\qquad\qquad = 1 + \frac{等待时间}{服务时间} \\ \end{aligned}</script>.</li>
+
+</ol>
+</li>
+
+</ol>
+<figure><table>
+<thead>
+<tr><th>算法</th><th>算法思想</th><th>算法规则</th><th>用于作业/进程调度</th><th>是否可抢占</th><th style='text-align:center;' >优点</th><th>缺点</th><th>是否会导致饥饿</th></tr></thead>
+<tbody><tr><td>FCFS</td><td>从“公平”的角度考虑</td><td>按照作业/进程到达的先后顺序服务</td><td>用于作业调度时，考虑哪个作业先到达后备队列；进程调度时，考虑那个进程先到达就绪队列</td><td>非抢占式算法</td><td style='text-align:center;' >公平，算法简单</td><td>在长进程/作业后面的短进程需要等待很长时间，带权周转时间大</td><td>不会</td></tr><tr><td>SPF</td><td>追求更少的平均等待时间，最少的平均周转时间，最少的平均带权周转时间</td><td>最短的进程优先服务</td><td>两者皆可</td><td>非抢占式算法，但最短剩余时间优先算法（SRTN）是抢占式的版本</td><td style='text-align:center;' >最短的平均等待时间、平均周转时间</td><td>不公平，对短作业有利长作业不利</td><td>会</td></tr><tr><td>HRRN</td><td>综合考虑等待时间和服务时间</td><td>每次调度时计算响应比，选择响应比最高的</td><td>皆可</td><td>非抢占式</td><td style='text-align:center;' >综合考虑了等待时间和运行时间（要求服务时间）等待时间相同时，要求服务时间短的优先 （SJF 的优点）要求服务时间相同时，等待时间长的优先 （FCFS 的优点）对于长作业来说，随着等待时间越来越久，其响应比也会越来越大，从而避免了长作业饥饿的问题</td><td>&nbsp;</td><td>不会</td></tr></tbody>
+</table></figure>
+<h3 id='10）复杂调度算法'>（10）复杂调度算法</h3>
+<ol start='' >
+<li><p>时间片轮转（RR）：主要用于分时操作系统。</p>
+<ol start='' >
+<li>若时间片太大，每个进程都在一个时间片内完成，则算法会退化为FCFS，且用户发出的指令如果在自己的进程的时间片外，则用户的进程需要等待较长的时间才会被响应，增大进程响应时间。</li>
+<li>若时间片太小，则进程切换过于频繁，效率低。</li>
+<li><font color=red>当采用时间片的方式调度进程时，我们不需要确切的知道进程究竟要执行多久。</font></li>
+<li><strong>注意到RR算法在计算过程中，一定要记录好新进入的进程和时间便用完的进入等待队列的时间</strong></li>
+
+</ol>
+</li>
+<li><p>优先级调度算法：优先级可以分为静态和动态。</p>
+</li>
+<li><p>优先级选择：系统进程&gt;用户进程，前台进程&gt;后台进程，操作系统会倾向于I/O进程。</p>
+<ol start='2' >
+<li>动态优先级：从追求公平、提高资源利用率的角度，如果某进程等待时间过久，可以提高优先级，某进程占有处理机过久，降低优先级，某进程频繁使用I/O操作，提高优先级。</li>
+
+</ol>
+</li>
+<li><p>多级队列调度算法：系统中设置多个就绪队列，每个队列可以设置不同的调度算法，一个队列中的进程又可以分配不同的优先级，以达到综合多种调度策略的目的。</p>
+</li>
+<li><p><strong>多级反馈队列调度算法</strong>（MLFQ）：将时间片轮转和优先级调度综合。</p>
+<ol start='' >
+<li><p>思想：</p>
+<ol start='' >
+<li><p>设置多个就绪队列，并且每个队列设置不同的优先级，<strong>队列编号从0开始</strong>。</p>
+</li>
+<li><p>给每个队列的进程的时间片大小不同，一般优先级越高时间片越小。</p>
+</li>
+<li><p>每个队列采用FCFS算法，新进程进入程序后，先放在0级队列的末尾。</p>
+</li>
+<li><p>当一个进程用光时间片都没有结束时，将它放入原本队列的下一级队列末尾，如果已经在最后一级队列，则仍放在最后一级队列。</p>
+</li>
+<li><p>仅当第i级队列为空时，才调用i+1队列。</p>
+</li>
+<li><p>注意点</p>
+<ol start='' >
+<li>一个进程一旦获得处理机的时间片，只有当这个进程的时间片用光才会被抢占，他已经分配到的时间片是不会被抢占的。</li>
+<li>一个进程只有在时间片执行完后中被抢占，即进程用光时间片后另一个进程抢夺了处理机，此时才会将进程放入下一个队列，否则进程继续待在原队列。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>优势：短作业优先、周转时间短、不会饥饿。</p>
+</li>
+<li><p>分级原则：外设访问、交互性、时间紧迫程度、系统效率、用户立场。</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<figure><table>
+<thead>
+<tr><th>算法</th><th>算法思想</th><th style='text-align:center;' >算法规则</th><th>用于作业/进程调度</th><th>是否可抢占</th><th>优点</th><th>缺点</th><th>饥饿</th></tr></thead>
+<tbody><tr><td>RR</td><td>公平的、轮流的为各个进程服务，让每个进程在一定时间间隔内都可以得到响应</td><td style='text-align:center;' >按照各进程到达就绪队列的顺序，轮流让各个进程执行一个时间片。若进程为在一个时间片内执行完，则剥夺处理机，将进程重新放入就绪队列。</td><td>用于进程调度</td><td>属于抢占式</td><td>公平；响应快；适用于分时操作系统</td><td>高频率的进程切换有一定开销；不区分任务紧急程度</td><td>不会</td></tr><tr><td>优先级</td><td>根据任务的紧急程度决定处理顺序</td><td style='text-align:center;' >每个作业/进程有自己的优先级，调度时选优先级最高的</td><td>皆可（甚至可用于I/O调度）</td><td>抢占式（低优先级进程未执行完也更换高优先级进程）、非抢占式都有</td><td>用优先级区分紧急程度、重要程度，适用于实时操作系统。可灵活的调整偏好</td><td>可能会导致饥饿</td><td>会</td></tr><tr><td>多级</td><td>对其他调度算法的平衡</td><td style='text-align:center;' >1. 设置多级就绪队列，各级队列优先级从高到低，时间片从小到大新进程到达时先进入第0级队列，按FCFS原则排队等待被分配时间片，若用完时间片进程还未结束，则进程进入下一级队列队尾。如果此时己经是在最下级的队列，则重新放回该队列队尾只有第k级队列为空时，才会为k+1级队头的进程分配时间片</td><td>进程调度</td><td>抢占式，高优先级队列进程抢占低优先级</td><td>对对各类型进程相对公平 （FCFS的优点）；每个新到达的进程都可以很快就得到响应（RR的优点）：短进程只用较少的时间就可完成（SPF的优点）；不必实现估计进程的运行时间 （避免用户作假）可灵活地调整对各类进程的偏好程度，比如CPU密集型进程、I/O密集型进程（拓展：可以将因I/O而阻塞的进程重新放回原队列，这样I/O型进程就可以保持较高优先级）</td><td>&nbsp;</td><td>会</td></tr></tbody>
+</table></figure>
+<h3 id='11）进程同步进程互斥'>（11）进程同步、进程互斥</h3>
+<ol start='' >
+<li><p>并发程序设计：</p>
+<ol start='' >
+<li><p>程序并发执行是指一组程序的执行在时间上是重叠的，所谓重叠的是指一个程序执行第一条指令是在另一个程序执行完最后一条指令之前开始的。</p>
+<ol start='' >
+<li>宏观上，并发性反应了一个时间段内有几个程序都处于运行但运行尚未结束的状态。</li>
+<li>微观上，任一时刻都只有一个程序在运行。</li>
+
+</ol>
+</li>
+<li><p>并发实质是处理器在几个程序之间的多路复用，对有限物力资源强制行使多用户共享，消除计算机部件之间的互等现象，提高资源利用率。</p>
+</li>
+<li><p>并发使得程序失去了封闭性、顺序性、确定性和可再现性。</p>
+</li>
+<li><p>并发程序设计指一个程序被设计成可以与其他程序并发执行。</p>
+</li>
+
+</ol>
+</li>
+<li><p>进程互斥</p>
+<ol start='' >
+<li>并发进程之间因相互争夺<strong>独占性资源</strong>而产生的竞争制约关系</li>
+<li>一个进程的执行可能影响到同其<strong>竞争资源</strong>的其他进程，如果两个进程要访问同一资源，那么，一个进程通过操作系统分配得到该资源，另一个将不得不等待。</li>
+<li>进程互斥是解决进程间<strong>竞争关系（间接制约关系）的手段</strong>。</li>
+<li><strong>进程互斥</strong>指若干个进程要使用同一共享资源时，任何时刻最多允许一个进程去使用，其他要使用该资源的进程必须等待，直到占有资源的进程释放该资源</li>
+
+</ol>
+</li>
+<li><p>进程互斥的问题：</p>
+<ol start='' >
+<li><p><strong>死锁（Deadlock）问题</strong>： </p>
+<ol start='' >
+<li><p>一组进程如果都获得了部分资源，还想要得到其他进程所占有的资源，最终所有的进程将陷入死锁。</p>
+</li>
+<li><p>临界资源：互斥使用的资源</p>
+</li>
+<li><p>死锁： 一组进程因争夺资源陷入永远等待的状态</p>
+</li>
+<li><p>P0 和 P1 两个进程，均需要使用 S 和 Q 两类资源，每类资源数为 1</p>
+<ol start='' >
+<li>P0：申请（S）→ 申请（Q） → 释放（S）→ 释放（Q）</li>
+<li>P1：申请（Q）→ 申请（S） → 释放（Q）→ 释放（S）</li>
+<li>以上两个进程互相持有对方的资源的锁，导致无法继续进行。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p><strong>饥饿（Starvation）问题</strong>： 一个进程由于其他进程总是优先于它而被无限期拖延，可以使用 FCFS 来解决饥饿问题。</p>
+</li>
+<li><p>操作系统需要保证诸进程能互斥地访问临界资源，既要解决饥饿问题，又要解决死锁问题。</p>
+</li>
+
+</ol>
+</li>
+<li><p>进程同步（协作）</p>
+<ol start='' >
+<li><p>并发进程之间为完成共同任务基于<strong>某个条件</strong>来协调执行先后关系而产生的协作制约关系</p>
+</li>
+<li><p>某些进程为完成同一任务需要<strong>分工协作</strong>，由于合作的每一个进程都是独立地以不可预知的速度推进，这就需要相互协作的进程在某些协调点上<strong>协调</strong>各自的工作。当合作进程中的一个到达协调点后，在尚未得到其伙伴进程发来的消息或信号之前应<strong>阻塞自己</strong>，直到其他合作进程发来协调信号或消息后方被唤醒并继续执行</p>
+</li>
+<li><p>是解决进程间<strong>协作关系（直接制约关系）的手段</strong>。</p>
+</li>
+<li><p><strong>进程同步</strong>指两个以上进程基于某个条件来协调它们的活动。一个进程的执行依赖于另一个协作进程的消息或信号，当一个进程没有得到来自于另一个进程的消息或信号时则需等待，直到消息或信号到达才被唤醒</p>
+</li>
+<li><p>同步和异步</p>
+<ol start='' >
+<li>同步：<strong>等待/阻塞</strong></li>
+<li>异步：<strong>不等/平行</strong></li>
+
+</ol>
+</li>
+<li><p>进程互斥关系是一种特殊的<strong>进程同步</strong>关系，即<strong>逐次使用互斥</strong>共享资源，是对进程使用资源次序上的一种协调</p>
+</li>
+
+</ol>
+</li>
+<li><p>“忙式等待”解决调度问题</p>
+<ol start='' >
+<li><p>临界区管理的简单方法</p>
+<ol start='' >
+<li>关中断</li>
+<li>测试并建立指令</li>
+<li>对换指令</li>
+<li>Peterson 算法</li>
+
+</ol>
+</li>
+<li><p>存在问题</p>
+<ol start='' >
+<li>对不能进入临界区的进程，采用<strong>忙式等待</strong>测试法，<strong>浪费 CPU 时间</strong></li>
+<li>将测试能否进入临界区的责任推给各个竞争的进程会<strong>削弱系统的可靠性</strong>，加重用户编程负担</li>
+
+</ol>
+</li>
+<li><p>通用的解决方法：信号量与 PV 操作</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='12）进程互斥的软件实现方法'>（12）进程互斥的软件实现方法</h3>
+<ol start='' >
+<li><p>临界区管理的三个要求</p>
+<ol start='' >
+<li>一次之多允许一个进程能够进入临界区执行，在某种情况下可能会突破。</li>
+<li>如果已有进程在临界区，其他试图进入的进程应该等待，一个进程不能无限制的等待进入临界区。</li>
+<li>一个进程不能无限制的停留在临界区。</li>
+
+</ol>
+</li>
+<li><p>单标志法（Dekker算法）</p>
+<ol start='' >
+<li>算法思想：两个进程在访问完临界区以后会把临界区的权限交给另一个进程，也就是说每个进程进入临界区的权限只能被另一个进程赋予。</li>
+<li>主要问题：违背了“空闲让进”的原则。</li>
+
+</ol>
+</li>
+<li><p>双标志先检查</p>
+<ol start='' >
+<li>算法思想：设置数组flag，用各个元素表示每个进程想进入临界区的意愿，每个进程进入临界区之前先检查当前有没有别的进程想进入临界区，如果没有则修改自身对应的flag后访问临界区。<strong>如果此时有两个进程同时检查数组并发现没有其他进程有访问意向，则这两个进程有可能会同时修改自身flag，同时访问临界区。</strong></li>
+<li>主要问题：违背了“忙则等待”原则。</li>
+
+</ol>
+</li>
+<li><p>双标志后检查</p>
+<ol start='' >
+<li>算法思想：基于双标志后检查法，使用先上锁后检查的方法。</li>
+<li>主要问题：可能导致死锁，</li>
+
+</ol>
+</li>
+<li><p>Peterson算法</p>
+<ol start='' >
+<li><p>算法思想：为每个进程设置一个标志，当标志为 false 时表示该进程要求进入临界区。另外再设置一个指示器turn以指示可以由哪个进程进入临界区，当 turn=i 时则可由进程 Pi 进入临界区。<strong>其中，任意一个进程进入临界区的条件都是其他进程即不在临界区也没有进入临界区的意向。</strong></p>
+</li>
+<li><p>代码</p>
+<pre><code>bool flag[2];
+int turn = 0;
+
+Process1
+flag[0] = true;
+turn = 1;
+//when the process1 wants to access the critical section,
+//it will switch the turn into another process so that it can let another process to access the critical section first
+while(flag[1] &amp;&amp; turn==1);	//process1 is waiting
+access the critical section;
+flag[0] = false;
+
+Process2
+flag[1] = true;
+turn = 0;	
+while(flag[0] &amp;&amp; turn==0);
+access the critical section;
+flag[1] = false;
+</code></pre>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='13）进程互斥的硬件实现方法'>（13）进程互斥的硬件实现方法</h3>
+<ol start='' >
+<li><p>中断屏蔽方法</p>
+<ol start='' >
+<li>思想：利用“开/关中断指令”，将临界区的访问原子化，即某进程开始访问临界区到结束访问为止都不允许被中断。</li>
+<li>优点：简单、高效。</li>
+<li>缺点：不适用于多处理机；只适用于OS内核进程，不适用于用户进程（因为开/关中断指令只能运行在内核态）。</li>
+
+</ol>
+</li>
+<li><p>测试并建立指令（Test and Set，简称TS指令）</p>
+<ol start='' >
+<li>TS指令是使用硬件实现的，执行的过程不允许中断。</li>
+<li>优点：实现简单，无需像软件那样严格检查是否会有逻辑漏洞；适用于多处理机环境。</li>
+<li>缺点：不满足“让权等待”原则，暂时无法进入临界区的进程会一直占用CPU，进入忙等状态。</li>
+
+</ol>
+</li>
+<li><p>Swap指令</p>
+<ol start='' >
+<li>思想：使用硬件实现将两个变量调换数值。</li>
+<li>优缺点：逻辑上与TSL相同。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='14）信号量机制'>（14）信号量机制</h3>
+<ol start='' >
+<li><p>信号量机制：信号量就是一个变量，可以是整数也可以更复杂的记录型变量，可以用一个信号量来表示系统中的某种资源的数量。</p>
+</li>
+<li><p>整形信号量</p>
+<ol start='' >
+<li><p>概念：就是用一个整数型的变量作为信号量来标识系统中的某种资源的数量。</p>
+</li>
+<li><p>比如，可以使用整数来标识某种资源的数量，然后每一个进程要占用一个资源，就调用wait原语，释放资源就是用signal原语。</p>
+<pre><code>viod wait(s){
+	while(s &lt;= 0);
+	s = s-1;
+}
+
+void signal(s){
+	s = s+1;
+}
+</code></pre>
+</li>
+
+</ol>
+</li>
+<li><ol start='3' >
+<li>对信号量的操作只有初始化、P操作、V操作三种，同时wait原语检查和上锁同步完成，避免并发、异步。<strong>这里不满足让权等待，会不会出现忙等</strong></li>
+
+</ol>
+</li>
+<li><p>记录型信号量<strong>（高频）</strong></p>
+<ol start='' >
+<li>概念：使用记录型数据结构表示信号量。</li>
+
+</ol>
+</li>
+
+</ol>
+<ol start='2' >
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-24 上午10.23.30.png" alt="/./截屏2022-09-24 上午10.23.30.png"  /></p>
+<p><strong>注意，这里的阻塞态指的是请求服务的进程，wakeup进程是从信号量的请求队列中唤醒一个排队请求的进程</strong></p>
+</li>
+
+</ol>
+<ol start='2' >
+<li><font color=red>wait(s)和signal(s)原语可以记为P(s)、V(s)，这一对原语用于实现系统资源的申请和释放，同时对信号量的一次P操作就意味着一个进程请求一个该类资源，当s.value&lt;0是表示该类资源已分配完毕，所以此时再申请的进程需要block进行自我阻塞，主动放弃处理机，该机制遵循了<strong>让权等待</strong>原则，避免忙等。</font></li>
+
+</ol>
+<h3 id='15）信号量实现进程互斥与同步'>（15）信号量实现进程互斥与同步</h3>
+<ol start='' >
+<li><p>实现互斥</p>
+<ol start='' >
+<li>分析并发进程的关键活动，划定临界区；</li>
+<li>设置互斥信号量mutex，初值为1；</li>
+<li>在临界区之前执行P，之后执行V。</li>
+<li><strong>注意：不同的临界资源需要设置不同的互斥信号量。</strong></li>
+<li>P、V操作必须成对出现，缺少P就不能保证临界资源的互斥访问。缺少V会导致资源永不被释放，等待进程就不会被唤醒。</li>
+
+</ol>
+</li>
+<li><p>实现同步（让并发进程有序推进）</p>
+<ol start='' >
+<li><p>分析什么地方需要实现“同步关系”，既保证“一前一后”执行的两个操作。</p>
+</li>
+<li><p>设置同步信号量s，初始为0。</p>
+</li>
+<li><p>在“前操作”之后执行V，在“后操作”之前执行P。</p>
+</li>
+<li><p><font color=green>一定要注意这里s初始化为0，即表示开始情况下资源不可用，因此V操作可以在P之前执行，表示在进程请求资源之前资源就准备好了。</font></p>
+<pre><code>//assuming that fun5 of P2 is based on the result of fun1 and fun2,
+//so that we should execute P before fun5 to make sure it won&#39;t work before fun2,
+//and execute V after fun2 to wakeup fun5
+//if fun2 finishes before fun5,
+//so V has made s to be 1 which is inited as 0,
+//and when we execute P,
+//s is 1 so that the P won&#39;t stop fun5
+P1(){
+	while(1){
+    fun1();
+    fun2();
+    V(s);
+    fun3;
+	}
+}
+P2(){
+	while(1){
+    fun4();
+    P(s);
+    fun5();
+    fun6();
+   }
+}
+</code></pre>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<ol start='3' >
+<li><p>前驱关系</p>
+<ol start='' >
+<li>实际的系统进程中，进程之间的前驱关系是类似于图的形式，因此我们需要在每一对前驱关系都设置信号量。<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-24 下午3.37.45.png" alt="/./截屏2022-09-24 下午3.37.45.png"  /></li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='16）生产者-消费者问题'>（16）生产者-消费者问题</h3>
+<ol start='' >
+<li>问题描述：系统中有一组生产者进程和一组消费者进程，生产者进程每次生产一个产品放入缓冲区，消费者进程每次从缓冲区取出一个产品并使用。生产者、消费者共享一个初始为空、大小为n的缓冲区。只有缓冲区没满时，生产者才能放入产品，否则必须等待。只有缓冲区不空时，消费者才能取出产品，否则等待。<strong>缓冲区是临界资源，各进程必须互斥的访问</strong></li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-24 下午6.53.07.png" alt="/./截屏2022-09-24 下午6.53.07.png"  /></li>
+
+</ol>
+<ol start='2' >
+<li>示例代码</li>
+
+</ol>
+<pre><code>int mutex = 1;
+int empty = n;
+int full = 0;
+producer(){
+	while(1){
+    produce();
+    P(empty);
+    P(mutex);
+    put the production into the buffer;
+    V(mutex);
+    V(full);
+	}
+}
+
+customer(){
+	while(1){
+    P(full);
+    P(mutex);
+    get the production from the buffer;
+    V(mutex);
+    V(empty);
+	}
+}
+
+//so, can we switch the order of P/V(mutex) and P/V(empty/full) like the following?
+producer(){
+	while(1){
+    produce();
+    P(mutex);		//(1)
+    P(empty);		//(2)
+    put the production into the buffer;
+    V(mutex);
+    V(full);
+	}
+}
+
+customer(){
+	while(1){
+    P(mutex);		//(3)
+    P(full);		//(4)
+    get the production from the buffer;
+    V(mutex);
+    V(empty);
+	}
+}
+//ans: if the buffer is full of productions,
+//as empty=0 and full=n.
+//So the producer will execute (1) and make mutex to 0 and stop itself to wait the buffer be free,
+//then switch to the customer.
+//The customer will execute (3) but beacause mutex is 0 so that customer will stop to wait the producer to free the mutex.
+</code></pre>
+<ol start='3' >
+<li><font color=orange>实现互斥的P操作一定要在实现同步的P之后，但是V操作不会导致进程阻塞，所以两个V操作顺序可以互换。</font></li>
+
+</ol>
+<h3 id='17）多生产者-多消费者问题考点）'>（17）多生产者-多消费者问题<em>（考点）</em></h3>
+<ol start='' >
+<li><p>描述：多生产/消费者不是指多个，而是多类，即在一个缓冲区中，有多类生产者在生产不同种类的产品，同时不同的消费者也需要不同种类的产品。</p>
+</li>
+<li><p>方法</p>
+<ol start='' >
+<li>关系分析：找出各个进程，并分析他们之间的同步、互斥关系。</li>
+<li>整理思路：根据各进程的操作流程确定P、V操作的大致顺序。</li>
+<li>设置信号量。设置需要的信号量，根据实际情况选定信号量初值（互斥信号量一般为1，同步信号量初始值一般看对应的资源是多少）。</li>
+
+</ol>
+</li>
+<li><p>互斥信号量在缓冲区等于1的时候可以省略，但是当缓冲区大于1时，缺省互斥信号量可能会导致多生产者覆盖的现象。</p>
+</li>
+<li><p><img src="../assets/OS_b_images/48.png" referrerpolicy="no-referrer" alt="48"></p>
+</li>
+
+</ol>
+<h3 id='18）抽烟者进程'>（18）抽烟者进程</h3>
+<ol start='' >
+<li><p>描述：假设一个系统有3个抽烟者进程和1个供应者进程，每个抽烟者都在不停的卷烟并抽掉，但是卷起一根香烟需要3种材料a、b、c，3个抽烟者每人拥有一种互不相同的材料。供应者无限的提供三种材料并每次将某两种材料放在肘子上，拥有剩下那种材料的抽烟者拿起材料并消耗掉，同时返回供应者一个完成信号，供应者会继续提供另外的两种材料（让三个抽烟者轮流抽烟）。</p>
+</li>
+<li><p><font color=red>值得注意的是，这里供应者并非是单独的提供材料，我们不该把供应者提供的材料组合看作两种材料，而是供应者在一次提供三种不同的材料组合，三位抽烟者分别需要不同的材料组合。</font></p>
+</li>
+<li><p>吸烟者问题是为多产品单生产者问题提供了一种解决思路。</p>
+</li>
+<li><p>如果一个生产者要生产多种产品，或者说会引发多种前驱事件，那么每个V操作应该放在各自对应的事件发生之后的位置。</p>
+</li>
+<li><p>代码：</p>
+<pre><code>int random; //存储随机数
+semaphore offer1 = 0; //定义信号量对应烟草和纸组合的资源
+semaphore offer2 = 0; //定义信号量对应烟草和胶水组合的资源
+semaphore offer3 = 0; //定义信号量对应纸和胶水组合的资源
+semaphore finish = 0; //定义信号量表示抽烟是否完成
+
+//供应者
+while(1){
+    random = 任意一个整数随机数;
+    random = random % 3;
+    if (random == 0){
+        	提供烟草和纸
+        	V(offerl); 
+    }
+    else if (random == 1){
+    			提供烟草和胶水
+        	V(offer2);
+    }
+    else{
+    		提供纸和胶水;
+        V(offer3);
+    }
+    // 任意两种材料放在桌子上，并等待抽烟者抽烟后将 finish 设置为 1
+    P(finish);//抽烟者已经使用完材料，需要继续提供材料
+}
+
+//拥有烟草者
+while(1){
+    P (offer3);
+    // 拿纸和胶水，卷成烟，抽掉;
+    V(finish);
+}
+
+//拥有纸者
+while(1){
+    P(offer2);
+    // 烟草和胶水,卷成烟，抽掉；
+    V(finish);
+}
+
+//拥有胶水者
+while(1){
+    P(offer1);
+    // 拿烟草和纸，卷成烟，抽掉;
+    v(finish);
+}
+
+
+</code></pre>
+<p>&nbsp;</p>
+</li>
+
+</ol>
+<h3 id='19）读者-写者问题'>（19）读者-写者问题</h3>
+<ol start='' >
+<li><p>描述：有多个读者和写者进程在共享一个文件，当多个读者访问文件时不会产生副作用，但是写者在和其他进程共享文件时就会引发错误。因此要求：（1）允许多个读者同时读文件；（2）只允许一个写者向文件中写信息；（3）任意写者在完成写操作之前不允许其他人访问；（4）写者执行操作之前应该要求其他所有读写者退出。</p>
+</li>
+<li><p>两类进程：写进程、读进程
+互斥关系：写进程一写进程、写进程一读进程。读进程与读进程不存在互斥问题。写者进程和任何进程都互斥，设置一个互斥信号量rw，在写者访问共享文件前后分别执行P、V操作。读者进程和写者进程也要互斥，因此读者访问共享文件前后也要对rw执行P、V操作。如果所有读者进程在访问共享文件之前都执行 P(rw)操作，那么会导致各个读进程之间也无法同时访问文件。</p>
+</li>
+<li><p><strong>Key：读者写者问题的核心思想——怎么处理该问题呢？</strong>
+P（rw）和V（rw）其实就是对共享文件的“加锁”和“解锁”，既然各个读进程需要同时访问，而读进程与写进程又必须互斥访问，那么我们可以让第一个访问文件的读进程“加锁”让最后一个访问完文件的读进程“解锁”，可以设置一个整数变量count来记录当前有几个读进程在访问文件。</p>
+</li>
+<li><p>代码一</p>
+<pre><code>int rw = 1;
+int count = 0;	//recording how many readers are reading the file
+
+writer(){
+	while(1){
+    P(rw);
+    write into the file
+    V(rw);
+	}
+}
+
+reader(){
+	while(1){
+    if(count == 0)
+      P(rw);
+    count++;
+
+    read the file
+
+    count--;
+    if(count == 0)
+      V(rw);
+   }
+}
+</code></pre>
+<p><font color=red>问题：当两个读进程并发执行，可能存在两个进程先后执行P（rw）而导致后一个进程阻塞——通过设置互斥变量来保证对count的互斥访问解决。</font></p>
+</li>
+<li><p>代码二——读者优先</p>
+<pre><code>int rw = 1;
+int count = 0;	//recording how many readers are reading the file
+int mutex = 1;
+int z = 1;
+
+writer(){
+	while(1){
+		P(z);
+    P(rw);
+    write into the file
+    V(rw);
+    V(z);
+   }
+}
+
+reader(){
+	while(1){
+    P(mutex);
+    if(count == 0)
+      P(rw);
+    count++;
+    V(mutex);
+
+    read the file
+
+    P(mutex);
+    count--;
+    if(count == 0)
+      V(rw);
+    V(mutex);
+	}
+}
+</code></pre>
+<p><font color=green>问题：这种方法下读进程是优先的，因为只要有一个读进程在读，写进程都会被阻塞但是读进程可以执行，因此可能会存在有源源不断的读进程进来导致写进程饿死的情况——引入新的互斥变量让写进程可以封锁读进程。</font></p>
+</li>
+<li><p>代码三——读写公平</p>
+<pre><code>int rw = 1;
+int w = 1;
+int count = 0;	//recording how many readers are reading the file
+int mutex = 1;
+int write = 1;
+
+writer(){
+	while(1){
+    P(w);
+    P(rw);
+    write into the file
+    V(rw);
+    V(w);
+	}
+}
+
+reader(){
+	while(1){
+    P(w);
+    P(mutex);
+    if(count == 0)
+      P(rw);
+    count++;
+    V(mutex);
+    V(w);
+
+    read the file
+
+    P(mutex);
+    count--;
+    if(count == 0)
+      V(rw);
+    V(mutex);
+	}
+}
+</code></pre>
+<p><font color=blue>这种方法下，写进程不算是写优点，更多的相似于先来先服务原则，因此又称为”读写公平法“。</font></p>
+</li>
+<li><p>代码四——写者优先</p>
+<pre><code>int rw = 1;
+int rcount = 0;	//recording how many readers are reading the file
+int wcount = 0;	//recording how many writers want to write the file
+int r = w = 1;
+int mutex = 1;
+int readwait = 1;
+
+writer(){
+	while(1){
+    P(w);
+    wcount++;
+    if(wcount == 1)
+    	P(rmutex);
+    V(w);
+    
+    P(rw)
+    write into the file
+    V(rw);
+    
+    P(w);
+    wcount--;
+    if(wcount == 0)
+    	V(rmutex);
+    V(w);
+	}
+}
+
+reader(){
+	while(1){
+    P(readwait);
+    P(rmutex);
+    P(r);
+    if(rcount == 0)
+      P(rw);
+    rcount++;
+    V(r);
+    V(rmutex);
+    V(readwait);
+    //这里增加readwait的目的是让reader一次最多只能有一个在等待rmutex信号量
+    //使得writer可以封闭多个reader在等待抢占下一个writer的情况。
+    //同时当reader在读的时候，写操作之前最多有一个reader在等待
+    //因为reader要么在并排读，要么多出来的reader在等待，这里防止多个reader都在等待。
+
+    read the file
+
+    P(r);
+    rcount--;
+    if(rcount == 0)
+      V(rw);
+    P(r);
+	}
+}
+</code></pre>
+<p>&nbsp;</p>
+</li>
+<li><p>读者-写者问题核心思想</p>
+<ol start='' >
+<li>核心在于设置一个计数器count来记录读进程数量。</li>
+<li>注意在对count访问的互斥性处理。</li>
+<li>解决写进程饥饿的方法。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='20）哲学家问题'>（20）哲学家问题</h3>
+<ol start='' >
+<li><p>一张圆桌上有5位哲学家，桌子上每两位哲学家中间放置一根筷子，每位哲学//家饥饿时会试图拿起左右两根筷子（一根一根的依次拿起）。如果筷子在其他人手上，则需要等待。哲学家进餐完毕后就归还筷子进入思考状态。</p>
+</li>
+<li><p>分析</p>
+<ol start='' >
+<li>一共有5个进程，5个进程对其左右的资源访问是互斥的。</li>
+<li>只存在互斥关系，但是与之前的问题不同，每个进程只有持有左右两个资源才能开始工作，所以我们需要避免死锁问题。</li>
+<li>信号量设置：设置互斥信号量数组chopstick[5]={1,1,1,1,1}，哲学家进程编号为0～4，每个哲学家左边的筷子编号为i，右边的为(i+1)%5。</li>
+
+</ol>
+</li>
+<li><p>代码一</p>
+<pre><code>int chopstick[5] = {1, 1, 1, 1, 1};
+
+Pi(){
+	while(1){
+    P(chopstick[i]);
+    P(chopstick[(i+1)%5]);
+
+    eat;
+
+    V(chopstick[i]);
+    V(chopstick[(i+1)%5]);
+	}
+}
+</code></pre>
+<p><font color=red>这种方法下，如果每个哲学家都并发的执行，并全部都拿起了自己左手边的筷子，即每个哲学家都占用了一个资源，那么显然这种情况下每个哲学家都在等待自己右边的哲学家放弃筷子而进入死锁状态。</font></p>
+<p>思考如何避免死锁的发生：（1）可以每次只允许最多4名哲学家持有筷子，那么这样就至少可以保证一个哲学家能够吃饭；（2）要求偶数号的哲学家先拿左边的筷子，然后再拿右边筷子，而奇数号的哲学家相反。</p>
+</li>
+<li><p>代码二</p>
+<pre><code>int chopstick[5] = {1, 1, 1, 1, 1};
+int mutex = 1;	//recording how many process have get a chopstick
+
+Pi(){
+	while(1){
+		P(mutex);
+    P(chopstick[i]);
+    P(chopstick[(i+1)%5]);
+    V(mutex);
+
+    eat;
+
+    V(chopstick[i]);
+    V(chopstick[(i+1)%5]);
+	}
+}
+//In this form of code, one process can get all the chopsticks it need.
+</code></pre>
+<p>但是这种方法不能保证哲学家只有在两侧的筷子都可用时才会拿起筷子，即使只有一个筷子可用，哲学家也会有先拿起左侧的筷子。</p>
+</li>
+<li><p>思想：关键在于解决死锁的问题。</p>
+</li>
+
+</ol>
+<h3 id='21）其他pv问题'>（21）其他PV问题</h3>
+<ol start='' >
+<li><p>理发师问题</p>
+<ol start='' >
+<li><p>理发店理有一位理发师、一把理发椅和 n 把供等候理发的顾客坐的椅子。如果没有顾客，理发师便在理发椅上睡觉。一个顾客到来时，它必须叫醒理发师。如果理发师正在理发时又有顾客来到，则如果有空椅子可坐，就坐下来等待，否则就离开。</p>
+</li>
+<li><p>使用 PV 操作求解该问题代码</p>
+<pre><code>int waiting=0;//等候理发顾客坐的椅子数
+int chaircount=N;//为顾客准备的椅子数
+semaphore customers,barbers,mutex;
+customers=0;
+// 如果没有顾客，理发师便在理发椅上睡觉需要叫醒
+barbers=0;
+mutex=1;
+
+process barber(){
+	while(true){
+		理发师睡觉;
+		P(customer);
+		理发师醒来；
+		P(mutex);
+		waiting--;
+		V(barber);
+		V(mutex);
+		理发；
+	}
+}
+
+process customer_i(){
+	P(mutex);
+	if(waiting &lt; chaircount){
+		waiting++;	//注意这里一定要有mutex，因为有多个进程会同时访问waiting参数，需要建立互斥来避免冲突。
+		V(customer);
+		V(mutex);
+		P(barber);
+		剪头发；
+	}
+	else{
+		V(mutex);
+	}
+}
+</code></pre>
+<p>&nbsp;</p>
+</li>
+
+</ol>
+</li>
+<li><p>农夫猎人问题</p>
+<ol start='' >
+<li><p>有一个铁笼子，每次只能放入一个动物。猎手向笼中放入老虎，农夫向笼中放入羊；动物园等待取笼中的老虎，饭店等待取笼中的羊。请用 P、V 操作原语写出同步执行的程序。</p>
+</li>
+<li><p>和苹果-橘子问题没有本质区别。</p>
+</li>
+<li><p>代码实现：</p>
+<pre><code>semaphore cage = 1;
+semaphore tiger = 0;
+semaphore sheep = 0;
+
+process hunter(){
+	while(true){
+		P(cage);
+		放入老虎;
+		V(tiger);
+	}
+}
+process farmer(){
+	while(true){
+		P(cage);
+		放入羊;
+		V(sheep);
+	}
+}
+process zoom(){
+	while(true){
+		P(tiger);
+		拿走老虎
+		V(cape);
+	}
+}
+process hotel(){
+	while(true){
+		P(sheep);
+		拿走羊;
+		V(cape);
+	}
+}
+</code></pre>
+</li>
+
+</ol>
+</li>
+<li><p>银行业务问题</p>
+<ol start='' >
+<li><p>某大型银行办理人民币储蓄业务，由 n 个储蓄员负责。每个顾客进入银行后先至取号机取一个号，并且在等待区找到空沙发坐下等着叫号。取号机给出的号码依次递增，并假定有足够多的空沙发容纳顾客。当一个储蓄员空闲下来，就叫下一个号。请用信号量和 P，V 操作正确编写储蓄员进程和顾客进程的程序。</p>
+</li>
+<li><p>代码</p>
+<pre><code>int customer = 0;
+int server = 0;
+semaphore mutex = 1;
+
+process customer_i(){
+	取号;
+	P(mutex);
+	找到沙发坐下；
+	P(mutex);
+	V(customer);
+	处理业务;
+	P(server);
+}
+
+process server_i(){
+	while(true){
+		P(customer);
+		P(mutex);
+		取号呼叫客人;
+		V(mutex);
+		处理业务;
+		V(server);
+	}
+}
+</code></pre>
+<p>&nbsp;</p>
+</li>
+
+</ol>
+</li>
+<li><p>独木桥问题</p>
+<ol start='' >
+<li>东西向汽车过独木桥，为了保证安全，只要桥上无车，则允许一方的汽车过桥，待一方的车全部过完后，另一方的车才允许过桥。</li>
+<li>以 3 辆汽车为一组，要求保证东方和西方以组为单位交替通过汽车。</li>
+<li>重点在于实现交替通过——设计两个mutex=3，每个方向的汽车的通行mutex交给对面方向V，而自己通行的时候P自己的，所以只有对面已经通行过，自己才能V。</li>
+<li>代码<img src="../assets/OS_b_images/65.png" alt="65"  /></li>
+<li>注意这里countu和countd的设计，分别表示现在桥上正在走几个车和该方向已经走了几辆车。额外设计countd的目的就是记录该方向是否已经走过三辆车，如果已经走过三辆车才V，否则就一直封锁桥直到后面过来的车满足三辆。</li>
+
+</ol>
+</li>
+<li><p>独木桥问题2</p>
+<ol start='' >
+<li>东西向汽车过独木桥，为了保证安全，只要桥上无车，则允许一方的汽车过桥，待一方的车全部过完后，另一方的车才允许过桥。</li>
+<li>要求各方向的汽车串行过桥，但当另一方提出过桥时，应能阻止对方未上桥的后继车辆，待桥面上的汽车过完桥后，另一方的汽车开始过桥。</li>
+<li>如果没有条件2，那么这个问题就和多读者/多写者同时读写的代码一样，此时就需要设置新的信号量stop来封锁对面的车辆进入临界区去增加对面车辆的count，这样就可以避免对面后续到来的车辆上桥。</li>
+<li>代码<img src="../assets/OS_b_images/66.png" alt="66"  /></li>
+
+</ol>
+<p>&nbsp;</p>
+</li>
+
+</ol>
+<h3 id='22）管程'>（22）管程</h3>
+<ol start='' >
+<li><p>为什要引入管程：在引入管程之前，人们实现进程互斥依赖于信号量机制，但是信号量机制编者程序困难、易出错。因此人们考虑通过管程来让程序员不需要关注复杂的PV操作。</p>
+<p>管程试图<strong>抽象</strong>相关并发进程对<strong>共享变量</strong>访问，以提供一个友善的并发程序设计开发环境。</p>
+</li>
+<li><p>管程由若干公共（共享）变量及其说明和所有访问这些变量的过程所组成</p>
+<ol start='' >
+<li>管程的局部变量只能由该管程的过程读取</li>
+<li>把分散在各进程中的临界区集中起来进行管理</li>
+
+</ol>
+</li>
+<li><p>定义：管程是由局部于自己的若干公共（共享）变量及其说明和所有访问这些公共变量的过程所组成的软件模块，由以下部分组成：</p>
+<ol start='' >
+<li>局部于管程的共享数据结构说明；</li>
+<li>对该数据结构进行操作的一组过程；</li>
+<li>对局部于管程的共享数据设置初始值的语句；</li>
+<li>管程有一个名字。</li>
+
+</ol>
+<p>管程与class有部分相似</p>
+</li>
+<li><p>管程的属性：</p>
+<ol start='' >
+<li>共享性：管程中的移出过程可被所有调用管程的过程的进程所共享</li>
+<li>安全性：管程的局部变量只能由此管程内部分访问，不允许进程或其他管程直接访问。</li>
+<li>互斥性：任一时刻，共享资源的进程可以访问管程中的管理此资源的过程，但最多只有一个调用者能够真正进入管程，其他调用者必须等待直到管程可用。</li>
+
+</ol>
+</li>
+<li><p>基本特征</p>
+<ol start='' >
+<li>局部于管程的数据只能被局部于管程的过程所访问；</li>
+<li>一个进程只有通过调用管程内的进程才能进入管程访问共享数据；</li>
+<li>防止进程有意或无意的<strong>违法同步</strong>操作，进程只能互斥地调用管程中的过程。</li>
+<li>便于用<strong>高级语言</strong>来书写程序</li>
+
+</ol>
+</li>
+<li><p>管程的形式</p>
+<pre><code>type 管程名=monitor{
+   局部变量说明;
+   条件变量说明;
+   初始化语句;
+   define 管程内定义的，管程外可调用的过程或函数名列表;
+   use 管程外定义的，管程内将调用的过程或函数名列表;
+
+   过程名/函数名(形式参数表) {
+      &lt;过程/函数体&gt;;
+   }
+
+   过程名/函数名(形式参数表) {
+      &lt;过程/函数体&gt;;
+   }
+}
+</code></pre>
+<p><a href='../assets/OS_b_images/https://eaglebear2002.github.io/2022Fall-计算机与操作系统/06-并发程序设计/67.png'><img src="../assets/OS_b_images/67.png" alt="img"  /></a></p>
+<p>&nbsp;</p>
+</li>
+<li><p>管程的条件变量</p>
+<ol start='' >
+<li><p>当资源不足导致进程阻塞时，同时开放管程，让挡在管程外的一个进程进入管程。</p>
+</li>
+<li><p>条件变量：是出现在管程内的一种数据结构，且只有在管程中才能被访问，它对管程内的所有过程是全局的，只能通过两个原语操作来控制它，用于阻塞进程的信号量。</p>
+<ol start='' >
+<li><p>wait()：当一个管程过程发现无法继续时（如发现没有可用资源时），它在某些条件变量上执行 <code>wait</code>，这个动作引起调用进程阻塞，直到另一个进程在该条件变量上执行<code>signal</code>。</p>
+</li>
+<li><p>signal()：</p>
+<ol start='' >
+<li>如果存在其他进程由于对条件变量执行 <code>wait</code> 而被阻塞，便释放之。</li>
+<li>如果没有进程在等待，那么信号不被保存，并不是立即退出管程等待队列，而是进入 next 信号量，以保证多个进程都可以正常退出。</li>
+
+</ol>
+</li>
+<li><p>条件变量仅仅维护阻塞队列的作用，如果没有等待时发生 <code>signal</code> 操作，相当于空操作。</p>
+</li>
+
+</ol>
+</li>
+<li><p>使用signal释放等待进程时，可能出现两个进程同时停留在管程内。解决方法：</p>
+<ol start='' >
+<li><strong>执行 <code>signal</code> 的进程等待，直到被释放进程退出管程或等待另一个条件</strong></li>
+<li>被释放进程等待，直到执行 <code>signal</code> 的进程退出管程或等待另一个条件</li>
+
+</ol>
+</li>
+<li><p>霍尔（Hoare, 1974）采用第一种办法</p>
+</li>
+<li><p>汉森（Hansen）选择两者的折衷，规定管程中的过程所执行的<code>signal</code> 操作是过程体的最后一个操作</p>
+</li>
+
+</ol>
+</li>
+<li><p>Hoare方法</p>
+<ol start='' >
+<li><p>霍尔方法使用 P 和 V 操作原语来实现对管程中过程的互斥调用，及实现对共享资源互斥使用的管理</p>
+</li>
+<li><p>不要求 <code>signal</code> 操作是过程体的最后一个操作，且 <code>wait</code> 和 <code>signal</code> 操作可被设计成可以中断的过程</p>
+</li>
+<li><p>使用 <code>signal</code> 释放一个等待进程时，霍尔管程让执行 <code>signal</code> 的进程等待，直到<strong>被释放进程退出管程或等待另一个条件</strong></p>
+</li>
+<li><p>霍尔管程基于 PV 操作原语实现：</p>
+<ol start='' >
+<li><code>wait</code> 和 <code>signal</code> 可以是程序过程</li>
+<li>可以用语言机制实现霍尔管程</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>例子1：用管程解决生产者消费者问题<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-27 下午3.30.01.png" alt="/./截屏2022-09-27 下午3.30.01.png"  /></p>
+</li>
+<li><p>引入管程的目的就是为了更方便的实现进程互斥和同步：</p>
+</li>
+<li><p>需要在管程中定义共享数据；</p>
+</li>
+<li><p>需要在管程中定义访问这些共享数据的入口；</p>
+</li>
+<li><p>只能通过这些入口来访问共享数据；</p>
+</li>
+<li><p>管程中可能有多个入口，但是每次只能开放一个入口并且只能允许一个进程或线程进入；</p>
+</li>
+<li><p>可以在管程中设置条件变量及等待/唤醒操作以解决同步问题。</p>
+</li>
+<li><p>java与管程：Java中，关键字synchronized修饰的函数，同一时间段内只能被一个线程调用。</p>
+</li>
+<li><p>Hoare管程</p>
+<ol start='' >
+<li><p>霍尔方法使用 P 和 V 操作原语来实现对管程中过程的互斥调用，及实现对共享资源互斥使用的管理不要求 <code>signal</code> 操作是过程体的最后一个操作，且 <code>wait</code> 和 <code>signal</code> 操作可被设计成可以中断的过程。使用 <code>signal</code> 释放一个等待进程时，霍尔管程让执行 <code>signal</code> 的进程等待，直到被释放进程退出管程或等待另一个条件。</p>
+</li>
+<li><p>霍尔管程基于 PV 操作原语实现：</p>
+<ol start='' >
+<li><code>wait</code> 和 <code>signal</code> 可以是程序过程</li>
+<li>可以用语言机制实现霍尔管程</li>
+
+</ol>
+</li>
+<li><p>&nbsp;</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='23）死锁'>（23）死锁</h3>
+<ol start='' >
+<li><p>概念：各进程互相等待对方手里的资源，导致各进程阻塞，无法向前推进的情况。</p>
+</li>
+<li><p>饥饿：若有源源不断的进程到来，使得某个长进程一直得不到处理机的情况，导致长进程饥饿。</p>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-27 下午7.21.09.png" alt="/./截屏2022-09-27 下午7.21.09.png"  /></p>
+</li>
+<li><p>死锁产生的必要条件：</p>
+<ol start='' >
+<li>互斥条件：只有对必须互斥使用的资源争抢才会导致死锁。</li>
+<li>不剥夺条件：进程所获得的资源在未使用完之前不能有其他资源抢夺，只能主动释放。</li>
+<li>请求和保持条件：进程已经保持了至少一个资源，但是又提出了新的资源请求，而该资源又被其它进程占有，导致请求进程被阻塞，但是自己持有的资源又不会被释放。</li>
+<li>循环等待条件：存在一种进程资源的循环等待链，链中的每一个进程已获得的资源同时被下一个进程所请求。<font color=yellow>循环等待链出现不代表会出现死锁，一个等待环上可能有其他支链，这些支链能使得这个环解锁</font></li>
+
+</ol>
+</li>
+<li><p>什么时候会发生死锁——对不可剥夺资源的不合理分配</p>
+<ol start='' >
+<li>对系统资源的竞争</li>
+<li>进程推进顺序非法</li>
+<li>信号量使用不当</li>
+
+</ol>
+</li>
+<li><p>死锁的处理策略</p>
+<ol start='' >
+<li>预防死锁：破坏死锁的四个必要条件。</li>
+<li>避免死锁：是用某种方法阻止系统进入不安全状态。——银行家算法</li>
+<li>死锁的检测和解除：允许死锁的发生，但是系统会检测死锁并采取某种方式接触死锁。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='24）预防死锁'>（24）预防死锁</h3>
+<ol start='' >
+<li><p>破坏互斥条件</p>
+<ol start='' >
+<li>如果把只能互斥使用的资源改为允许共享使用，则系统就不会进入死锁状态，比如SPOOLing技术。</li>
+<li>缺点：并不是所有资源都可以被改造成可共享使用的资源。并且很多地方为了系统安全还需要保护这种互斥性，因此很多时候无法破坏互斥条件。</li>
+
+</ol>
+</li>
+<li><p>破坏不剥夺条件</p>
+<ol start='' >
+<li><p>当一个进程请求新的资源得不到满足时，他就必须立即释放保持的所有资源。</p>
+</li>
+<li><p>当某个进程需要的资源被其它进程占有时，可以由OS协助强行剥夺。</p>
+</li>
+<li><p>缺点：</p>
+<ol start='' >
+<li>实现复杂。</li>
+<li>释放已获得的资源可能会导致前一阶段的工作失效，只适用于易保存和易恢复的进程。</li>
+<li>反复的申请和释放会增加系统开销，降低系统吞吐量。</li>
+<li>同时，方案一可能会导致某个进程一直在不停地放弃已获得的资源导致进程饥饿。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>破坏请求和保持条件</p>
+<ol start='' >
+<li>使用静态分配方法，即在进程运行之前一次性申请所有的资源。</li>
+<li>缺点：资源利用率极低，也可能会导致某些进程饥饿。</li>
+
+</ol>
+</li>
+<li><p>破坏循环等待条件</p>
+<ol start='' >
+<li><p>采用顺序资源分配法，即对系统中的资源编号，规定每个进程必须按照编号递增的顺序请求资源，同类资源（即编号相同的资源）一次申请完。</p>
+<p>原理：一个进程只有已经占有小编号的资源才能申请大编号资源，而已占有大编号资源的进程不会逆向申请小编号资源从而不会产生循环等待的现象——&gt;必然会存在一个占有最大编号资源的进程可以成功申请资源。</p>
+</li>
+<li><p>缺点：不方便增加新的设备；进程实际使用顺序与深编号申请顺序不一致就会导致资源浪费；必须按照次序申请资源，用户编程麻烦。</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='25）避免死锁'>（25）避免死锁</h3>
+<ol start='' >
+<li><p>安全序列：如果系统按照一个安全序列分配资源，则每个进程都能顺利完成。只要能找出一个安全序列，系统就是安全状态（安全序列可能有多个）。</p>
+<p><strong>系统处于安全状态，就一定不会发生死锁，但是处于不安全状态，未必会发生死锁。</strong></p>
+</li>
+<li><p>银行家算法</p>
+<ol start='' >
+<li><p>核心思想：在资源分配之前预先判断这次分配是否会导致系统进入不安全状态，如果会进入不安全状态，就暂时不答应这次请求，让该进程先阻塞等待。</p>
+</li>
+<li><p>算法：假设系统中有n个进程m种资源，则每个进程在运行前先声明对各种资源的最大需求量。则可以用两个n*m的矩阵Max、Allocation分别表示进程对资源的最大需求量和目前已拥有需求量。则Max-Allocation=Need就可以表示个进程还需要多少资源。另外，用一个长度为m的向量Available表示当前系统中还有多少可用资源。某进程Pi请求资源就使用Request表示申请的资源量。</p>
+<p>运行方式：</p>
+<ol start='' >
+<li>如果Request[ i ] [ j ] &lt;= Need[ i ] [ j ]则转向2，否则认为出错。</li>
+<li>如果Request[ i ] [ j ] &lt;= Available[ i ] [ j ]则转向3.，否则认为无足够资源，Pi必须等待。</li>
+<li>系统试探着把资源分配给Pi，并修改相应数据（并非真的分配，修改数值是为了做判断）。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-29 上午9.32.24.png" alt="/./截屏2022-09-29 上午9.32.24.png"  /></p>
+</li>
+
+</ol>
+<h3 id='26）死锁的检测和解除'>（26）死锁的检测和解除</h3>
+<ol start='' >
+<li><p>死锁的检测</p>
+<ol start='' >
+<li><p>使用某种数据结构来保存资源的请求和分配信息。</p>
+</li>
+<li><p>提供一种算法，利用上述信息来检测系统是否进入死锁状态。</p>
+</li>
+<li><p>数据结构：资源分配图<img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-29 上午9.35.45.png" alt="/./截屏2022-09-29 上午9.35.45.png"  /></p>
+<p>如果系统中剩余的可用资源数足够满足进程的需求，那么这个进程暂时是不会阻塞的，可以顺利地执行下去。如果这个进程执行结束了把资源归还系统，就可能使某些正在等待资源的进程被激活，并顺利地执行下去。相应的，这些被激活的进程执行完了之后又会归还一些资源，这样可能又会激活另外一些阻塞的进程。如果按上述过程分析，最终能消除所有边，就称这个图是可完全简化的。此时一定没有发生死锁（相当于能找到一个安全序列）。如果最终不能消除所有边，那么此时就是发生了死锁。最终还连着边的那些进程就是处于死锁状态的进程。</p>
+</li>
+<li><p>检测死锁的算法</p>
+<ol start='' >
+<li>在资源分配图中，找出既不阻塞又不是孤点的进程 Pi（即找出一条有向边与它相连，且该有向边对应资源的申请数量小于等于系统中已有空闲资源数量。若所有的连接该进程的边均满足上述条件，则这个进程能继续运行直至完成，然后释放它所占有的所有资源）。消去它所有的请求边和分配变，使之成为孤立的结点。</li>
+<li>进程pi所释放的资源，可以唤醒某些因等待这些资源而阻塞的进程，原来的阻塞进程可能变为非阻塞进程。根据1中的方法进行一系列简化后，若能消去途中所有的边，则称该图是可完全简化的。</li>
+<li>要注意到，即使死锁发生，也不是所有的进程都是死锁进程，用检测算法简化资源分配图以后，还连着边的进程就是死锁进程。</li>
+
+</ol>
+</li>
+<li><p>死锁定理：如果某时刻系统的资源分配图是不可完全简化的，那么此时系统死锁。</p>
+</li>
+
+</ol>
+</li>
+<li><p>解除死锁</p>
+<ol start='' >
+<li>资源剥夺法：挂起那些死锁进程，并抢占他的资源，将这些资源分配给其他的死锁进程。但是要防止被挂起的进程长时间得不到资源而饥饿。</li>
+<li>撤销/终止进程法：强制撤销部分、甚至全部的死锁进程，并剥夺资源。这种方法的优点是简单，但是代价较大（有些进程可能运行时间较长，被终止就意味着放弃之前的任务）。</li>
+<li>进程回退法：让一个或多个死锁进程回退到足以避免死锁的地步——要求系统记录进程历史信息，设置还原点。</li>
+<li>如何决定操作哪个死锁进程：进程优先级；已执行时间；还需要的执行时间；进程已使用资源；进程是交互式还是批处理式（交互式进程大多于用户有关，倾向于解除批处理式）。</li>
+
+</ol>
+</li>
+
+</ol>
+<h1 id='os-3'>OS</h1>
+<h2 id='三存储器'>三、存储器</h2>
+<h3 id='1）内存的基本知识'>（1）内存的基本知识</h3>
+<ol start='' >
+<li><p>内存是存放数据的硬件。程序执行前需要先放到内存中才能被CPU处理——多道程序环境下，有多个程序在内存中，那么如何区分不同的程序的数据的存放位置呢。</p>
+</li>
+<li><p>内存是用于存放数据的硬件，程序执行前需要先放到内存中才能被CPU处理。</p>
+</li>
+<li><p>内存空间一般分为两部分</p>
+<ol start='' >
+<li>系统区：存放操作系统内核程序和数据结构等。</li>
+<li>用户区：存放应用程序和数据。</li>
+
+</ol>
+</li>
+<li><p>指令是程序运行的原理。</p>
+</li>
+<li><p>编译：由编译程序将用户源代码编译成若干个目标模块（高级语言-&gt;机器语言）。</p>
+</li>
+<li><p>链接：由链接程序将编译后形成的一组目标模块以及所需的库函数链接在一起，形成一个完整的装入模块，由装入程序将装入模块装入内存运行。</p>
+<ol start='' >
+<li>静态链接：在程序运行之前，先将各目标模块及他们所需要的库函数连接成一个完整的可执行文件，之后就不再拆开。</li>
+<li>装入时动态链接：将各目标模块装入内存时边装入边链接。</li>
+<li>运行时动态链接：在程序执行中需要该模块时，才对他进行链接。——优点是便于修改和更新，便于实现对目标模块的共享。</li>
+
+</ol>
+</li>
+<li><p>地址转换</p>
+<ol start='' >
+<li>装入模块在装入内存时需要对指令中的地址进行处理</li>
+<li>绝对装入：在编译时，如果知道程序将放到内存中的哪个位置，编译程序将产生绝对地址的目标代码。装入程序按照装入模块中的地址，将程序和数据装入内存——只适用于单道程序环境。</li>
+<li>静态重定位：又称可重定位装入。编译、链接后的装入模块的地址都是从0开始的，指令中使用的地址、数据存放的地址都是相对于起始地址而言的逻辑地址。可根据内存的当前情况，将装入模块装入到内存的适当位置，装入时对地址进行“重定位”，将逻辑地址转化为物理地址（地址变化是在装入是一次完成的）。<strong>静态重定位的特点是在一个作业装入内存时，必须分配其要求的全部内存空间，如果没有足够的内存就不能装入该作业。作业一旦进入内存后，在运行期间就不能移动，也不能申请内存空间</strong></li>
+<li>动态重定位：又称动态运行时装入。编译、链接后的装入模块的地址都是从0开始的。装入程序把装入模块装入内存后，并不会立即把逻辑地址装换成物理地址，而是把地址转换成推迟到程序真正要执行的时候才进行。因此装入内存后所有的地址依然是逻辑地址。——需要重定位寄存器的支持</li>
+
+</ol>
+</li>
+<li><p>存储器</p>
+<ol start='' >
+<li>结构层次<img src="../assets/OS_b_images/3-2.png" referrerpolicy="no-referrer" alt="3-2"></li>
+<li></li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='2）内存管理'>（2）内存管理</h3>
+<ol start='' >
+<li><p>内存管理的功能</p>
+<ol start='' >
+<li><p>操作系统负责内存空间的分配与回收。</p>
+</li>
+<li><p>操作系统需要提供某种技术从逻辑上对内存空间进行扩容。</p>
+</li>
+<li><p>操作系统需要提供地址转换功能，负责程序的逻辑地址与物理地址的转换。</p>
+</li>
+<li><p>内存保护功能，既保护内存中运行的各个程序之间互不干扰并且保证进程只能访问自己的空间。</p>
+<ol start='' >
+<li>方法：上、下限寄存器；采用重定位寄存器（基址寄存器）和界地址（限长寄存器）寄存器。</li>
+
+</ol>
+</li>
+<li><p><font color=red>another</font></p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='3）覆盖与交换------内存空间的扩充'>（3）覆盖与交换——内存空间的扩充</h3>
+<ol start='' >
+<li><p>覆盖技术：早期计算机内存很小，因此引入了覆盖技术解决“程序大小超过物理内存总和的问题”。</p>
+<ol start='' >
+<li>思想：将程序分成多个段，常用的段常驻内存，不常用的段在需要时掉入内存——内存分成一个“固定区”和若干个“覆盖区”。</li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-14 下午2.26.00.png" alt="/./截屏2022-10-14 下午2.26.00.png"  /></li>
+
+</ol>
+</li>
+<li><p>交换技术</p>
+<ol start='' >
+<li><p>思想：内存空间紧张时，系统将内存中某些进程暂时换出内存，把外存中某些已具备运行条件的进程换入内存。</p>
+</li>
+<li><p>暂时换出内存的进程状态称为挂起状态——就绪挂起/阻塞挂起。<strong>复习一下七状态模型和各状态之间的切换</strong></p>
+</li>
+<li><p>在磁盘什么位置保存：对于对换功能的操作系统来说，通常把磁盘分为文件区和对换区，文件区主要用于存放文件，追求<strong>储存空间的利用率</strong>，因此采用离散分配的方式。对换区占小部分，被换出的数据存放在对换区，追求<strong>换入换出速度</strong>，因此采用连续分配方式——对换速度直接影响到系统整体速度因此对换区I/O快于文件区。</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-14 下午2.32.03.png" alt="截屏2022-10-14 下午2.32.03"  /></p>
+</li>
+<li><p>什么时候交换：交换通常发生在许多进程运行且内存吃紧的状态，当系统负荷降低就暂停。</p>
+</li>
+<li><p>交换哪些进程：优先换出阻塞进程、优先级低的进程、进程在内存中的驻留时间。</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='4）连续分配'>（4）连续分配</h3>
+<ol start='' >
+<li><p>连续分配：只为用户进程分配的必须是一个连续的内存空间。</p>
+</li>
+<li><p>单一连续分配：内存被分为系统区和用户区，系统区通常位于低地址部分，用于存放操作系统的数据。用户区位于高地址区，存放用户进程数据，内存中只能有一道用户程序，用户程序独占整个用户区空间。</p>
+<ol start='' >
+<li>优点：实现简单；无外部碎片；可以采用覆盖技术扩充内存；不需要内存保护。</li>
+<li>缺点：只能用于单用户、单任务的操作系统；有内部碎片；储存器利用率极低。</li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-14 下午3.00.40.png" alt="截屏2022-10-14 下午3.00.40"  /></li>
+
+</ol>
+</li>
+<li><p>固定分区分配：为了能在内存中装入多道程序，且这些程序不会相互干扰，将用户空间划分为若干个固定大小的分区，在每个分区只装入一个作业。这样就形成了最早的、最简单的可运行多道程序的内存管理方式。</p>
+<ol start='' >
+<li><p>分区大小相等：缺乏灵活性，但是适合用于一台计算机控制多个相同对象的场合。</p>
+</li>
+<li><p>分区大小不等：增加了灵活性，可以满足不同大小的进程需求，根据常在系统中运行的作业大小情况进行划分。</p>
+</li>
+<li><p>分区说明表：实现对各个分区的分配与回收，每个 表项对应一个分区，包括分区的大小、起始地址、状态。<img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-15 上午10.42.07.png" alt="/./截屏2022-10-15 上午10.42.07.png"  /></p>
+</li>
+<li><p>优点：实现简单；无外部碎片。</p>
+</li>
+<li><p>缺点：</p>
+<ol start='' >
+<li>当用户程序过大时所有分区都可能不能满足，此时就需要使用覆盖技术——降低性能。</li>
+<li>会产生内部碎片，内存利用率低。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>动态分区分配：不预先划分内存分区，而是在进程装入内存时，根据内存的大小动态的建立分区。</p>
+<ol start='' >
+<li>如何记录内存的使用情况：<img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-15 上午10.55.54.png" alt="/./截屏2022-10-15 上午10.55.54.png"  /></li>
+<li>如何选择分区——动态分区分配算法</li>
+<li>分配与回收——合并相邻空闲分区</li>
+<li>内部碎片：分配给某进程的内存区域中，某些部分没有被用上。</li>
+<li>外部碎片：内存中某些空闲分区由于太小难以利用。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='5）动态分区分配算法'>（5）动态分区分配算法</h3>
+<ol start='' >
+<li><p>首次适应算法</p>
+<ol start='' >
+<li>思想：每次都从低地址开始找，找到第一个能满足大小的空闲分区。</li>
+<li>实现：空闲分区以地址递增的次序排列，每次分配时顺序查找空闲分区，找到第一个能满足要求的第一个分区。</li>
+
+</ol>
+</li>
+<li><p>最佳适应算法——基于分区大小排列</p>
+<ol start='' >
+<li>思想：为了保证大进程来的时候能够获得足够大的连续空间，因此我们要优先使用小空间。</li>
+<li>实现：空闲分区按照容量递增排列，每次分配顺序查找第一个足够大的分区。</li>
+<li>缺点：每次都选最小的分区，会留下越来越多的小内部碎片。</li>
+
+</ol>
+</li>
+<li><p>最坏（大）适应算法——基于分区大小排列</p>
+<ol start='' >
+<li>思想：优先使用最大的分区。</li>
+<li>实现空闲分区按容量递减排序，每次找第一个使用。</li>
+
+</ol>
+</li>
+<li><p>邻近适应算法——基于地址顺序排列</p>
+<ol start='' >
+<li>思想：首次适应算法每次从链头开始查找，这会导致低地址部分会出现很多小的空闲空间，同时也会增加查找的开销，因此每次都从上次查找结束的地方开始检索。</li>
+<li>实现：空闲分区以地址递增的顺序排列（循环链表），每次分配内存时从上次查找结束的位置开始查找空闲分区，找到满足的第一个分区。</li>
+<li>缺点：高地址部分的大分区更有可能被使用并划分成小分区。</li>
+
+</ol>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-15 下午2.02.29.png" alt="/./截屏2022-10-15 下午2.02.29.png"  /></p>
+</li>
+
+</ol>
+<h3 id='6）分页'>（6）分页</h3>
+<ol start='' >
+<li><p>允许将一个进程分散的装入到许多不相邻的分区中，便可以充分利用内存而无需紧凑——非连续分配方式。</p>
+</li>
+<li><p>分页：将内存空间分成一个个大小相等的分区，每个分区都是一个页框/页帧，页框号<strong>从0开始</strong>。将用户进程的地址空间分为与页框大小相等的页/页面，每个页面有一个页号，<strong>从0开始</strong>——最后一个页面可能达不到一个页框的大小，所以页框不能太大，否则就会产生过大的碎片。</p>
+</li>
+<li><p>地址转换——分页技术的最大难点</p>
+<ol start='' >
+<li>采用动态重定位的方式——物理地址=页面地址+页内偏移量</li>
+<li>页号=逻辑地址/页面长度</li>
+<li>页内偏移量=逻辑地址%页面长度</li>
+<li><font color=green>为了方便计算页号和偏移量，页面大小一般设置为2的整数幂——直接位运算</font></li>
+
+</ol>
+</li>
+<li><p>逻辑地址结构<img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-16 上午9.29.13.png" alt="/./截屏2022-10-16 上午9.29.13.png"  /></p>
+</li>
+<li><p>页表：OS为每个进程创建一个页表。</p>
+<ol start='' >
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-16 上午9.29.57.png" alt="/./截屏2022-10-16 上午9.29.57.png"  /></li>
+<li>页表中的页号应该是隐含的，根据页表项的大小和起始地址就可以计算出每个页表项的位置</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='7）基本地址变换'>（7）基本地址变换</h3>
+<ol start='' >
+<li>基本地址变换机构可以通过进程的页表将逻辑地址转换为物理地址。通常会在PRT（页表寄存器）中存放页表在内存中的起始地址F和页表长度M。进程未执行时页表的起始地址和页表长度放在PCB中，进程被调度时内核会把它们放到PRT中。</li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-16 上午10.04.29.png" alt="/./截屏2022-10-16 上午10.04.29.png"  /></li>
+<li>计算机在计算物理地址是可以直接将内存块号、页内偏移量用二进制表示然后拼接起来就行。</li>
+<li><font color=yellow>在做题时注意要对页号进行越界检查</font></li>
+<li>为了便于计算页表项的位置，我们一般会让一个页表项占更多的字节，使得每个页面正好可以装下整数个页表项。</li>
+
+</ol>
+<h3 id='8）快表tlb）'>（8）快表（TLB）</h3>
+<ol start='' >
+<li><p>局部性原理：</p>
+<ol start='' >
+<li>时间局部性：如果执行了程序中的某条指令，那么不久以后这条指令可能会被再次执行；数据被访问后可能会再次被访问——循环。</li>
+<li>空间局部性：程序访问了某个储存单元，那么不久之后其附近的储存单元也可能被访问——数据在内存中连续存放。</li>
+<li>所以在程序运行中可能每次访问同一个页表项。</li>
+
+</ol>
+</li>
+<li><p>快表（TLB，联想寄存器）：一种访问速度比内存快很多的高速缓冲储存器，用来储存当前访问的若干页表项，以加速地址变换的过程——内存中的页表叫做慢表。<em>注意这里快表只是一个表项的集合，在快表中查找到了表项以后还得访问内存。</em></p>
+</li>
+<li><p>快表模式下地址的变换过程<img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-27 下午2.13.56.png" alt="/./截屏2022-10-27 下午2.13.56.png"  /></p>
+</li>
+<li><p>快表模式下，如果未命中就需要访问两次内存，命中则访问一次。无快表模式下稳定需要访问两次。</p>
+</li>
+
+</ol>
+<h3 id='9）两级页表'>（9）两级页表</h3>
+<ol start='' >
+<li><p>单级页表的问题：</p>
+<ol start='' >
+<li>对于单级页表，一个进程的页表拥有多个页框，而我们想要快速的找到每个页框的位置，就需要将这些页框连续存储。当一个进程较大时，可能拥有一个超级大的页表，而连续储存这样一个页表显然是困难且不合理的——页表连续存放。</li>
+<li>同时，根据局部性原理可知，进程在一段时间内可能只需要访问某几个页面就可以正常运行，因此没必要让整个页表都常驻内存——整个页表常驻内存。</li>
+
+</ol>
+</li>
+<li><p>解决：</p>
+<ol start='' >
+<li><p>对于大页表的存储，我们借鉴内存分页的思想，直接将页表也进行分段，采用离散分配的方式，并再建立一张页表储存，成为页目录表/外层页表/顶层页表。</p>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-27 下午2.29.16.png" alt="/./截屏2022-10-27 下午2.29.16.png"  /></p>
+</li>
+<li><p>实现地址变换：</p>
+<ol start='' >
+<li>按照地址结构讲逻辑地址拆分成三部分。</li>
+<li>从PCB中读出页目录表起始地址，再根据一级页号查表找到下一级页表的地址。</li>
+<li>根据二级页号查表找到内存块号。</li>
+<li>结合页内偏移量找到物理地址。</li>
+
+</ol>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-10-27 下午2.33.40.png" alt="/./截屏2022-10-27 下午2.33.40.png"  /></p>
+</li>
+
+</ol>
+</li>
+<li><p>如果采用多级页表机制，则各级页表的大小不能超过一个页面——在计算地址中页表编号所占位数时使用，每一级页表的总大小不能超过一个页面。</p>
+</li>
+<li><p>若有n级页表，则访存次数为n+1次。</p>
+</li>
+
+</ol>
+<h3 id='10）分段'>（10）分段</h3>
+<ol start='' >
+<li><p>进程的地址空间：<strong>按照程序自身的逻辑关系</strong>划分为若干个段，每个段都有一个段名，每段从0开始编址。</p>
+</li>
+<li><p>内存分配规则：以段为单位分配，每个段在内存中占据连续空间，但各段之间可以不相邻。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%889.57.40.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%889.57.40.png"  /></p>
+</li>
+<li><p>逻辑地址：段号（段名）+段内地址（段内偏移量）。</p>
+<p>段号的位数决定了每个进程最多可以分几个段，段内地址位数决定了每个段的最大长度。</p>
+</li>
+<li><p>段表：为每个进程建立的一张段映射表，每个段对应一个段表项，记录了该段的起始位置（基址）和段长。</p>
+<p>各个段表项的长度相同，因此段号可以是隐含的，不占储存空间。</p>
+</li>
+<li><p>分页与分段</p>
+<ol start='' >
+<li>页是信息的物理单位，分页的目的是为了实现离散分配提高内存利用率。分页仅仅是系统管理需要，完全是系统的，用户不可见。</li>
+<li>段是信息的逻辑单位，分段的目的是为了更好地满足用户需求，一个段通常包含一组属于一个逻辑模块的信息，分段对用户是可见的，用户变成是需要显式的给出段名。</li>
+<li>页的大小固定，由系统决定，段的长度却不固定，决定于用户编写的程序。</li>
+<li>分页的用户进程地址空间是一维的，只需要给出记忆符就可以表示一个地址。分段的则是二维，程序员既要给出段名又要给出段内地址。</li>
+<li>分段比分页跟容易实现信息的共享和保护，页面并不是按照逻辑划分的，但是我们共享代码是常常按照功能分享。<img src="../assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%8810.14.37.png" alt="截屏2022-11-10 上午10.14.37"  /></li>
+
+</ol>
+</li>
+<li><p>访问一个逻辑地址的访存次数：</p>
+<ol start='' >
+<li>分页：查页表，访问内存，共两次。</li>
+<li>分段：查段表，访问内存，两次。</li>
+<li>分段系统也可以引入快表机制。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='11）段页式管理方式'>（11）段页式管理方式</h3>
+<ol start='' >
+<li><p>分页、分段的优缺点</p>
+<figure><table>
+<thead>
+<tr><th>&nbsp;</th><th>优点</th><th>缺点</th></tr></thead>
+<tbody><tr><td>分页</td><td>内存利用率高，不会产生外部碎片，只会有少量内部碎片。</td><td>不方便按照逻辑模块实现信息的共享和保护。</td></tr><tr><td>分段</td><td>很方便按照逻辑模块实现信息的共享和保护</td><td>如果段过大，需要为其分配很大的连续空间会很不方便。还会产生外部碎片（和动态分区分配一样）。</td></tr></tbody>
+</table></figure>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%8810.23.29.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%8810.23.29.png"  /></p>
+</li>
+<li><p>逻辑地址结构：段号+页号（每个段最大有多少页）+页内偏移量</p>
+</li>
+<li><p>每个段对应一个段表项，每个段表项由段号、页表长度、页表存放块好组成，段号隐含。每个页面对应一个页表项。</p>
+</li>
+<li><p>一个进程只对应一个段表，但是可以对应多个页表。</p>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%8810.33.47.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%8810.33.47.png"  /></p>
+</li>
+
+</ol>
+<h3 id='12）虚拟内存'>（12）虚拟内存</h3>
+<ol start='' >
+<li><p>传统储存管理方式的特征、缺点：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%8810.51.33.png" alt="截屏2022-11-10 上午10.51.33"  /></p>
+</li>
+<li><p>虚拟内存是基于局部性原理（时间局部性、空间局部性）的，在程序装入时，可以将程序中很快会用到的部分装入内存，用不到的留在外存，然后就让程序开始执行。在程序执行过程中，如果访问的信息不在内存，有操作系统将所需要的信息从外存调入内存，然后继续执行程序。如果内存空间不够，由操作系统将内存中暂时用不到的信息换出到外存。在操作系统的管理下用户就可以拥有一个比实际内存大的多的内存，这就是虚存。<font color=red>操作系统虚拟性的体现，实际的物理内存没有变，只是在逻辑上进行扩充。</font></p>
+</li>
+<li><p>虚存的最大容量是由计算机的地址结构（CPU寻址范围）决定的，但是虚存的实际容量=min（内存和外存之和，CPU寻址范围）。</p>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%8811.01.31.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%8811.01.31.png"  /></p>
+<p>主要区别：在程序执行过程中，当访问的信息不在内存中时，有操作系统将所需信息从外存调入内存（提供请求调页/请求调段功能），然后继续执行程序。如果内存空间不够，操作系统将用不到的信息换出内存（提供页面置换/段置换功能）。</p>
+</li>
+
+</ol>
+<h3 id='13）请求分页管理方式'>（13）请求分页管理方式</h3>
+<ol start='' >
+<li><p>请求分页管理方式中需要实现请求调页和页面置换功能，来实现页面在内存和外存之间的转换。</p>
+</li>
+<li><p>页表机制：首先，OS需要知道每个页面是否调入内存和页面在外村中的位置，同时OS也需要知道到底要换出哪个页面，以及页面有没有被修改过来决定是否需要覆盖外村中的旧数据。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8B%E5%8D%8811.06.01.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8B%E5%8D%8811.06.01.png"  /></p>
+</li>
+<li><p>缺页中断机构</p>
+<ol start='' >
+<li>在请求分页系统中，每当访问的页面不在内存中，便产生一个缺页中断，然后由操作系统的缺页中断处理程序处理中断，此时缺页的进程阻塞，放入阻塞队列，调页完成后将其唤醒，放回就绪队列。</li>
+<li>如果内存中有空闲块，则为进程分配一个空闲块，将缺页装入并修改页表中相应的页表项。</li>
+<li>如果内存中没有内存快，则有页面置换算法选择一个页面淘汰，若该页面在内存期间被修改过，则将其写回外存，未修改过的的页面不用写回。</li>
+<li>缺页中断是当前执行的指令想要访问的目标页面未调入内存产生的，因此属于内中断。一条指令在执行期间，可能产生多次缺页中断。</li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8810.51.28.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8810.51.28.png"  /></li>
+
+</ol>
+</li>
+<li><p>请求分页与基本分页的区别：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8810.55.13.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8810.55.13.png"  /></p>
+</li>
+<li><p>请求分页地址变换：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8810.58.35.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8810.58.35.png"  /></p>
+</li>
+
+</ol>
+<h3 id='14）页面置换算法'>（14）页面置换算法</h3>
+<ol start='' >
+<li><p>页面的换入换出需要调用I/O等，开销较大，因此页面置换算法应该追求更少的缺页率。</p>
+</li>
+<li><p>最优置换算法（OPT）</p>
+<ol start='' >
+<li>思想：每次选择淘汰的页面将是以后永不使用或在最长时间内不再被使用的页面——保证最低的缺页率。</li>
+<li>过程：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8811.14.46.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8811.14.46.png"  /></li>
+<li><strong>缺页发生时未必会发生页面置换，若还有可用的空闲内存块，就不需要进行页面置换。</strong></li>
+<li>缺陷：最佳置换算法需要提前知道页面的访问顺序，但是操作系统显然无法判断，因此最佳置换算法是无法实现的。</li>
+<li>可以用作评价其他算法效率的标准。</li>
+
+</ol>
+</li>
+<li><p>先进先出置换算法（FIFO）</p>
+<ol start='' >
+<li>思想：每次淘汰最早进入的页面。</li>
+<li>过程：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8811.22.57.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8811.22.57.png"  /></li>
+<li><strong>Belady异常</strong>：当为进程分配的物理块增大时，缺页次数不减反增的现象，只有FIFO会产生Belady异常，同时FIFO虽然实现简单，但是选择淘汰页面的原则不科学，因此算法性能差。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8811.23.32.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-14%20%E4%B8%8A%E5%8D%8811.23.32.png"  /></li>
+
+</ol>
+</li>
+<li><p>最近最久未使用置换算法（LRU）</p>
+<ol start='' >
+<li>思想：每次淘汰的页面是最近最久未使用的页面。</li>
+<li>过程：为每个页面对应的页表项中用用访问字段记录该页面上次访问以来的时间t，选择t最大的页面。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-21%20%E4%B8%8A%E5%8D%8810.23.42.png" alt="截屏2022-11-21 上午10.23.42"  /></li>
+<li>算法的性能好（最接近最佳置换算法的），但是实现需要专门的硬件支持，<strong>实现困难开销大</strong>。</li>
+
+</ol>
+</li>
+<li><p>最近最不常用置换算法（LFU）：</p>
+<ol start='' >
+<li>思想：淘汰最近一段时间内<strong>访问次数较少</strong>的页面，对 OPT 的模拟性比 LRU 更好。</li>
+<li>过程：基于时间间隔中断，并给每一页设置一个计数器，时间间隔中断发生后，所有计数器清 0，每访问页 1 次就给计数器加 1，选择计数最小的页面淘汰。</li>
+
+</ol>
+</li>
+<li><p>时钟置换算法（CLOK）</p>
+<ol start='' >
+<li><p>思想：性能和开销均衡的算法，又叫最近未使用算法（NRU not recently used）。</p>
+</li>
+<li><p>过程：</p>
+<ol start='' >
+<li>为每个页面设置一个访问位，再将内存中的页面都通过链接指针链接成个循环队列，<strong>并设置一个替换指针与之相关联</strong>。</li>
+<li>当某页被放入队列时，将该页的访问位设为1。当某页被访问时，其访问位置为1。当需要淘汰一个页面时，只需检查页的访问位，如果是0，就选择该页换出。如果是1，则将它置为0，暂不换出，继续检查下一个页面。</li>
+<li>若第一轮扫描中所有页面都是1，则将这些页面的访问位依次置为0后，再进行第二轮扫描 （第二轮扫描中一定会有访问位为0的页面，因此简单的CLOCK算法选择个淘汰页面最多会经过两轮扫描）。</li>
+<li>在扫描过程中，指针会指向上一次扫描过的页面的下一个，需要维持指针指向的位置。<strong>在做题过程中，访问一个已经在队列里面的页面不需要移动指针，只有缺页的时候选择退出队列的页面才会移动指针，也就是说指针只跟访问位关联，页面本身的访问与指针无关。</strong>同时，在指针指向一个可以替换的页面并替换为缺页页面以后，指针需要往后移动一格。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-21%20%E4%B8%8A%E5%8D%8810.33.33.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-21%20%E4%B8%8A%E5%8D%8810.33.33.png"  /></li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>改进型时钟置换算法</p>
+<ol start='' >
+<li>简单的时钟置换算法只考虑是否被访问，但是页面还有修改和I/O的问题，因此只有被淘汰的页面被修改过时才需要写回外存。<strong>因此在其他条件相同时，应优先淘汰没有被修改过的页面。</strong></li>
+<li>过程：增加一个修改位，1表示修改过0表示未修改。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-21%20%E4%B8%8A%E5%8D%8810.36.34.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-21%20%E4%B8%8A%E5%8D%8810.36.34.png"  /></li>
+
+</ol>
+</li>
+<li><p>抖动和工作集//TODO</p>
+</li>
+<li><p>各个算法性能的比较：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-21%20%E4%B8%8A%E5%8D%8810.41.48.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-21%20%E4%B8%8A%E5%8D%8810.41.48.png"  /></p>
+</li>
+
+</ol>
+<h3 id='15）页面分配策略'>（15）页面分配策略</h3>
+<ol start='' >
+<li><p>驻留集：指请求分页储存管理中给进程分配的物理块的集合。<strong>在采用了虚拟储存技术的系统中驻留集大小一般小于进程大小。</strong>如果驻留集太小，系统运行进程需要花大量时间处理缺页，驻留集太大又会导致多道并发程序并发度下降，资源利用率低。</p>
+</li>
+<li><p>固定分配：OS为每个进程分配一组固定数目的物理块，在进程运行期间不再改变——驻留集大小不变。</p>
+</li>
+<li><p>可变分配：现为每个进程分配一定数目的物理块，在进程运行期间可以增减——驻留集大小可变。</p>
+</li>
+<li><p>局部置换：发生缺页时只能选进程自己的物理块进行置换。</p>
+</li>
+<li><p>全局置换：可以将操作系统保留的空闲物理块分配给缺页进程，也可以将别的进程持有的物理块置换到外存在分配给缺页进程——必然是可变分配。</p>
+</li>
+<li><p><font color=red>分配策略和置换策略可以轮换匹配，但是全局置换只能对应可变分配。</font></p>
+</li>
+<li><p>分配策略</p>
+<ol start='' >
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.17.22.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.17.22.png"  /></li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.17.36.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.17.36.png"  /></li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.17.54.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.17.54.png"  /></li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.18.50.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.18.50.png"  /></li>
+
+</ol>
+</li>
+<li><p>何时调入页面</p>
+<ol start='' >
+<li>预调页策略：根据局部性原理，一次调入若干个相邻的页面比一次调入一个页面要高效但是如果提前调入的页面大多数没有被访问过则又是低效的。因此可预测不久之后可能访问到的页面，将他们提前调入内存。所以这种策略主要用于<strong>进程的首次调入</strong>，由程序猿指出应该调入哪些部分。</li>
+<li>请求调页策略：进程在运行期间发现缺页时才将页面调入内存。由这种策略调入的页面一定会被访问到，但是每次调入一个并且需要I/O操作，开销较大。</li>
+
+</ol>
+</li>
+<li><p>何处调入页面</p>
+<ol start='' >
+<li><p>系统拥有足够的对换区空间：页面的调入、调出都是在内存与对换区之间进行，这样可以保证页面的调入、调出速度很快。在进程运行前需将进程相关的数据从文件区复制到对换区。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.25.49.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.25.49.png"  /></p>
+</li>
+<li><p>系统缺少足够的对换区空间：凡是不会被修改的数据都直接从文件区调入，由于这些页面不会被修改，因此换出时不必写回磁盘，下次需要时再从文件区调入即可。对于可能被修改的部分，换出时需写回磁盘对换区，下次需要时再从对换区调入。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.26.23.png" alt="截屏2022-11-24 下午2.26.23"  /></p>
+</li>
+<li><p>UNIX 方式：运行之前进程有关的数据全部放在文件区，故未使用过的页面，都可从文件区调入。若被使用过的页面需要换出，则写回对换区，下次需要时从对换区调入。</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.28.48.png" alt="截屏2022-11-24 下午2.28.48"  /></p>
+</li>
+
+</ol>
+</li>
+<li><p>抖动（颠簸）现象：刚刚换入/换出的页面又要换出/换入，这种频繁的调度称为抖动/颠簸。产生的主要原因是进程频繁访问页面数高于可用物理块数。解决——工作集。</p>
+</li>
+<li><p>工作集：在某段时间间隔里进程实际访问页面的集合——相比于驻留集。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.32.13.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.32.13.png"  /></p>
+<p>一般来说驻留集大小不能小于工作集大小，否则就会频繁缺页。</p>
+<p>拓展：基于局部性原理可知，进程在一段时间内访问的页面与不久之后会访问的页面是有相关性的。因此，可以根据进程近期访问的页面集合（工作集）来设计一种页面置换算法——选择一个不在工作集中的页面进行淘汰。</p>
+</li>
+
+</ol>
+<h3 id='16）反置页表'>（16）反置页表</h3>
+<ol start='' >
+<li><p>页表设计的一个重大缺陷就是页表的大小和虚拟空间的大小成正比，如果虚拟空间很大而物理地址空间很小时，页表是一个稀疏的表，即页表中储存了所有页表的信息，但是只有很少的页被调入内存，其他的空间都储存的无效信息，因此引入反置页表。</p>
+</li>
+<li><p>正向页表（所有页表的名单）：以<strong>页号</strong>为索引（隐含），完整连续排列，页表项中不含页号，每个进程单独一个页表。</p>
+</li>
+<li><p>反置页表（IPT）（储存在内存中的页表名单）</p>
+<ol start='' >
+<li><p>概念：以<strong>页框号</strong>为索引（隐含），完整连续排列，每个页框填入的是哪个进程的哪个页号，索引进程共用一个反置页表。其页表项不包含页框号。</p>
+</li>
+<li><p>思想：<strong>针对内存中的每个页架建立一个页表</strong>，按照块号（页架号）排序。表项包含：正在访问该页框的进程标识、页号及特征位（标志位），和<strong>哈希链指针</strong>等。用来完成内存页架到访问进程页号的对应，即物理地址到逻辑地址的转换。</p>
+</li>
+<li><p>页表项：</p>
+<ol start='' >
+<li>页号：虚拟地址页号</li>
+<li>进程标志符：使用该页的进程号。</li>
+<li>标志位</li>
+<li>链指针：哈希链。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>反置页表的地址转换：</p>
+<ol start='' >
+<li><p>需要访问内存地址时，地址转换机制用进程标识符与页号作为输入，由哈希函数先映射到哈希表，哈希表项存放的是指向IPT表项的指针</p>
+<ol start='' >
+<li>此指针<strong>可能</strong>就是指向匹配的IPT表项；</li>
+<li>如果不是则遍历哈希链直至找到进程标识符与页号均匹配的IPT表项：因为多个页号通过哈希函数可能得到了相同的哈希值，所以我们选择使用哈希链。</li>
+
+</ol>
+</li>
+<li><p>而此表项的<strong>序号（索引）</strong>就是页框号，通过拼接页内位移便可生成物理地址。</p>
+</li>
+<li><p>若在反置页表中未能找到匹配的 IPT 页表项，说明此页不在内存，触发缺页异常，请求操作系统通过页表调入：发生缺页中断时需要多访问一次磁盘，速度会比较慢。</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h1 id='os-4'>OS</h1>
+<h2 id='四文件系统'>四、文件系统</h2>
+<h3 id='1）文件管理'>（1）文件管理</h3>
+<ol start='' >
+<li><p>引入文件的优点：用户使用方便；文件安全可靠；系统能有效的利用储存空间；文件可共享。</p>
+</li>
+<li><p>一个文件的属性</p>
+<ol start='' >
+<li>文件名：由创建文件的用户决定文件名，用于方便找到文件，同一目录下不允许有重名文件。</li>
+<li>标识符：一个系统内的各文件标识符唯一，对用户来说无可读性，OS用于区分文件。</li>
+<li>类型：指明文件的类型。</li>
+<li>位置：文件存放的路径（针对用户）、在外存中的地址（面向系统）。</li>
+<li>大小</li>
+<li>创建时间/上次修改时间/创建者/所有者信息。</li>
+<li>保护信息：对文件进行保护的访问控制信息。</li>
+
+</ol>
+</li>
+<li><p>文件内部的数据如何组织：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.57.10.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.57.10.png"  /><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.57.42.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%882.57.42.png"  /></p>
+</li>
+<li><p>文件之间如何组织：</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/1-2.png" alt="1-2"  /><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%884.53.07.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%884.53.07.png"  /></p>
+</li>
+<li><p>操作系统应该对上层提供的功能：</p>
+<ol start='' >
+<li>创建文件功能（create系统调用）——图形化界面会向下层调用这个功能。</li>
+<li>读文件功能（read系统调用）</li>
+<li>保存文件（write系统调用）——将文件的数据从内存写入外存。</li>
+<li>删除文件（delete系统调用）</li>
+<li>打开/关闭文件（open/close系统调用）——和我们在图形化界面打开/关闭文件不一样</li>
+
+</ol>
+</li>
+<li><p>文件如何存放在外存<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%884.57.14.png" alt="/./%E6%88%AA%E5%B1%8F2022-11-24%20%E4%B8%8B%E5%8D%884.57.14.png"  /></p>
+</li>
+<li><p>文件共享和文件保护</p>
+</li>
+
+</ol>
+<h3 id='2）文件的逻辑结构'>（2）文件的逻辑结构</h3>
+<ol start='' >
+<li><p>按文件结构分类</p>
+<ol start='' >
+<li>无结构文件：指文件内的数据不再组成记录，只是由一串依次的<strong>字节</strong>组成的<strong>信息流序列</strong>，称为字节流文件，又称<strong>流式文件</strong>，如txt文件。</li>
+<li>有结构文件：有一组相似的记录组成，又称<strong>记录式文件</strong>，每条记录有若干个数据项组成，如数据库文件。一般来说每条记录有一个数据项作为关键字，根据各记录的长度又可以分为定长记录和可变长记录。</li>
+
+</ol>
+</li>
+<li><p>有结构文件的逻辑结构</p>
+<ol start='' >
+<li><p>顺序文件：文件中的记录一个接一个的顺序排列，记录可定长可变长。各个记录在物理上可以顺序储存和链式储存。</p>
+<ol start='' >
+<li><p>串结构：记录之间的顺序与关键字无关。</p>
+</li>
+<li><p>顺序结构：记录之间的顺序按关键字顺序排列。</p>
+</li>
+<li><p>链式存储：无论是定长/可变长记录，都无法实现随机存取，每次只能从第一个记录开始依次往后查找</p>
+</li>
+<li><p>顺序存储</p>
+<ol start='' >
+<li><p>可变长记录：无法实现随机存取。每次只能从第一个记录开始依次往后查找。</p>
+</li>
+<li><p>定长记录：</p>
+<ol start='' >
+<li>可实现随机存取。记录长度为L，则第i个记录存放的相对位置是i*L。</li>
+<li>若采用串结构，无法快速找到某关键字对应的记录/</li>
+<li>若采用顺序结构，可以快速找到某关键字对应的记录 (如折半查找)。</li>
+
+</ol>
+</li>
+
+</ol>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-11-24 下午5.14.44.png" alt="/截屏2022-11-24 下午5.14.44.png"  /></p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>索引文件：索引文件有一个索引表记录文件的记录的信息，索引表本身是定长记录的顺序文件，因此可以快速找到第i个记录的索引。还可以支持二分查找，每次修改记录时都需要修改索引表。<strong>索引表的检索速度很高，因此主要用于对信息处理的及时性要求高的场合</strong>。</p>
+</li>
+<li><p>索引顺序文件：索引文件的索引表的表项可能很大，因此提出了索引顺序文件，索引顺序文件中不会为每个记录都建立表项，而是将记录分组，为每一个组建立索引表项。——也可以解决不定长记录的检索问题<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.26.45.png" alt="/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.26.45.png"  /></p>
+</li>
+<li><p>多级索引顺序文件：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.27.56.png" alt="/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.27.56.png"  /></p>
+</li>
+
+</ol>
+<h3 id='3）文件目录'>（3）文件目录</h3>
+<ol start='' >
+<li><p>FCB 的有序集合称为“文件目录”，1个FCB就是1个文件目录项。FCB 中包含了文件的基本信息（文件名、物理地址、逻辑结构、物理结构等），存取控制信息（是否可读/可写、禁止访问的用户名单等），使用信息（如文件的建立时间、修改时间等）。最重要，最基本的还是 文件名、文件存放的物理地址。</p>
+</li>
+<li><p>对目录的操作：</p>
+<ol start='' >
+<li>搜索：当用户要使用一个文件时，系统要根据文件名搜索目录，找到该文件对应的目录项。</li>
+<li>创建文件：创建一个新文件时，需要在其所属的目录中增加。</li>
+<li>删除文件：当删除一个文件时，需要在目录中删除相应的目录项。</li>
+<li>显示目录：用户可以请求品示目录的内容，如显示该目录中的所有文件及相应属性。</li>
+<li>修改目录：某些文件属性存放在目录中，这些属性发生变化也需要修改。</li>
+
+</ol>
+</li>
+<li><p>目录结构</p>
+<ol start='' >
+<li><p>单级目录结构：整个系统只建立一张目录表，每个文件占一个目录项。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.52.19.png" alt="/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.52.19.png"  /></p>
+</li>
+<li><p>两级目录结构：采用两级目录结构，分为主文件目录（MFD）和用户文件目录（UFD)。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.53.02.png" alt="/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.53.02.png"  /></p>
+</li>
+<li><p>多级目录结构（树形目录结构）：用户或进程想要访问文件时，需要用文件路径名标识文件，文件路径名是一个字符串，各级目录间用“/”隔开，从根目录出发的路径叫做绝对路径。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.55.13.png" alt="/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.55.13.png"  /></p>
+<p>在实际使用中，一个用户可能会连续访问同一目录内的多个文件，因此一次读入整个目录设置一个当前目录是十分高效的，从当前目录出发的路径就叫做相对路径。</p>
+<p><font color=red>树形目录结构可以很方便地对文件进行分类，层次结构清晰，也能够更有效地进行文件的管理和保护。但树形结构不便于实现文件的共享。为此，提出了 “无环图目录结构。</font></p>
+</li>
+<li><p>无环图目录结构：可以使用不同的文件名指向同一个文件，甚至可以指向同一个目录（共享同一目录下的所有内容）。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.58.22.png" alt="/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8810.58.22.png"  /></p>
+<p>需要为每个共享结点设置一个共享计数器，用于记录此时有多少个地方在共享该结点。用户提出删除结点的请求时，只是删除该用户的FCB、并使共享计数器减1，并不会直接删除共享结点。只有共享计数器减为0时，才删除结点。
+注意：共享文件不同于复制文件。在共享文件中，由于各用户指向的是同一个文件，因此只要其中一个用户修改了文件数据，那么所有用户都可以看到文件数据的变化。</p>
+</li>
+
+</ol>
+</li>
+<li><p>索引节点（FCB的改进）：在查找目录时只需要文件名就可以找到，因此可以让目录表瘦身来减小体量提高效率。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8811.00.01.png" alt="/%E6%88%AA%E5%B1%8F2022-11-25%20%E4%B8%8A%E5%8D%8811.00.01.png"  /></p>
+<p>当找到文件名对应的目录项时，才需要将索引结点调入内存，索引结点中记录了文件的各种信息，包括文件在外存中的存放位置，根据“存放位置” 即可找到文件/存放在外存中的索引结点称为 “磁盘索引结点”，当索引结点放入内存后称为 “内存索引结点”/相比之下内存索引结点中需要增加一些信息，比如：文件是否被修改、此时有几个进程正在访问该文件等。</p>
+</li>
+
+</ol>
+<h3 id='4）文件的物理结构'>（4）文件的物理结构</h3>
+<ol start='' >
+<li><p>文件块：在外存管理中，为了方便对文件数据的管理，文件的逻辑地址也被分成了一个一个的文件块，于是文件的逻辑地址也可以用<strong>逻辑块号+块内地址</strong>的形式表示。用户在管理自己的文件时，就可以通过逻辑块号来管理文件，此时OS就要提供<strong>将文件的逻辑地址转换到物理地址的功能</strong>。</p>
+</li>
+<li><p>文件分配方式</p>
+<ol start='' >
+<li><p>连续分配：每个文件在磁盘上占有一组连续的块，在文件目录中记录存放的起始块号和长度。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-29%20%E4%B8%8B%E5%8D%889.35.55.png" alt="截屏2022-11-29 下午9.35.55"  /></p>
+<ol start='' >
+<li>优势：连续分配支持顺序访问和直接访问；由于文件是连续存放的，磁头在读取磁盘时移动的距离短，速度快，<strong>连续分配文件在顺序读写时速度最快</strong>。</li>
+<li>缺点：数据迁移的开销极大，物理上采用连续分配的文件对扩展极不友好；会产生大量磁盘碎片，储存空间利用率低（可以使用紧凑来处理碎片，但是消耗大）。</li>
+
+</ol>
+</li>
+<li><p>链接分配：采取离散分配的方式，可以为文件分配离散的磁盘块。</p>
+<ol start='' >
+<li><p>隐式链接：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-29%20%E4%B8%8B%E5%8D%8810.02.00.png" alt="/%E6%88%AA%E5%B1%8F2022-11-29%20%E4%B8%8B%E5%8D%8810.02.00.png"  /></p>
+<ol start='' >
+<li>用户给出要访问的逻辑块号i，OS找到该文件的FCB，读入第一个逻辑块，一直顺序读取到第i个，一共i+1次磁盘I/O</li>
+<li>只支持顺序访问，不支持随机访问，查找效率低，块之间的链接也消耗空间。</li>
+<li>扩展文件：对文件扩展方便，空间利用率高，效率高。</li>
+
+</ol>
+</li>
+<li><p>显式链接：把用于连接文件的各物理块的指针显式的存放在一张表中，即文件分配表（<strong>FAT</strong>）。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-29%20%E4%B8%8B%E5%8D%8810.05.22.png" alt="/%E6%88%AA%E5%B1%8F2022-11-29%20%E4%B8%8B%E5%8D%8810.05.22.png"  /></p>
+<ol start='' >
+<li>一个磁盘仅需要一个FAT即可，开机时读入FAT到内存并常驻内存。FAT的各个表项在物理上是连续储存，且每一个表象的长度相同，因此“物理块号”字段可以隐含。</li>
+<li>用户给出需要的逻辑块号i，OS找到FCB，拿到起始块号，若i&gt;0则查询FAT往后一直找到i对应的物理块号。<strong>注意FAT常驻内存，因此这里只需要一次磁盘I/O。</strong></li>
+<li>支持顺序访问和随机访问。访问速度快很多，无外部碎片，对文件扩展友好。</li>
+<li>文件分配表需要占用空间。</li>
+
+</ol>
+</li>
+<li><p><font color=green>如果未指明链接方式，默认隐式。</font></p>
+</li>
+
+</ol>
+</li>
+<li><p>索引分配</p>
+<ol start='' >
+<li><p>索引分配允许文件离散地分配在各个磁盘块中，系统会为每个文件建立一张索引表，索引表中记录了文件的各个逻辑块对应的物理块（索引表的功能类似于内存管理中的页表一一建立逻辑页面到物理页之间的映射关系）。索引表存放的磁盘块称为索引块，文件数据存放的磁盘块称为数据块。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-30%20%E4%B8%8B%E5%8D%881.50.56.png" alt="/%E6%88%AA%E5%B1%8F2022-11-30%20%E4%B8%8B%E5%8D%881.50.56.png"  /></p>
+</li>
+<li><p>在显式链接的分配方式中，FAT是一张磁盘对应一个FAT，而索引表是一个文件对应一张。</p>
+</li>
+<li><p>用户给出逻辑块号i，OS找到FCB，得知索引表的位置，将索引表读入内存，并查找索引表获得块i的位置。</p>
+</li>
+<li><p>索引分配支持随机访问，文件扩展易实现，但是索引表需要占用储存。</p>
+</li>
+<li><p>问题：如果一个文件非常大，仅仅是文件的索引表就超过一个磁盘块的内存，该如何处理呢？</p>
+<ol start='' >
+<li>链接方案：如果索引表太大，一个索引块装不下，那么可以将多个索引块链接起来存放。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%881.40.33.png" alt="/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%881.40.33.png"  />在上一个索引块的最后放置一个指针，指向下一个索引块——OS需要按顺序一个一个的读入索引块才能完全随机处理。</li>
+<li>多层索引：建立多层索引（类似于多级页表），是第一层的索引块指向第二层索引块，等等。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%881.47.55.png" alt="/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%881.47.55.png"  /><font color=red>注意这里需要了解如何根据索引表信息计算文件最大体积</font>。采用K层索引结构，且顶级索引表未调入内存，则访问一个数据块只需零K+1次读磁盘操作</li>
+<li>混合索引：多种索引分配方式的结合，如：一个文件的顶级索引表中，既包含直接地址索引又包含一级间接索引又包含两级间接索引。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%881.51.35.png" alt="/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%881.51.35.png"  /><font color=red>注意这里也需要了解如何根据索引表信息计算文件最大体积，这里访问磁盘操作次数需要根据具体读入的数据计算</font>。对于小文件来说，混合索引只需要较少的访问次数就可以获得数据块（计算机中小文件较多)。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>超级超级超级重要考点：①要会根据多层索引、混合索引的结构计算出文件的最大长度（Key：各级索引表最大不能超过一个块）；②要能自己分析访问某个数据块所需要的读磁盘次数(Key：FCB中会存有指向顶级索引块的指针，因此可以根据FCB读入顶级索引块。每次读入下一级的索引块都需要一次读磁盘操作。另外，要注意题目条件一一顶级索引块是否已调入内存）。</p>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%881.56.39.png" alt="/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%881.56.39.png"  /></p>
+</li>
+
+</ol>
+<h3 id='5）文件储存空间管理'>（5）文件储存空间管理</h3>
+<ol start='' >
+<li><p>储存空间需要进行分区，如C盘和D盘等，将物理磁盘划分为一个个文件卷（逻辑卷、逻辑盘）。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%881.59.14.png" alt="/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%881.59.14.png"  /></p>
+</li>
+<li><p>存储空间管理方法</p>
+<ol start='' >
+<li><p>空闲表法：建立一个空闲表，记录空闲的块的起始盘编号和连续的空闲块数。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%882.42.08.png" alt="/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%882.42.08.png"  /></p>
+<ol start='' >
+<li>适用于“连续分配方法”。</li>
+<li>回收磁盘块：与内存管理中的动态分区分配很类似，当回收某个存储区时需要有四种情况一一（1）回收区的前后都没有相邻空闲区；（2）回收区的前后都是空闲区：（3）回收区前面是空闲区；（4）回收区后面是空闲区。总之，回收时需要注意表项的合并问题。</li>
+
+</ol>
+</li>
+<li><p>空闲链表法<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%882.54.29.png" alt="/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%882.54.29.png"  /></p>
+<ol start='' >
+<li><p>空闲盘块链：OS保存着链头和链尾的指针。</p>
+<p>如何分配：若某文件申请K个盘块，则从链头开始依次摘下K个盘块分配，并修改空闲链的链头指针。</p>
+<p>如何回收：回收的盘块依次挂到链尾，并修改空闲链的链尾指针。</p>
+<p>适用于离散分配的物理结构。为文件分配多个盘块时可能要重复多次操作。</p>
+</li>
+<li><p>空闲盘区链：操作系统保存着链头、链尾指针。</p>
+<p>如何分配：若某文件申请K个盘块，则可以采用首次适应、最佳适应等算法，从链头开始检索，按照算法规则找到一个大小符合要求的空闲盘区分配给文件。若没有合适的连续空闲块，也可以将不同盘区的盘块同时分配给一个文件，注意分配后可能要修改相应的链指针、盘区大小等数据。</p>
+<p>如何回收：若回收区和某个空闲盘区相邻，则需要将回收区合并到空闲盘区中。若回收区没有和任何空闲区相邻，将回收区作为单独的一个空闲盘区挂到链尾。</p>
+</li>
+
+</ol>
+</li>
+<li><p>位示图法</p>
+<ol start='' >
+<li><p>可以理解成状压DP的模式，每个二进制位对应一个盘块，用0/1表示空闲或分配。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%883.11.32.png" alt="/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%883.11.32.png"  /></p>
+</li>
+<li><p>和状压DP一样，这样的储存方式受限于字长的影响，因此，可以用（字号，位号）的方式来对应一个盘块号，也可以描述为（行号，列号）。<font color=blue>这里一定要注意字号和位号是从0开始还是从1开始的。</font></p>
+</li>
+<li><p>如何分配：若文件需要K个块，①顺序扫描位示图，找到K个相邻或不相邻的“0”；②根据字号、位号算出对应的盘块号，将相应盘块分配给文件；③将相应位设置为“1”。</p>
+<p>如何回收：①根据回收的盘块号计算出对应的字号、位号；②将相应二进制位设为“0”。</p>
+</li>
+
+</ol>
+</li>
+<li><p>成组链接法</p>
+<ol start='' >
+<li><p>文件卷的目录区中专门用一个磁盘块作为“超级块”，当系统启动时需要将超级块读入内存，并且保证内存与外存中的超级块数据一致。</p>
+</li>
+<li><p>超级块（这个块是一个空闲盘块的组合）记录了下一组空闲盘块数和空闲的块号。同时在下一组空闲盘块记录再下一个空闲盘块。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%883.18.40.png" alt="/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%883.18.40.png"  /></p>
+</li>
+<li><p>如何分配？</p>
+<ol start='' >
+<li>需要100个空闲块：①检杳第一个分组的块数是否足够。100=100，是足够的。②分配第一个分组中的100个空闲块。但是由于300号块内存放了再下一组的信息，因此300号块的数据需要复制到超级块中。</li>
+
+</ol>
+</li>
+<li><p>需要1个空闲块：①检杳第一个分组的块数是否
+足够。1&lt;100，因此是足够的。②分配第一个分组中的1个空闲块，并修改相应数据。</p>
+<p>如何回收？</p>
+<ol start='' >
+<li>假设每个分组最多为100个空闲块，此时第一个分组己有99个块，还要再回收一块。</li>
+
+</ol>
+</li>
+<li><p>假设每个分组最多为100个空闲块，此时第一个分组己有100个块，还要再回收一块需要将超级块中的数据复制到新回收的块中，并修改超级块的内容，让新回收的块成为第一个分组。</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='6）文件的基本操作'>（6）文件的基本操作</h3>
+<ol start='' >
+<li><p>创建文件：进行create()系统调用时。</p>
+<ol start='' >
+<li><p>需要提供的几个主要参数：</p>
+<ol start='' >
+<li>所需的外存空间大小（如：一个盘块，即1KB）</li>
+<li>文件名（这个地方默认为 “新建文本文档.txt”）</li>
+
+</ol>
+</li>
+<li><p>操作系统在处理 Create 系统调用时，主要做了两件事：</p>
+<ol start='' >
+<li>在外存中找到文件所需的空间（结合上小节学习的空闲链表法、位示图、成组链接法等管理策略，找到空闲空间）。</li>
+<li>根据文件存放路径的信息找到该目录对应的目录文件（此处就是D:/Demo 目录），在目录中创建该文件对应的目录项。目录项中包含了文件名、文件在外存中的存放位置等信息。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>删除文件：进行Delete 系统调用时。</p>
+<ol start='' >
+<li><p>需要提供的几个主要参数：</p>
+<ol start='' >
+<li>文件存放路径(“D:/Demo”）</li>
+
+</ol>
+</li>
+<li><p>操作系统在处理 Delete 系统调用时，主要做了几件事：</p>
+<ol start='' >
+<li>根据文件存放路径战到相应的目录文件，从目录中找到文件名对应的目录项。</li>
+<li>根据该目录项记录的文件在外存的存放位置、文件大小等信息，回收文件占用的磁盘块(回收磁盘块时，根据空闲表法、空闲链表法、位图法等管理策略的不同，需要做不同的处理）。</li>
+<li>从目录表中删除文件对应的目录项。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>打开文件：在很多操作系统中，在对文件进行操作之前，要求用户先使用 open 系统调用“打开文件”。</p>
+<ol start='' >
+<li><p>需要提供的几个主要参数：</p>
+<ol start='' >
+<li>文件存放路径(“D:/Demo”）</li>
+<li>要对文件的操作类型（如：r只读；rw读写等）。</li>
+
+</ol>
+</li>
+<li><p>操作系统在处理 open 系统调用时，主要做了几件事：</p>
+<ol start='' >
+<li>根据文件存放路径找到相应的目录文件，从目录中找到文件名对应的目录项，并检查该用户是否有指定的操作权限。</li>
+<li>将目录项复制到内存中的“打开文件表”中。并将对应表目的编号返回给用户。之后用户使用打开文件表的编号来指明要操作的文件。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<p>   打开文件表：可以方便实现某些文件管理的功能。例如：在Windows系统中，我们尝试删除某个txt文件，如果此时该文件己被某个“记事本”进程打开，则系统会提示我们“暂时无法删除该文件”。其实系统在背后做的事就是先检查了系统打开文件表，确认此时是杏有进程正在使用该文件。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%883.32.45.png" alt="/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%883.32.45.png"  /></p>
+<ol start='4' >
+<li><p>关闭文件：进程使用完文件后，要“关闭文件”，操作系统在处理 Close 系统调用时，主要做了几件事：</p>
+<ol start='' >
+<li><p>将进程的打开文件表相应表项删除。</p>
+</li>
+<li><p>回收分配给该文件的内存空间等资源。</p>
+</li>
+<li><p>系统打开文件表的打开计数器count 减1，若 count=0，则删除对应表项。</p>
+</li>
+<li><p>f_count 和 i_count 分别反映进程动态地共享一个文件的两种方式</p>
+<ol start='' >
+<li>f_count 反映<strong>不同进程</strong>通过<strong>同一个</strong>系统打开文件表项共享一个文件的情况；</li>
+<li>i_count 反映<strong>不同进程</strong>通过<strong>不同</strong>系统打开文件表项共享一个文件的情况。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>读文件：进程使用read系统调用完成写操作。需要指明是哪个文件（在支持“打开文件” 操作的系统中，只需要提供文件在打开文件表中的索引号即可）还需要指明要读入多少数据（如：读入1KB）、指明读入的数据要放在内存中的什么位置。操作系统在处理read 系统调用时，会从读指针指向的外存中，将用户指定大小的数据读入用户指定的内存区域中。</p>
+</li>
+<li><p>写文件：进程使用 write 系统调用完成写操作，需要指明是哪个文件（在支持“打开文件” 操作的系统中，只需要提供文件在打开文件表中的索引号即可）还需要指明要写出多少数据（如：写出 1KB)、写回外存的数据放在内存中的什么位置操作系统在处理 write 系统调用时，会从用户指定的内存区域中，将指定大小的数据写回写指针指向的外存。</p>
+</li>
+
+</ol>
+<h3 id='7）文件共享'>（7）文件共享</h3>
+<ol start='' >
+<li><p>多个用户共享同一个文件，意味着系统中只有“一份”文件数据。并且只要某个用户修改了该文件的数据，其他用户也可以看到文件数据的变化。如果是多个用户都“复制”了同一个文件，那么系统中会有“好几份” 文件数据。其中一个用户修改了自己的那份文件数据，对其他用户的文件数据并没有影响。</p>
+</li>
+<li><p>基于索引节点的共享方式（硬链接）</p>
+<ol start='' >
+<li>在索引节点中设置一个链接计数变量count，用于表示连接到本索引节点上的用户目录项数。</li>
+<li>如果用户删除该文件，则只是把用户的目录中与该文件对应的目录项删除并把count减1。</li>
+
+</ol>
+</li>
+<li><p>基于符号链的共享方式（软链接）</p>
+<ol start='' >
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%883.43.51.png" alt="/%E6%88%AA%E5%B1%8F2022-12-02%20%E4%B8%8B%E5%8D%883.43.51.png"  /></li>
+<li>被共享的用户并不是为他建立一个直接指向原物理地址的文件，而是建立一个link文件，link文件再指向物理数据地址。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='8）文件保护'>（8）文件保护</h3>
+<ol start='' >
+<li><p>口令保护：为文件设置一个口令，用户请求访问该文件时必须提供口令。</p>
+<ol start='' >
+<li>口令一般存放在文件对应的 FCB 或索引结点中。用户访问文件前需要先输入“口令”操作系统会将用户提供的口令与FCB中存储的口令进行对比，如果正确，则允许该用户访问文件。</li>
+<li>优点：保存口令的空间开销小，验证口令时间开销小。</li>
+<li>缺点：口令存放在系统内部，不够安全。</li>
+
+</ol>
+</li>
+<li><p>加密保护：使用某个密码对文件进行加密，在访问文件时需要提供正确的密码才能对文件进行正确的解密。</p>
+<ol start='' >
+<li>优点：保密性强，不需要在系统中储存密码。</li>
+<li>缺点：编码和解密的时候需要花费时间。</li>
+
+</ol>
+</li>
+<li><p>访问控制：在每个文件的FCB增加访问控制列表（ACL），该表中记录了各个用户对该文件能执行哪些操作。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-03%20%E4%B8%8B%E5%8D%884.55.02.png" alt="/%E6%88%AA%E5%B1%8F2022-12-03%20%E4%B8%8B%E5%8D%884.55.02.png"  /></p>
+<ol start='' >
+<li>精简控制表：以组为单位，标记各组用户可以对文件执行哪些操作，可以减少访问列表的体积。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='9）文件系统的层次结构'>（9）文件系统的层次结构</h3>
+<ol start='' >
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-03%20%E4%B8%8B%E5%8D%885.03.16.png" alt="/%E6%88%AA%E5%B1%8F2022-12-03%20%E4%B8%8B%E5%8D%885.03.16.png"  /></p>
+</li>
+<li><p>用一个例子来辅助记忆文件系统的层次结构：假设某用户请求删除文件 “D:/工作目录/学生信息.xIsx〞 的最后100条记录。</p>
+<ol start='' >
+<li>用户需要通过操作系统提供的接口发出上述请求一一用户接口</li>
+<li>由于用户提供的是文件的存放路径，因此需要操作系统一层一层地查找目录，找到对应的目录项——文件目录系统</li>
+<li>不同的用户对文件有不同的操作权限，因此为了保证安全，需要检查用户是否有访问权限——存取控制模块（存取控制验证层）</li>
+<li>验证了用户的访问权限之后，需要把用户提供的“记录号”转变为对应的逻辑地址一一逻辑文件系统与文件信息缓冲区</li>
+<li>知道了目标记录对应的逻辑地址后，还需要转换成实际的物理地址——物理文件系统</li>
+<li>要删除这条记录，必定要对磁盘设备发出请求——设备管理程序模块</li>
+<li>删除这些记录后，会有一些盘块空闲，因此要将这些空闲盘块回收——辅助分配模块</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='10）磁盘的结构'>（10）磁盘的结构</h3>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8A%E5%8D%889.55.39.png" alt="/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8A%E5%8D%889.55.39.png"/></p>
+<ol start='' >
+<li><p>磁盘：磁盘的表面是一些磁性物质，使用这些词性物质来记录二进制数据。</p>
+</li>
+<li><p>磁道：磁盘的盘面被划分成一个一个的圈，每一个圈就是一个磁道。</p>
+</li>
+<li><p>扇区：一个磁道又被划分为一个个扇区，每个扇区就是一个磁盘块，每个扇区的数据量相同（越往内侧的扇区的数据密度就越大)。</p>
+</li>
+<li><p>需要通过磁头臂把磁头移动到想要读/写的扇区所在的磁道。磁盘会转起来，让目标扇区从磁头下面划过，才能完成对扇区的读/写操作。</p>
+</li>
+<li><p>盘面、柱面：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8A%E5%8D%8810.08.30.png" alt="截屏2022-12-06 上午10.08.30"  /></p>
+<ol start='' >
+<li><p>可用（柱面号，盘面号，扇区号）来定位任意一个“磁盘块”，在“文件的物理结构”小节中，我们经常提到文件数据存放在外存中的几号块，这个块号就可以转换成（柱面号，盘面号，扇区号）的地址形式。</p>
+</li>
+<li><p>根据地址读取数据块：</p>
+<ol start='' >
+<li>根据柱面号移动磁臂，让磁头指向指定柱面。</li>
+<li>激活指定盘面对应的磁头。</li>
+<li>磁盘旋转的过程中，指定的扇区会从磁头下面划过，这样就完成了对指定扇区的读/写。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>磁盘的分类</p>
+<ol start='' >
+<li>按磁头分类：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8A%E5%8D%8810.10.30.png" alt="/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8A%E5%8D%8810.10.30.png"  /></li>
+<li>按盘片分类：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8A%E5%8D%8810.11.08.png" alt="/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8A%E5%8D%8810.11.08.png"  /></li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='11）磁盘调度算法'>（11）磁盘调度算法</h3>
+<ol start='' >
+<li><p>一次读写需要的时间：</p>
+<ol start='' >
+<li>寻找时问（寻道时间）T：在读/写数据前，将磁头移动到指定磁道所花的时间。</li>
+<li>启动磁头臂是需要时间的，假设耗时为s。</li>
+<li>移动磁头也是需要时间的，假设磁头匀速移动，每跨越一个磁道耗时为 m，总共需要跨越n条磁道。</li>
+<li>寻道时间<mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="14.584ex" height="1.887ex" role="img" focusable="false" viewBox="0 -677 6446.1 834.1" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-8-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-8-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path id="MJX-8-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-8-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-8-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-8-TEX-N-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path><path id="MJX-8-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D447" xlink:href="#MJX-8-TEX-I-1D447"></use></g><g data-mml-node="mi" transform="translate(617,-150) scale(0.707)"><use data-c="1D460" xlink:href="#MJX-8-TEX-I-1D460"></use></g></g><g data-mml-node="mo" transform="translate(1276.4,0)"><use data-c="3D" xlink:href="#MJX-8-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(2332.2,0)"><use data-c="1D460" xlink:href="#MJX-8-TEX-I-1D460"></use></g><g data-mml-node="mo" transform="translate(3023.4,0)"><use data-c="2B" xlink:href="#MJX-8-TEX-N-2B"></use></g><g data-mml-node="mi" transform="translate(4023.6,0)"><use data-c="1D45A" xlink:href="#MJX-8-TEX-I-1D45A"></use></g><g data-mml-node="mo" transform="translate(5123.9,0)"><use data-c="2217" xlink:href="#MJX-8-TEX-N-2217"></use></g><g data-mml-node="mi" transform="translate(5846.1,0)"><use data-c="1D45B" xlink:href="#MJX-8-TEX-I-1D45B"></use></g></g></g></svg></mjx-container><script type="math/tex">T_s=s+m*n</script>。</li>
+<li>延迟时间R：通过旋转磁盘，使磁头定位到目标扇区所需要的时间。设磁盘转速为r （单位：转/秒，或转/分），则平均所需的延迟时间<mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="15.996ex" height="2.755ex" role="img" focusable="false" viewBox="0 -864.9 7070.1 1217.7" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-9-TEX-I-1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"></path><path id="MJX-9-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-9-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-9-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-9-TEX-N-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path><path id="MJX-9-TEX-I-1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D445" xlink:href="#MJX-9-TEX-I-1D445"></use></g><g data-mml-node="mo" transform="translate(1036.8,0)"><use data-c="3D" xlink:href="#MJX-9-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(2092.6,0)"><g data-mml-node="mn" transform="translate(220,394) scale(0.707)"><use data-c="31" xlink:href="#MJX-9-TEX-N-31"></use></g><g data-mml-node="mn" transform="translate(220,-345) scale(0.707)"><use data-c="32" xlink:href="#MJX-9-TEX-N-32"></use></g><rect width="553.6" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(3108.3,0)"><use data-c="2217" xlink:href="#MJX-9-TEX-N-2217"></use></g><g data-mml-node="mfrac" transform="translate(3830.6,0)"><g data-mml-node="mn" transform="translate(220,394) scale(0.707)"><use data-c="31" xlink:href="#MJX-9-TEX-N-31"></use></g><g data-mml-node="mi" transform="translate(237.3,-345) scale(0.707)"><use data-c="1D45F" xlink:href="#MJX-9-TEX-I-1D45F"></use></g><rect width="553.6" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(4901.9,0)"><use data-c="3D" xlink:href="#MJX-9-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(5957.7,0)"><g data-mml-node="mn" transform="translate(379.5,394) scale(0.707)"><use data-c="31" xlink:href="#MJX-9-TEX-N-31"></use></g><g data-mml-node="mrow" transform="translate(220,-345) scale(0.707)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-9-TEX-N-32"></use></g><g data-mml-node="mi" transform="translate(500,0)"><use data-c="1D45F" xlink:href="#MJX-9-TEX-I-1D45F"></use></g></g><rect width="872.5" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container><script type="math/tex">R= \frac{1}{2}*\frac{1}{r} =\frac{1}{2r}</script>（1/r就是转一圈需要的时间。找到目标扇区平均需要转半圈，因此再乘以1/2）。硬盘的典型转速为5400转/分或者7200转/分。</li>
+<li>传输时间T&#39;：从磁盘读出或向磁盘写入数据所经历的时间，假设磁盘转速为r，此次读/写的字节数为b，每个磁道上的字节数为N。则：传输时间<mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="17.867ex" height="2.8ex" role="img" focusable="false" viewBox="0 -884.7 7897.3 1237.5" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-10-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-10-TEX-V-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path id="MJX-10-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-10-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-10-TEX-I-1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-10-TEX-N-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path><path id="MJX-10-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path><path id="MJX-10-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D447" xlink:href="#MJX-10-TEX-I-1D447"></use></g><g data-mml-node="mo" transform="translate(793,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-10-TEX-V-2032"></use></g></g><g data-mml-node="mo" transform="translate(1315.2,0)"><use data-c="3D" xlink:href="#MJX-10-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(2371,0)"><g data-mml-node="mn" transform="translate(220,394) scale(0.707)"><use data-c="31" xlink:href="#MJX-10-TEX-N-31"></use></g><g data-mml-node="mi" transform="translate(237.3,-345) scale(0.707)"><use data-c="1D45F" xlink:href="#MJX-10-TEX-I-1D45F"></use></g><rect width="553.6" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(3386.8,0)"><use data-c="2217" xlink:href="#MJX-10-TEX-N-2217"></use></g><g data-mml-node="mfrac" transform="translate(4109,0)"><g data-mml-node="mi" transform="translate(382.3,394) scale(0.707)"><use data-c="1D44F" xlink:href="#MJX-10-TEX-I-1D44F"></use></g><g data-mml-node="mi" transform="translate(220,-345) scale(0.707)"><use data-c="1D441" xlink:href="#MJX-10-TEX-I-1D441"></use></g><rect width="827.9" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(5454.7,0)"><use data-c="3D" xlink:href="#MJX-10-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(6510.5,0)"><g data-mml-node="mi" transform="translate(541.7,394) scale(0.707)"><use data-c="1D44F" xlink:href="#MJX-10-TEX-I-1D44F"></use></g><g data-mml-node="mrow" transform="translate(220,-345) scale(0.707)"><g data-mml-node="mi"><use data-c="1D45F" xlink:href="#MJX-10-TEX-I-1D45F"></use></g><g data-mml-node="mi" transform="translate(451,0)"><use data-c="1D441" xlink:href="#MJX-10-TEX-I-1D441"></use></g></g><rect width="1146.8" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container><script type="math/tex">T'=\frac{1}{r}*\frac{b}{N}=\frac{b}{rN}</script>。</li>
+<li>总的平均时间<mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="18.818ex" height="2.8ex" role="img" focusable="false" viewBox="0 -884.7 8317.4 1237.5" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-11-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-11-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-11-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-11-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path id="MJX-11-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-11-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-11-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-11-TEX-I-1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-11-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"></path><path id="MJX-11-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D447" xlink:href="#MJX-11-TEX-I-1D447"></use></g><g data-mml-node="mi" transform="translate(617,-150) scale(0.707)"><use data-c="1D44E" xlink:href="#MJX-11-TEX-I-1D44E"></use></g></g><g data-mml-node="mo" transform="translate(1318.8,0)"><use data-c="3D" xlink:href="#MJX-11-TEX-N-3D"></use></g><g data-mml-node="msub" transform="translate(2374.6,0)"><g data-mml-node="mi"><use data-c="1D447" xlink:href="#MJX-11-TEX-I-1D447"></use></g><g data-mml-node="mi" transform="translate(617,-150) scale(0.707)"><use data-c="1D460" xlink:href="#MJX-11-TEX-I-1D460"></use></g></g><g data-mml-node="mo" transform="translate(3595.5,0)"><use data-c="2B" xlink:href="#MJX-11-TEX-N-2B"></use></g><g data-mml-node="mfrac" transform="translate(4595.7,0)"><g data-mml-node="mn" transform="translate(379.5,394) scale(0.707)"><use data-c="31" xlink:href="#MJX-11-TEX-N-31"></use></g><g data-mml-node="mrow" transform="translate(220,-345) scale(0.707)"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-11-TEX-N-32"></use></g><g data-mml-node="mi" transform="translate(500,0)"><use data-c="1D45F" xlink:href="#MJX-11-TEX-I-1D45F"></use></g></g><rect width="872.5" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(5930.4,0)"><use data-c="2B" xlink:href="#MJX-11-TEX-N-2B"></use></g><g data-mml-node="mfrac" transform="translate(6930.6,0)"><g data-mml-node="mi" transform="translate(541.7,394) scale(0.707)"><use data-c="1D44F" xlink:href="#MJX-11-TEX-I-1D44F"></use></g><g data-mml-node="mrow" transform="translate(220,-345) scale(0.707)"><g data-mml-node="mi"><use data-c="1D45F" xlink:href="#MJX-11-TEX-I-1D45F"></use></g><g data-mml-node="mi" transform="translate(451,0)"><use data-c="1D441" xlink:href="#MJX-11-TEX-I-1D441"></use></g></g><rect width="1146.8" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container><script type="math/tex">T_a=T_s+\frac{1}{2r}+\frac{b}{rN}</script>。</li>
+<li>延迟时间和传输时间都与磁盘转速相关，且为线性相关。而转速是硬件的固有属性，因此操作系统也无法优化延退时间和传输时间。</li>
+
+</ol>
+</li>
+<li><p>磁盘调度算法（移臂调度）</p>
+<ol start='' >
+<li><p>先来先服务（FCFS）</p>
+<ol start='' >
+<li>思想：根据进程请求访问磁盘的顺序进行调度。</li>
+<li>举例：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8A%E5%8D%8810.21.01.png" alt="/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8A%E5%8D%8810.21.01.png"  /></li>
+<li>优点：公平，如果请求访问的磁道比较集中的话算法性能尚可。</li>
+<li>缺点：如果请求的磁道非常分散则性能降低。</li>
+
+</ol>
+</li>
+<li><p>最短寻找时间优先（SSTF）</p>
+<ol start='' >
+<li>思想：SSTF算法会优先处理的磁道是与当前磁头最近的磁道。可以保证每次的寻道时间最短，但是并不能保证总的寻道时间最短（其实就是贪心算法的思想，只是选择眼前最优，但是总体未必最优）。</li>
+<li>举例：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%882.22.02.png" alt="/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%882.22.02.png"  /></li>
+<li>优点：性能较好，平均寻道时间较短。</li>
+<li>缺点：可能产生饥饿现象（原因：磁头在一个小区域内不断移动）。</li>
+
+</ol>
+</li>
+<li><p>扫描算法（SCAN）</p>
+<ol start='' >
+<li><p>思想：SSTF 算法会产生饥饿的原因在于：磁头有可能在一个小区域内来回来去地移动。为了防止这个问题，可以规定，只有磁头移动到最外侧磁道的时候才能往内移动，移动到最内侧磁道的时候才能往外移动。这就是扫描算法 （SCAN）的思想。由于磁头移动的方式很像电梯，因此也叫电梯算法。</p>
+</li>
+<li><p>举例：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%882.24.50.png" alt="/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%882.24.50.png"  /></p>
+</li>
+<li><p>优点：性能较好，平均寻道时间短，不会产生饥饿现象。</p>
+</li>
+<li><p>缺点：</p>
+<ol start='' >
+<li>只有到达最边缘的磁道才能改变方向，会产生无效的移动。</li>
+<li>SCAN对各个位置的磁道响应频率不平均。</li>
+
+</ol>
+</li>
+<li><p><strong>注意在做题时，磁头到达最侧边时回移到另一边、中间未读取任何东西的移动也算作移臂的移动距离，C_SCAN同理</strong></p>
+</li>
+
+</ol>
+</li>
+<li><p>LOOK电梯调度算法</p>
+<ol start='' >
+<li>思想：扫描算法（SCAN）中，只有到达最边上的磁道时才能改变磁头移动方向，事实上，处理了184号磁道的访问请求之后就不需要再往右移动磁头了。LOOK 调度算法就是为了解决这个问题，如果在磁头移动方向上己经没有别的请求，就可以立即改变磁头移动方向。边移动边观察，因此叫LOOK。</li>
+<li>举例：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%882.27.06.png" alt="/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%882.27.06.png"  /></li>
+<li>优点：相比SCAN不需要每次都移动到最外侧才改变方向，是寻道时间缩短。</li>
+
+</ol>
+</li>
+<li><p>循环扫描算法（C_SCAN）</p>
+<ol start='' >
+<li>思想：SCAN算法对于各个位置磁道的响应频率不平均，而 C-SCAN 算法就是为了解决这个问题。规定只有磁头朝某个特定方向移动时才处理磁道访问请求，而返回时直接快速移动至起始端而不处理任何请求。</li>
+<li>举例：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%882.28.51.png" alt="/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%882.28.51.png"  /></li>
+<li>优点：相比SCAN，对于各个位置的磁道响应频率很平均。</li>
+<li>缺点：磁头也只有到达边缘才会返回，而且是直接返回边缘，实际平均访问长度增大了。</li>
+
+</ol>
+</li>
+<li><p>C_LOOK算法</p>
+<ol start='' >
+<li>思想：C-SCAN 算法的主要缺点是只有到达最边上的磁道时才能改变磁头移动方向，并且磁头返回时不一定需要返回到最边缘的磁道上。C-LOOK 算法就是为了解决这个问题。如果磁头移动的方向上已经没有磁道访问请求了，就可以立即让磁头返回，并且磁头只需要返回到有磁道访问请求的位置即可。</li>
+<li>举例：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%882.31.31.png" alt="/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%882.31.31.png"  /></li>
+<li>优点：相比C-SCAN算法不需要每次都移动到最边缘，使寻道时间进一步缩短。</li>
+<li><font color=red>如果题目中无特别说明，则默认SCAN为LOOK，C-SCAN为C-LOOK（存疑，gjd标准未知）</font></li>
+<li><font color=green>这里SCAN算法、C_SCAN算法都是必须要到达磁道尽头才可以调转方向，LOOK和C_LOOK都是只需要这个方向上没有请求就可以。</font></li>
+
+</ol>
+</li>
+<li><p>N-step——SCAN算法</p>
+<ol start='' >
+<li>思想：把磁盘 I/O 请求队列分成长度为N的子队列，按照FIFO处理每一个子队列，每个子队列内部使用扫描算法。在处理一个队列时，新请求必须添加到<strong>其他</strong>某个队列中，处理完一个子队列后再服务下一个队列，如果在扫描的最后剩下的请求数小于 N，则它们全部将在下一次扫描时处理。</li>
+<li>当 <mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="7.791ex" height="1.57ex" role="img" focusable="false" viewBox="0 -683 3443.6 694" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-12-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-12-TEX-N-2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path><path id="MJX-12-TEX-N-221E" d="M55 217Q55 305 111 373T254 442Q342 442 419 381Q457 350 493 303L507 284L514 294Q618 442 747 442Q833 442 888 374T944 214Q944 128 889 59T743 -11Q657 -11 580 50Q542 81 506 128L492 147L485 137Q381 -11 252 -11Q166 -11 111 57T55 217ZM907 217Q907 285 869 341T761 397Q740 397 720 392T682 378T648 359T619 335T594 310T574 285T559 263T548 246L543 238L574 198Q605 158 622 138T664 94T714 61T765 51Q827 51 867 100T907 217ZM92 214Q92 145 131 89T239 33Q357 33 456 193L425 233Q364 312 334 337Q285 380 233 380Q171 380 132 331T92 214Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D441" xlink:href="#MJX-12-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(1165.8,0)"><use data-c="2192" xlink:href="#MJX-12-TEX-N-2192"></use></g><g data-mml-node="mi" transform="translate(2443.6,0)"><use data-c="221E" xlink:href="#MJX-12-TEX-N-221E"></use></g></g></g></svg></mjx-container><script type="math/tex">N \rightarrow \infty</script>时，N-step-SCAN 的性能接近 SCAN。</li>
+<li>当 <mjx-container class="MathJax" jax="SVG" ><svg xmlns="http://www.w3.org/2000/svg" width="6.157ex" height="1.731ex" role="img" focusable="false" viewBox="0 -683 2721.6 765" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" ><defs><path id="MJX-13-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path id="MJX-13-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-13-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D441" xlink:href="#MJX-13-TEX-I-1D441"></use></g><g data-mml-node="mo" transform="translate(1165.8,0)"><use data-c="3D" xlink:href="#MJX-13-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(2221.6,0)"><use data-c="31" xlink:href="#MJX-13-TEX-N-31"></use></g></g></g></svg></mjx-container><script type="math/tex">N = 1</script>时，实际上是FIFO。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='12）减少磁盘延迟'>（12）减少磁盘延迟</h3>
+<ol start='' >
+<li><p>磁头只能朝一个方向移动，由于磁头在读取完一个扇区的数据以后需要一段时间处理，而这段时间磁头会一直保持旋转，因此磁头在连续读取在物理上相邻的扇区时就会出现延迟。</p>
+</li>
+<li><p>减少延迟时间的方法：交替编号</p>
+<p>思想：采用交替编号的策略，让逻辑上相邻的扇区在物理上有一定的间隔，可以使连续读取逻辑扇区是的延迟减小。</p>
+</li>
+<li><p>磁盘地址结构的设计</p>
+<ol start='' >
+<li><p>思考：为什么？磁盘的物理地址是（柱面号，盘面号，扇区号）而不是（盘面号，桂面号，扇区号）</p>
+</li>
+<li><p>原因：因为磁盘是多个磁盘堆叠起来，而每个磁盘都有一个磁头，此时如果读完一个磁盘在继续读取，如果继续读取的数据仍在同一柱面，则磁头是不需要移动的。</p>
+</li>
+<li><p>举例：假设某磁盘有8个柱面/磁道（假设最内侧柱面/磁道号为0）
+4个盘面，8个扇区。则可用3个二进制位表示柱面，2个二进制位表示盘面，3个二进制位表示扇区。若物理地址结构是（盘面号，柱面号，扇区号），且需要连续读取物理地址 (00,000,000）～(00,001,111）的扇区：(00,000,000） ~ （00,000,111） 转两圈可读完之后再读取物理地址相邻的区域，即(00, 001, 000)~（00,001, 111），需要启动磁头臂，将磁头移动到下一个磁道。</p>
+<p>假设某磁盘有8个柱面/磁道（假设最内侧柱面/磁道号为0）4个盘面，8个扇区。则可用3个二进制位表示柱面，2个二进制位表示盘面，3个二进制位表示扇区若物理地址结构是（柱面号，盘面号，扇区号)，且需要连续读取物理地址 (000, 00,000）~ （000,01,111） 的扇区：(000, 00, 000）~（000,00,111） 由盘面o的磁头读入数据之后再读取物理地址相邻的区域，即(000, 01, 000)~（090,01,111），由于柱面号/磁道号相同，只是盘面号不同，因此不需要移动磁头譬。只需要激活相邻盘面的磁头即可。</p>
+</li>
+
+</ol>
+</li>
+<li><p>减少延迟的方法：错位命名</p>
+<p>若相邻的盘面相对位置相同处扇区编号相同，则有如下情况：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%883.24.27.png" alt="/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%883.24.27.png"  /></p>
+<p>所以这对需要将不同盘面的扇区进行错位的命名，情况如下：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%883.26.12.png" alt="/%E6%88%AA%E5%B1%8F2022-12-06%20%E4%B8%8B%E5%8D%883.26.12.png"  /></p>
+</li>
+
+</ol>
+<h3 id='13）磁盘的管理'>（13）磁盘的管理</h3>
+<ol start='' >
+<li><p>磁盘初始化</p>
+<ol start='' >
+<li>进行低级格式化（物理格式化），将磁盘的各个磁道划分为扇区。一个扇区通常可分为 头、数据区域（如512B大小）、尾三个部分组成。管理扇区所需要的各种数据结构一般存放在头、尾两个部分，包括扇区校验码（如奇偶校验、CRC循环冗余校验码等，校验码用于校验扇区中的数据是否发生错误。</li>
+<li>将磁盘分区，每个分区由若干柱面组成（即分为我们熟悉的C盘、D盘、E盘）。</li>
+<li>进行逻辑格式化，创建文件系统。包括创建文件系统的根目录、初始化存储空间管理所用的数据结构（如 位示图、空闲分区表）。</li>
+
+</ol>
+</li>
+<li><p>引导块：计算机开机时需要进行一系列初始化的工作，这些初始化工作通过初始化程序（自举程序）完成。</p>
+<ol start='' >
+<li>初始化程序可以放在ROM中，在出厂时就集成在主板上，但是ROM不支持数据更改，不能更新自举程序。</li>
+<li>ROM只存放很小的自举装入程序，开机时先运行自举装入程序，通过执行该程序找到引导块，并将完整的自举程序读入内存，完成初始化。</li>
+<li>完整的自举程序存放在磁盘的启动块（即引导块/启动分区），启动块位于磁盘的固定位置，拥有启动分区的磁盘被称为启动磁盘或系统磁盘（一般为C盘）。</li>
+
+</ol>
+</li>
+<li><p>坏块：</p>
+<ol start='' >
+<li>概念：坏了、无法正常使用的扇区就是“坏块”。这属于硬件故障，操作系统是无法修复的。应该将坏块标记出来，以免错误地使用到它。</li>
+<li>对于简单的磁盘，可以在逻辑格式化/建立文件系统时对整个磁盘进行坏块检查，标明哪些是坏的。</li>
+<li>对于复杂的磁盘，磁盘控制器（磁盘设备内部的一个硬件部件）会维护一个坏块链表，在磁盘出厂前进行低级格式化 （物理格式化）时就将坏块链进行初始化。</li>
+<li>会保留一些“备用扇区〞，用于替换坏块。这种方案称为扇区备用。且这种处理方式中，坏块对操作系统透明（OS不可知）。</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='14）unix三级索引储存技术'>（14）Unix三级索引储存技术</h3>
+<ol start='' >
+<li><p>在文件系统中，文件的存储设备通常划分为若干个大小相等的物理块，每块长为512或1024字节。文件的物理结构是指文件在存储设备上的存储方法，常用的文件物理结构有：连续文件、串联文件和索引文件三种。存储空间会被划分成n个物理块，在索引文件中，一个文件会被放入不同的物理块，这时需要索引表指出一个文件分别被拆分存在哪个块，所以索引表里存的是文件碎片的地址。在多级(间接索引)技术中，在由索引表指出的物理块中存放的不是<strong>文件存储位置</strong>而是存放文件信息的<strong>物理块地址</strong>（即<strong>索引表里存索引表</strong>…）。</p>
+</li>
+<li><p>Unix系统三级索引：</p>
+<ol start='' >
+<li><p>为了使一张索引表（一个数组）能完整存下一个文件，在Unix系统中，文件的物理结构采用索引方式。定义有一个索引节点字符数组（一张索引表），inode 规定了15 个索引项，每项 4KB：</p>
+<ol start='' >
+<li>直接索引：前 12 项存放文件信息的磁盘块号</li>
+<li>一次间接索引：第 13 项指向一个物理块</li>
+<li>二次间接索引：第 14 项指向一个物理块</li>
+<li>三次间接索引：第 15 项指向一个物理块</li>
+<li>ext2 中，每个物理块存放 1024B，所以上面右图最多存放(12KB + 256KB + 256<sup>2KB+256</sup>3KB)</li>
+
+</ol>
+</li>
+<li><p>长度不超过 12 个磁盘块的占 80%，只有超过 12 个磁盘块才使用简介索引。</p>
+</li>
+<li><p>多级索引例子（重要）：注意是从 0-128 一共 129 项。</p>
+</li>
+<li><p>在这里，要注意到<strong>一次、二次、三次间接索引在inode文件中都只占一个地址，而一个地址指向一个间接索引表，所以每个inode只能各有一串一次、二次、三次间接索引表。</strong></p>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2023-02-20%20%E4%B8%8B%E5%8D%887.59.56.png" alt="截屏2023-02-20 下午7.59.56"  /></p>
+</li>
+<li><p>注意这里一次/二次/三次间接盘块指的是最底层的、储存文件数据的盘块，而不是储存索引的中间盘块。</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h1 id='os-5'>OS</h1>
+<h2 id='五设备管理'>五、设备管理</h2>
+<h3 id='1）io设备'>（1）I/O设备</h3>
+<ol start='' >
+<li><p>I/O设备就是可以将数据输入到计算机，或者可以接受计算机输出数据的外部设备，属于计算机中的硬件设备。</p>
+</li>
+<li><p>I/O系统就是I/O设备及其接口线路、控制部件、通道和管理软件的统称。</p>
+</li>
+<li><p><strong>Unix将外部设备抽象为一种特殊的文件</strong>，用户可以通过与文件操作相同的方式对外部设备进行操作。</p>
+</li>
+<li><p>分类</p>
+<ol start='' >
+<li><p>按使用特性：</p>
+<ol start='' >
+<li>人机交互类外设——数据传输速度较慢</li>
+<li>储存设备——数据传输速度较快</li>
+<li>网络通信设备——速度在两者之间</li>
+
+</ol>
+</li>
+<li><p>按传输速率分类</p>
+<ol start='' >
+<li>低速设备（字符设备）——鼠标、键盘等，传输字节较慢（受制于用户的输入）</li>
+<li>中速设备（块设备）——打印机等（由计算机操作，但是有外界影响限制速度）</li>
+<li>高速设备（网络设备）——磁盘等（极快）<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8A%E5%8D%8810.30.24.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8A%E5%8D%8810.30.24.png"  /></li>
+
+</ol>
+</li>
+<li><p>按信息交换的单位分类</p>
+<ol start='' >
+<li>块设备——传输速率高，可寻址，可以对他随机的读/写一块。</li>
+<li>字符设备——传输速率较慢，不可寻址，在输入/输出时采用中断驱动的方式。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='2）io控制器'>（2）I/O控制器</h3>
+<ol start='' >
+<li><p>设备管理的目标：</p>
+<ol start='' >
+<li>解决设备和CPU速度的不匹配，提高设备使用率。</li>
+<li>对设备进行抽象，屏蔽设备的物理细节和操作过程，配置驱动程序和提供统一节目，供用户和高层软件使用。</li>
+
+</ol>
+</li>
+<li><p>I/O设备的机械部件主要用来执行具体I/O操作。如我们看得见摸得着的鼠标/键盘的按钮；显示器的LED屏；移动硬盘的磁臂、磁盘盘面。I/O设备的电子部件通常是一块插入主板扩充槽的印刷电路板。</p>
+</li>
+<li><p>CPU无法直接控制I/O设备的机械部件，因此I/O设备还要有一个电子部件作为CPU和I/O设备机械部件之间的“中介”，用于实现CPU对设备的控制。这个电子部件就是I/O控制器，又称设备控制器。CPU可控制I/O控制器，又由I/O控制器来控制设备的机械部件。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8A%E5%8D%8810.37.17.png" alt="截屏2022-12-09 上午10.37.17"  /></p>
+</li>
+<li><p>I/O控制器的组成<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8A%E5%8D%8810.41.08.png" alt="截屏2022-12-09 上午10.41.08"  /></p>
+<ol start='' >
+<li>一个I/O控制器可能会对应多个设备</li>
+<li>数据寄存器、控制寄存器、状态寄存器可能有多个（如：每个控制/状态寄存器对应一个具体的设备），且这些奇存器都要有相应的地址，才能方便CPU操作。有的计算机会让这些寄存器占用内存地址的一部分，称为内存映像I/O：另一些计算机则采用I/O专用地址，即寄存器独立编址。</li>
+
+</ol>
+</li>
+<li><p>内存映像I/O和寄存器独立编制</p>
+<ol start='' >
+<li><p>内存映射I/O，控制器中的寄存器与内存地址统一编制</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8A%E5%8D%8810.42.59.png" alt="截屏2022-12-09 上午10.42.59"  /></p>
+<p>优点：简化了指令，可以采用对内存进行操作的指令来对控制器进行操作。</p>
+</li>
+<li><p>寄存器独立编制，控制器中的寄存器使用单独的地址。</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8A%E5%8D%8810.43.26.png" alt="截屏2022-12-09 上午10.43.26"  /></p>
+<p>缺点：需要设置专门的指令来实现对控制器的操作，不仅要指明寄存器的地址，还要指明控制器的编号。</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='3）io控制方式'>（3）I/O控制方式</h3>
+<p>需要注意：（1）完成一次读写操作的流程；（2）CPU干预的频率；（3）数据传送的单位；（4）数据的流向；（5）主要的优缺点。</p>
+<ol start='' >
+<li><p>程序直接控制方式（轮询方式）</p>
+<ol start='' >
+<li><p>操作流程（以读操作为例）</p>
+<ol start='' >
+<li>CPU向控制器发出读指令于是设备启动，并且状态寄存器设为1（未就绪）。</li>
+
+</ol>
+</li>
+<li><p>轮询检查控制器的状态（其实就是在不断地执行程序的循环，若状态位一直是1，说明设备还没准备好要输入的数据，于是CPU会不断地轮询。</p>
+<ol start='3' >
+<li>输入设备准备好数据后将数据传给控制器，并报告自身状态。</li>
+<li>控制器将输入的数据放到数据寄存器中并将状态改为0（己就绪）。</li>
+<li>CPU发现设备已就绪，即可将数据寄存器中的内容读入CPU的寄存器中，再把CPU寄存器中的内容放入内存。</li>
+<li>若还要继续读入数据，则CPU继续发出读指令。</li>
+
+</ol>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%881.06.19.png" alt="截屏2022-12-09 下午1.06.19"  /></p>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%881.10.30.png" alt="截屏2022-12-09 下午1.10.30"  /></p>
+<p>关于第五步向存储器写入字，一般程序读取内容都不是储存在寄存器中，需要存放到相应的变量位置中，变量物理储存在内存里，因此需要向储存器写入。</p>
+</li>
+<li><p>CPU干预的频率：非常频繁，I/O开始之前、完成之后都需要CPU介入，并且在等待I/O完成的过程中CPU都需要不断的轮询。</p>
+</li>
+<li><p>数据传送的单位：每次读写一个字。</p>
+</li>
+<li><p>数据的流向：</p>
+<ol start='' >
+<li>读操作（数据输入）：I/O-&gt;CPU-&gt;内存</li>
+
+</ol>
+</li>
+<li><p>写操作（数据输出）：内存-&gt;CPU-&gt;I/O</p>
+<ol start='3' >
+<li>每个字的读写都需要CPU的帮助。</li>
+
+</ol>
+</li>
+<li><p>优点：实现简单，在读写指令之后，加上实现循环检查的一系列指令即可。</p>
+</li>
+<li><p>缺点：CPU和I/O设备只能串行工作，CPU需要一直轮询检查，长期处于忙等状态，CPU利用率很低。</p>
+</li>
+
+</ol>
+</li>
+<li><p>中断驱动方式</p>
+<ol start='' >
+<li><p>引入中断机制。由于I/O设备速度很慢，因此在CPU发出读/写命令后，可将等待I/O的进程阻塞，先切换到别的进程执行。当I/O完成后，控制器会向CPU发出一个中断信号，CPU检测到中断信号后，会保存当前进程的运行环境信息，转去执行中断处理程序处理该中断。处理中断的过程中，CPU从I/O控制器读一个字的数据传送到CPU寄存器，再写入主存。接着，CPU恢复等待I/O的进程（或其他进程）的运行环境，然后继续执行。</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%881.30.16.png" alt="截屏2022-12-09 下午1.30.16"  /></p>
+</li>
+<li><p>CPU会在每个指令周期的末尾检查中断。</p>
+</li>
+<li><p>中断处理过程中需要保存、恢复进程的运行环境，这个过程是需要一定时间开销的，可见如果中断发生的频率太高也会降低系统性能。</p>
+</li>
+<li><p>CPU干预频率：每次I/O开始之前、完成之后CPU介入，等待I/O完成的过程中CPU切换到别的进程。</p>
+</li>
+<li><p>数据传送的单位：每次读写一个字。</p>
+</li>
+<li><p>数据的流向：</p>
+<ol start='' >
+<li>读操作（数据输入）：I/O-&gt;CPU-&gt;内存</li>
+<li>写操作（数据输出）：内存-&gt;CPU-&gt;I/O</li>
+
+</ol>
+</li>
+<li><p>优点：与直接控制相比，中断执行过程中I/O控制器会通过中断信号主动报告I/O完成，CPU不需要持续轮询。CPU和I/O设备可以并行工作，CPU利用率得到明显提升。</p>
+</li>
+<li><p>缺点：每个字在I/O设备与内存之间的传输都需要经过CPU，而频繁的中断处理也会消耗较多的CPU时间。</p>
+</li>
+
+</ol>
+</li>
+<li><p>DMA方式</p>
+<ol start='' >
+<li><p>Direct Memory Access，直接存储器存取，主要用于块设备的I/O控制</p>
+</li>
+<li><p>改进</p>
+<ol start='' >
+<li>数据传送单位是块，不再是按字传输。</li>
+<li>数据的流向是从设备直接放入内存，或者从内存直接到设备，不需要CPU作为中介。</li>
+<li>仅在传送一个或多个数据块的开始和结束时才需要CPU干预。</li>
+<li>流程<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%881.36.14.png" alt="截屏2022-12-09 下午1.36.14"  /></li>
+
+</ol>
+</li>
+<li><p>DMA控制器<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%881.56.04.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%881.56.04.png"  /></p>
+<ol start='' >
+<li>组成：主机-控制器接口，块设备-控制器接口</li>
+<li>DR：数据寄存器，暂存从设备到内存/内存到设备的数据。</li>
+<li>MAR：内存地址寄存器，在输入时，MAR表示数据应放到内存的什么位置，输出时MAR表示输出的数据要放在内存的什么位置。</li>
+<li>DC：数据计数器，表示剩余要读写的字节数。</li>
+<li>CR：命令/状态寄存器，用于储存CPU发来的I/O命令或设备的状态信息。</li>
+
+</ol>
+</li>
+<li><p>CPU干预频率：仅在传送一个或多个数据块的开始和结束时需要CPU干预。</p>
+</li>
+<li><p>数据传送的单位：每次读写一个或多个块（每次读写的只能是多个连续的块，且这些块读入内存后也必须是连续的）</p>
+</li>
+<li><p>数据的流向（不再经过CPU）：</p>
+<ol start='' >
+<li>读操作（数据输入）：I/O-&gt;内存</li>
+<li>写操作（数据输出）：内存-&gt;I/O</li>
+
+</ol>
+</li>
+<li><p>优点：数据以块为单位传输，CPU介入频率进一步降低，数据的传输不再需要先经过CPU再写入内存，数据传输效率进一步增加。CPU和I/O设备的并行性得到提升。线路简单、价格低廉，适合小型和微型计算机的快速设备。</p>
+</li>
+<li><p>缺点：CPU每发出一条I/O指令，只能读写一个或多个连续的数据块。DMA窃取时钟周期，功能不够强，不能满足复杂的I/O操作。</p>
+</li>
+<li><p>周期窃取：</p>
+</li>
+<li><p>当 DMA 和 CPU 同时经总线访问内存时，CPU <strong>总是</strong>将总线的占有权让给 DMA 一个或几个主存周期，一般是 1 个存取周期，让设备和内存之间交换数据。<img src="https://wbw2333.github.io/assets/OS_b_images/7.png" referrerpolicy="no-referrer" alt="7"></p>
+<p>周期窃取对延迟 CPU 与主存的数据交换影响不大：</p>
+<ol start='' >
+<li>数据传送过程是不连续的和不规则的</li>
+<li>CPU 大部分情况下与 Cache 进行数据交换，直接访问内存较少</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>通道控制方式</p>
+<ol start='' >
+<li><p>通道：一种硬件（可以理解成猴版的CPU）通道可以识别并执行一系列通道指令，用于完成逻辑上独立的I/O任务，适用于中大型计算系统，实现<em>内存和外设（而不是CPU和外设）</em>之间的信息传输。</p>
+</li>
+<li><p>原理<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.03.20.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.03.20.png"  /></p>
+</li>
+<li><p>特点</p>
+<ol start='' >
+<li><p>I/O指令不再由处理器执行，而是储存在主存中让通道的处理器执行。</p>
+</li>
+<li><p>采用主存-通道-控制器-设备的四级结构，可以实现三级控制来控制多台不同的设备：</p>
+<ol start='' >
+<li>一个 CPU 通常连接多个通道，通过 I/O 指令控制</li>
+<li>一个通道可以连接若干控制器，通过执行通道命令控制</li>
+<li>一个控制器可以连接若干设备，通过动作序列控制</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>与CPU相比，通道可以执行的指令很单一，并且通道程序是放在主机内存中的，也就是说通道与CPU共享内存。</p>
+</li>
+<li><p>流程<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.06.04.png" alt="截屏2022-12-09 下午2.06.04"  /></p>
+</li>
+<li><p>CPU干预的频率：极低，通道会根据CPU的指示执行相应的通道程序，只有完成一组数据块的读写后才需要发出中断信号，请求CPU干预。</p>
+</li>
+<li><p>数据传送的单位：每次读写一组数据块。</p>
+</li>
+<li><p>数据的流向（在通道的控制下进行）：</p>
+<ol start='' >
+<li>读操作（数据输入）：I/O-&gt;内存</li>
+<li>写操作（数据输出）：内存-&gt;I/O</li>
+
+</ol>
+</li>
+<li><p>优点：CPU、通道、I/O设备可以并行工作，资源利用率很高。</p>
+</li>
+<li><p>缺点：实现复杂，需要专门的通道硬件支持。</p>
+</li>
+
+</ol>
+</li>
+<li><p>总结<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.08.44.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.08.44.png"  /></p>
+<p><font color=red>重点要理解通道的地位和通道程序的概念</font></p>
+</li>
+
+</ol>
+<h3 id='4）io软件'>（4）I/O软件</h3>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.15.06.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.15.06.png"  /></p>
+<ol start='' >
+<li><p>I/O软件设计目标</p>
+<ol start='' >
+<li>高效率：改善设备效率，尤其是磁盘I/O的效率。</li>
+<li>通用性：用统一的标准来管理所有设备。</li>
+
+</ol>
+</li>
+<li><p>用户层软件：</p>
+<ol start='' >
+<li><p>用户层软件实现了与用户交互的接口，用户可直接使用该层提供的、与I/O操作相关的库函数对设备进行操作。</p>
+</li>
+<li><p>用户层软件将用户请求翻译成格式化的I/O请求，并通过“系统调用”请求操作系统内核的服务。</p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.19.27.png" alt="截屏2022-12-09 下午2.19.27"  /></p>
+</li>
+<li><p>Eg：printf(&quot;hello world!&quot;)，会被翻译成等价的write系统调用，当然，用户层软件也会在系统调用时填入相应参数。</p>
+</li>
+<li><p>windows 操作系统向外提供的一系列系统调用，但是由于系统调用的格式严格，使用麻烦，因此在用户层上封装了一系列更方便的库函数接口供用户使——Windows API。</p>
+</li>
+
+</ol>
+</li>
+<li><p>设备独立性软件</p>
+<ol start='' >
+<li><p>又称设备无关性软件，与设备的硬件特性无关的功能几乎都在这一层实现。</p>
+</li>
+<li><p>功能</p>
+<ol start='' >
+<li><p>向上一层提供统一的调用接口（如write、read系统调用）。</p>
+</li>
+<li><p>设备的保护：原理类似文件保护，设备被看作是一种特殊的文件，不同用户对文件的访问权限不一样，同理对设备的访问权限也不一样。</p>
+</li>
+<li><p>差错处理：对一些设备的错误进行处理（错误类型极多）。</p>
+</li>
+<li><p>设备的分配与回收</p>
+</li>
+<li><p>数据缓冲区管理：通过缓冲技术屏蔽设备之间数据交换单位大小和传输速度的差异。</p>
+</li>
+<li><p>建立逻辑设备名到物理设备名的映射关系，根据设备类型选择调用相应的驱动程序。</p>
+<ol start='' >
+<li><p>用户或用户层软件发出I/O操作相关系统调用的系统调用时，需要指明此次要操作的I/O设备的遇辑设备名(eg：去学校打印店打印时，需要选择打印机1/打印机2/打印机3，其实这些都是逻辑设备名）。</p>
+</li>
+<li><p>逻辑设备表：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.45.42.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.45.42.png"  /></p>
+</li>
+<li><p>操作系统系统可以采用两种方式管理逻辑设备表(LUT)</p>
+<ol start='' >
+<li>第一种方式，整个系统只设置一张LUT，这就意味着所有用户不能使用相同的逻辑设备名，因此这种方式只适用于单用户操作系统。</li>
+<li>第二种方式，为每个用户设置一张LUT，各个用户使用的逻辑设备名可以重复，适用于多用户操作系统。系统会在用户登录时为其建立一个用户管理进程，而LUT就存放在用户管理进程的PCB中。</li>
+
+</ol>
+</li>
+<li><p>为何不同设备需要不同的设备驱动程序？</p>
+<p>以佳能打印机为例<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.47.08.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.47.08.png"  /></p>
+<p>而惠普打印机的内部结构就是<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.47.27.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.47.27.png"  /></p>
+<p>因此不同型号的设备内部的电子部件是完全不一样的，厂家需要提供与设备对应的驱动程序，CPU执行驱动程序的指令序列，来完成设置设备寄存器、检查设备状态等工作。</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>设备驱动程序<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.49.02.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.49.02.png"  /></p>
+<ol start='' >
+<li>主要和实际的物理设备相关，将用户提交的逻辑I/O请求转化为物理I/O操作。</li>
+
+</ol>
+</li>
+<li><p>中断处理程序：当I/O任务完成时，I/O控制器会发送一个I/O信号，系统会根据中断信号类型找到响应的中断处理程序并执行。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.50.22-0568713.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.50.22-0568713.png"  /></p>
+</li>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.52.02.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%882.52.02.png"  /></p>
+</li>
+<li><p><font color=red>理解并记住!0软件各个层次之间的顺序，要能够推理判断某个处理应该是在哪个层次完成的（最常考的
+是设备独立性软件、设备驱动程序这两层。只需理解一个特点即可：直接涉及到硬件具体细节、且与中断无关的操作肯定是在设备驱动程序层完成的：没有涉及硬件的、对各种设备都需要进行的管理工作都是在设各独立性软件层完成的）</font></p>
+</li>
+
+</ol>
+<h3 id='5）io核心子系统'>（5）I/O核心子系统</h3>
+<ol start='' >
+<li><font color=red>假脱机技术(SPOOLing 技术)需要请求𥔵盘设备的设备独立性软件的服务，
+因此一般来说假脱机技术是在用户层软件实现的。但是408大纲又将假脱机技术归为
+“I/O核心子系统”
+的功能，因此考试时还是以大纲为准。</font></li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.11.38.png" alt="截屏2022-12-09 下午4.11.38"  /></li>
+<li>I/O调度：用某种算法来确定一个好的处理I/O请求的顺序</li>
+<li>设备保护：操作系统需要实现文件保护功能，不同的用户对各个文件有不同的访问权限。</li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.14.24.png" alt="截屏2022-12-09 下午4.14.24"  /></li>
+
+</ol>
+<h3 id='6）假脱机技术'>（6）假脱机技术</h3>
+<ol start='' >
+<li><p>脱机技术</p>
+<ol start='' >
+<li>为了解决手工输入阶段CPU和I/O之间过大的速度差，在之后的批处理阶段引入了脱机技术（基于磁带完成)：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.17.13.png" alt="截屏2022-12-09 下午4.17.13"  /></li>
+<li>引入脱机技术后，缓解了CPU与慢速I/O设备的速度矛盾。另一方面，即使CPU在忙碌，也可以提前将数据输入到磁带，即使慢速的输出设备正在忙碌，也可以提前将数据输出到磁带。</li>
+
+</ol>
+</li>
+<li><p>假脱机技术：又称SPOOLing技术，使用软件的方式模拟脱机技术。</p>
+<ol start='' >
+<li><p>组成：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.26.23.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.26.23.png"  /></p>
+</li>
+<li><p>原理</p>
+<p>在磁盘上开辟出两个存储区域——“输入井”和“输出井”：</p>
+<ol start='' >
+<li>“输入井”模拟脱机输入时的磁带，用于收容I/O设备输入的数据。</li>
+<li>“输出井”模拟脱机输出时的磁带，用于收容用户进程输出的数据。</li>
+
+</ol>
+<p>“输入进程” 模拟脱机输入时的外围控制机输入进程。
+“输出进程”模拟脱机输出时的外围控制机。<strong>要实现SPOOLing 技术，必须要有多道程序技术的支持。系统会建立 “输入进程”和“输出进程”。</strong></p>
+<p>在输入进程的控制下，“输入缓冲区”用于暂存从输入设备输入的数据，之后再转存到输入井中。</p>
+<p>注意，输入缓冲区和输出缓冲区是在内存中的缓冲区。</p>
+<p>在输出进程的控制下，“输出缓冲区”用于暂存从输出井送来的数据，之后再传送到输出设备上。</p>
+</li>
+
+</ol>
+</li>
+<li><p>共享打印机原理分析：</p>
+<ol start='' >
+<li><p>独占式设备——只允许各个进程串行使用的设备，一段时间内只能满足一个进程的请求。</p>
+</li>
+<li><p>共享设备——允许多个进程“同时”使用的设备（宏观上同时使用，微观上可能是交替使用），可以同时满足多个进程的使用请求。</p>
+</li>
+<li><p>打印机是独占设备，但是可以通过SPOOLing技术实现虚拟共享：</p>
+</li>
+<li><p>原理：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.36.38.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.36.38.png"  /></p>
+<ol start='' >
+<li><p>当多个用广进程提出输出打印的请求时，系统会答应它们的请求，但是并不是真正把打印机分配给他们，而是由假脱机管理进程为每个进程做两件事：</p>
+<ol start='' >
+<li>在磁盘输出井中为进程申请一个空闲缓冲区（也就是说，这个<strong>缓冲区是在磁盘上的</strong>），并将要打印的数据送入其中。</li>
+<li>为用户进程申请一张空白的打印请求表，并将用户的打印请求填入表中（其实就是用来说明用户的打印数据存放位置等信息的），再将该表挂到假脱机文件队列上。</li>
+
+</ol>
+</li>
+<li><p>当打印机空闲时，输出进程会从文件队列的队头取出一张打印请求表，并根据表中的要求将要打印的数据从输出井传送到输出缓冲区，，再输出到打印机进行打印。用这种方式可依次处理完全部的打印任务。</p>
+</li>
+<li><p>虽然系统中只有一个台打印机，但每个进程提出打印请求时，系统都会为在输出井中为其分配一个存储区（相当于分配了一个逻辑设备），使每个用户进程都觉得自己在独占一台打印机，从而实现对打印机的共享。</p>
+</li>
+
+</ol>
+</li>
+<li><p>SPOOLing 技术可以把一台物理设备虚拟成逻辑上的多台设备，丽将独占式设备改造成共享设备。</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='7）设备的分配与回收'>（7）设备的分配与回收</h3>
+<ol start='' >
+<li><p>设备分配时应该考虑的因素</p>
+<ol start='' >
+<li><p>设备的固有属性：独占设备、共享设备（宏观上共享微观上独有）、虚拟设备。</p>
+</li>
+<li><p>设备分配算法：先来先服务、短任务优先......</p>
+</li>
+<li><p>设备分配的安全性</p>
+<ol start='' >
+<li>安全分配方式：为进程分配一个设备后就将进程阻塞，本次I/O完成后才将进程唤醒。一个时段内每个进程只能使用一个设备。
+优点：破坏了“请求和保持”条件，不会死锁。
+缺点：对于个进程来说，CPU和I/O设备只能串行工作。</li>
+<li>不安全分配：进程发出I/O请求以后，系统为其分配I/O设备，进程可继续执行，之后还可以发出新的I/O请求，只有某个I/O请求得不到满足时才将进程阻塞。一个进程可以同时使用多个设备。
+优点：进程的计算任务和I/O任务可以并行处理，使进程迅速推进。
+缺点：有可能发生死锁（死锁避免、死锁的检测和解除）。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>静态分配和动态分配——联系到PV操作。</p>
+<ol start='' >
+<li>静态分配：进程在运行前就为其分配所有资源，结束后归还。这种分配方式破坏了“请求和保持”条件，不会发生死锁。</li>
+<li>动态分配：进程随用随申请，提高设备利用率。</li>
+
+</ol>
+</li>
+<li><p>设备分配管理中的数据结构</p>
+<ol start='' >
+<li>设备、控制器、通道之间的关系<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.48.05.png" alt="截屏2022-12-09 下午4.48.05"  /></li>
+<li>一个通道可以对应多个控制器，一个控制器可以控制多个设备。</li>
+<li>设备控制表（DCT）：系统为每个设备配置一张DCT，用于记录设备情况。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.49.36.png" alt="截屏2022-12-09 下午4.49.36"  /></li>
+<li>控制器控制表（COCT）：每个设备控制器都会对应一张COCT，OS根据COCT的信息对控制器进行操作和管理。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.50.32.png" alt="截屏2022-12-09 下午4.50.32"  /></li>
+<li>通道控制表（CHCT）：每个通道都会对应一张CHCT，OS根据CHCT的信息对通道进行操作和管理。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.51.16.png" alt="截屏2022-12-09 下午4.51.16"  /></li>
+<li>系统设备表（SDT）：记录了系统中<strong>全部设备</strong>的情况，每个设备对应一个表目。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.52.01.png" alt="截屏2022-12-09 下午4.52.01"  /></li>
+
+</ol>
+</li>
+<li><p>设备分配的步骤</p>
+<ol start='' >
+<li><p>内容：</p>
+<ol start='' >
+<li>根据进程请求的物理设备名查找SDT（注：物理设备名是进程请求分配设备时提供的参数）。</li>
+<li>根据SDT找到DCT，若设备忙碌则将进程PCB挂到设备等待队列中，不忙碌则将设备分配给进程。</li>
+<li>根据DCT找到COCT，若控制器忙碌则将进程PCB挂到控制器等待队列中，不忙碌则将控制器分配给进程。</li>
+<li>根据COCT找到CHCT，若通道忙碌则将进程PCB挂到通道等待队列中，不忙碌则将通道分配给进程。</li>
+
+</ol>
+</li>
+<li><p><strong>只有设备、控制器、通道三者都分配成功时，这次设备分配才算成功，之后便可启动I/O设备进行数据传送</strong></p>
+</li>
+<li><p>缺点：</p>
+<ol start='' >
+<li>用户编程时必须使用，物理设备名，底层细节对用户不透明，不方便编程</li>
+<li>若换了一个物理设备，则程序无法运行。</li>
+<li>若进程请求的物理设备正在忙碌，则即使系统中还有同类型的设备，进程也必须阻塞等待。</li>
+
+</ol>
+</li>
+<li><p>改进：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.56.36.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.56.36.png"  /><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.57.17.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%884.57.17.png"  /></p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='8）缓冲区管理'>（8）缓冲区管理</h3>
+<ol start='' >
+<li><p>缓冲区</p>
+<ol start='' >
+<li><p>概念：缓冲区是一个存储区域，可以由专门的硬件寄存器组成，也可利用内存作为缓冲区。</p>
+</li>
+<li><p>使用硬件作为缓冲区的成本较高，容量也较小，一般仅用在对速度要求非常高的场合（如存储器管理中所用的联想寄存器，由于对页表的访问频率极高，因此使用速度很快的联想寄存器来存放页表项的副本）一般情况下，更多的是利用内存作为缓冲区，“设备独立性软件”的缓冲区管理就是要组织管理好这些缓冲区。</p>
+</li>
+<li><p>作用</p>
+<ol start='' >
+<li>缓和<strong>CPU与设备之间速度不匹配</strong>的矛盾。</li>
+<li>减少对CPU的中断频率，放宽对CPU中断相应时问的限制。</li>
+<li>解决数据粒度不匹配的问题（如输出进程每次生成一块数据，I/O设备只输出一个字符）。</li>
+<li>提高CPU与I/O设备之间的并行性。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%885.00.12.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%885.00.12.png"  /></li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+<li><p>缓冲区管理策略</p>
+<ol start='' >
+<li><p>单缓冲</p>
+<ol start='' >
+<li>假设某用户进程请求某种块设备读入若干块的数据。若采用单缓冲的策略，操作系统会在主存中为其分配一个缓冲区（若题目中没有特别说明，一个缓冲区的大小就是一个块）。注意当缓冲区数据非空时，不能往缓冲区冲入数据，只能从缓冲区把数据传出；当缓冲区为空时，可以往缓冲区冲入数据，但必须把缓冲区充满以后，才能从缓冲区把数据传出。</li>
+<li><img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%885.05.35.png" alt="截屏2022-12-09 下午5.05.35"  /></li>
+<li><font color=red>常考题型：计算每处理一块数据平均需要多久？技巧：假定一个初始状态，分析下次到达相同状态需要多少时间，这就是处理一块数据平均所需时间。</font></li>
+<li>如果CPU处理时间C&lt;缓冲区充满时间T：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.44.33.png" alt="截屏2022-12-09 下午6.44.33"  /></li>
+<li>如果CPU处理时间C&gt;缓冲区充满时间T：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.45.31.png" alt="截屏2022-12-09 下午6.45.31"  /></li>
+<li>结论：采用单缓冲策略，则处理时间为max(T,C) + M</li>
+
+</ol>
+</li>
+<li><p>双缓冲</p>
+<ol start='' >
+<li>假设某用户进程请求某种块设备读入若干块的数据。若采用双缓冲的策略，操作系统会在主存中为其分配两个缓冲区（若题目中没有特别说明，一个缓冲区的大小就是一个块）。</li>
+<li>如果T&gt;C+M：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.47.14.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.47.14.png"  /></li>
+<li>如果T&lt;C+M：<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.48.31.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.48.31.png"  /></li>
+<li><font color=red>要注意到如果T&lt;C+M的话，很难找到一个和初始情况相同的状态。</font></li>
+<li>结论：处理数据块的平均时间为max(T,C+M)。</li>
+
+</ol>
+</li>
+<li><p>使用单双缓冲的区别：</p>
+<ol start='' >
+<li>两台机器之间通信时，可以配置缓冲区用于数据的发送和接受。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.50.57.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.50.57.png"  /></li>
+<li>如果两个互相通信的机器只设置单缓冲区，则在任一时刻只能单向传输。</li>
+<li>为了实现双向传送，需要设置双缓冲区。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.51.21.png" alt="截屏2022-12-09 下午6.51.21"  /></li>
+<li><font color=blue>管道通信中的管道就是缓冲区，要实现数据的双向传输，必须设置两个管道。</font></li>
+
+</ol>
+</li>
+<li><p>循环缓冲区：将多个大小相等的缓冲区连接成一个循环队列，用in、out指针分别表示可以冲入和取出数据的缓冲区。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.52.53.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.52.53.png"  /></p>
+</li>
+<li><p>缓冲池</p>
+<ol start='' >
+<li><p>缓冲池由系统中共用的缓冲区组成。这些缓冲区按使用状况可以分为：空缓冲队列、装满输入数据的缓冲队列（输入队列）、装满输出数据的缓冲队列（输出队列）。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.53.58.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.53.58.png"  /></p>
+</li>
+<li><p>另外，根据一个缓冲区在实际运算中扮演的功能不同，又设置了四种工作缓冲区：用于收容输入数据的工作缓冲区 (hin)
+、用于提取输入数据的工作缓冲区（sin）、用于收容输出数据的工作缓冲区 （hout）、用于提取输出数据的工作缓冲区 （sout）。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.54.08.png" alt="/%E6%88%AA%E5%B1%8F2022-12-09%20%E4%B8%8B%E5%8D%886.54.08.png"  /></p>
+</li>
+<li><p>缓冲池的工作原理：</p>
+<ol start='' >
+<li>输入进程请求输入数据：从空缓冲队列中取出块作为收容输入数据的工作缓冲区（hin）冲满数据后将缓冲区挂到输入队列队尾。</li>
+<li>计算进程想要取得一块输入数据：从输入队列中取得一块冲满输入数据的缓沖区作为“提取输入数据的工作缓冲区 (sin)”，缓冲区读空后挂到空缓冲区队列。</li>
+<li>计算进程想要将准备好的数据冲入缓冲区：从空缓冲队列中取出一块作为“收容输出数据的工作缓冲区 (hout)。数据沖满后将缓冲区挂到输出队列队尾。</li>
+<li>输出进程请求输出数据：从输出队列中取得一块冲满输出数据的缓冲区作为“提取输出数据的工作缓冲区 (sout)”。缓冲区读空后挂到空缓冲区队列。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h2 id='六处理机'>六、处理机</h2>
+<h3 id='1）寄存器'>（1）寄存器</h3>
+<ol start='' >
+<li><p>用户可见寄存器</p>
+<ol start='' >
+<li><p>作用：可以使程序员减少访问主存储器的次数，提高指令执行的效。所有程序可使用，包括应用程序和系统程序。</p>
+</li>
+<li><p>数据（通用）寄存器：AX、BX、CX、DX等。</p>
+</li>
+<li><p>地址寄存器：索引（SI、DI）、栈指针（SP、BP）、段地址（CS、DS、SS、ES）、页表寄存器等。</p>
+</li>
+<li><p>控制和状态寄存器：控制和状态寄存器用于控制处理器的操作，主要是被具有特权的操作系统程序使用，以控制程序的执行。</p>
+<ol start='' >
+<li>程序计数器PC：存储将取指令的地址。</li>
+<li>指令寄存器IR：储存最近使用的指令。</li>
+<li>条件码CC：CPU为指令操作结果设置的位，标志正/负/零/溢出等结果。</li>
+<li>标志位：中断位等。</li>
+
+</ol>
+</li>
+<li><p>程序状态字PSW：记录当前程序运行的动态信息，包括：</p>
+<ol start='' >
+<li>程序计数器、指令寄存器、条件码</li>
+<li>中断字、中断允许/禁止、中断屏蔽、处理器模式、内存保护、调试控制</li>
+
+</ol>
+</li>
+<li><p>PSW 也是计算机系统的<strong>寄存器</strong></p>
+<ol start='' >
+<li>通常设置一组控制与状态寄存器</li>
+<li>也可以专设一个 PSW 寄存器</li>
+
+</ol>
+</li>
+<li><p>标志划分为三组：<strong>状态标志、控制标志和系统标志</strong>（更多见 P58）</p>
+<ol start='' >
+<li>状态标志：使得一条指令的执行结果影响其后指令的执行，比如溢出等标志</li>
+<li>控制指令：控制操作系统行为，比如模式转换等。</li>
+<li>系统标志：与进程管理有关，用于保护模式。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='2）指令'>（2）指令</h3>
+<ol start='' >
+<li><p>机器指令：计算机系统执行的基本命令，是中央处理器执行的基本单位。</p>
+<p>指令由一个或多个字节组成，包括操作码字段、一个或多个操作数地址字段、以及一些表征机器状态的状态字以及特征码。指令完成各种算术逻辑运算、数据传输、控制流跳转。</p>
+</li>
+<li><p>指令执行过程：CPU根据PC<em>取出指令</em>、放入IR，并对指令<em>译码</em>，然后发出各种控制命令，执行微操作系列，从而完成一条指令的<em>执行</em>。<img src="https://wbw2333.github.io/assets/OS_b_images/4.png" referrerpolicy="no-referrer" alt="4"></p>
+</li>
+
+</ol>
+<h3 id='3）处理器模式'>（3）处理器模式</h3>
+<ol start='' >
+<li><p>计算机通过设置处理器模式实现特权指令管理。</p>
+</li>
+<li><p>设置四种0、1、2、3运行模式（保护级别）：</p>
+<ol start='' >
+<li>0：内核级，操作系统内核，可以执行全部指令，包括中断处理、处理 I/O 操作等命令。</li>
+<li>	1：系统调用级，执行系统调用，获得特定的和受保护的程序服务。</li>
+<li>2：共享库级，可以多个运行进程共享，允许调用库函数，读取但不修改相关数据。</li>
+<li>3：用户程序，只能执行非特权指令，受到的保护最少。</li>
+
+</ol>
+</li>
+<li><p>模式切换：“用户态-&gt;内核态”和“内核态-&gt;用户态”两种。</p>
+<ol start='' >
+<li><p>中断、异常或系统异常等事件导致用户程序向 OS 内核切换，触发：“用户模式-&gt;内核模式”，仅有以下三种方式能触发：</p>
+<ol start='' >
+<li>程序请求操作系统服务，<code>执行系统调用</code></li>
+<li>程序<code>运行时发生异常</code>（如发生程序性中断，或者目态执行特权指令）</li>
+<li>程序运行时发生并<code>响应中断</code>（<em>一般是 I/O 中断</em>）</li>
+
+</ol>
+<p>可以认为中断和异常是用户态到内核态的唯一途径。</p>
+</li>
+<li><p>内核处理完中断以后调用中断返回指令触发“内核态-&gt;用户态”的转换，将控制权交给应用程序。</p>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<h3 id='4）栈空间'>（4）栈空间</h3>
+<ol start='' >
+<li><p>用户栈：用户栈是用户进程空间中开辟的一块区域，用于保存应用程序的子程序（函数）间相互调用的参数、返回值、返回点以及子程序的局部变量。</p>
+<p>如果只有用户栈，没有核心栈，那么操作系统则很难对核心栈的数据提供相应的保护措施。</p>
+</li>
+<li><p>核心栈：也叫系统栈或内核栈，是内存中属于操作系统空间的一块区域，<strong>每个进程有一个核心栈：可读可写不可执行，大小有限</strong>。硬件栈指针只有一个。</p>
+<p>用途：保存中断现场，嵌套中断；保存操作系统程序（函数）间相互调用的参数、返回值、返回点以及程序局部变量。</p>
+</li>
+
+</ol>
+<h1 id='os补充'>OS补充</h1>
+<h2 id='其他补充'>其他补充</h2>
+<h3 id='为什么随机存储可以成为计算机操作系统出现的基础课本-267-页）'>为什么随机存储可以成为计算机操作系统出现的基础？（课本 267 页）</h3>
+<ol start='' >
+<li>随机存储</li>
+<li>线性存储：线性存储</li>
+
+</ol>
+<h3 id='为什么随机存取很重要呢'>为什么随机存取很重要呢？</h3>
+<ol start='' >
+<li>因为操作系统引入了虚拟存储，虚拟分页，虚拟的地址空间需要 1000 个页框，但是我只给了 100 个页框进行使用，命中即为是这 100 个。</li>
+<li>如果没有命中，则缺页，启动缺页中断处理，然后到磁盘中查找对应的页调入，寻找相对于磁带的形式而言非常大。让用户感觉不到有磁带的延时。</li>
+
+</ol>
+<h3 id='计算机操作系统的用途'>计算机操作系统的用途</h3>
+<ol start='' >
+<li>管理软硬件资源</li>
+<li>控制程序执行</li>
+<li>改善人机界面</li>
+<li>合理组织计算机工作流程</li>
+
+</ol>
+<h3 id='os的三大抽象'>OS的三大抽象</h3>
+<ol start='' >
+<li><p>进程抽象</p>
+<ol start='' >
+<li>进程是对进入内存的执行程序在处理器上操作的状态集的一个抽象。</li>
+<li>进程是并发和并行操作的基础。</li>
+<li>进程可以使用 <code>fork()</code>、<code>wait()</code>、<code>exec()</code> 等系统调用。</li>
+<li>进程的执行依赖于内存和设备上的信息资源。</li>
+
+</ol>
+</li>
+<li><p>虚存抽象</p>
+<ol start='' >
+<li>虚拟内存的本质是在物理内存的基础上创建一个新的抽象概念。</li>
+<li>虚存抽象保证了安全性</li>
+<li>进程的执行还依赖于存放在内存中的程序和数据，而他们往往存储在设备上，所以我们需要对设备进行抽象。</li>
+
+</ol>
+</li>
+<li><p>文件抽象</p>
+<ol start='' >
+<li>文件是设备的一种抽象，通过将文件的字节映射到存储设备的物理块中来实现文件抽象。</li>
+<li>提供了 <code>open()</code>、<code>read()</code> 和 <code>write()</code> 等方法来控制和使用文件。</li>
+<li>磁盘、光盘等外存设备都有极其复杂的物理接口，通常我们将其抽象，使得所存放的信息可以表示为一个命名的逻辑字节流，称其为文件，这是资源抽象的一个特例。</li>
+<li>为了管理方便，操作系统将除处理器和内存以外，将磁盘和其他外部设备资源都抽象为文件，减少系统开销，复用系统调用。</li>
+
+</ol>
+</li>
+<li><p>操作系统的基本任务：防止硬件资源被失控的程序滥用；屏蔽复杂的硬件操作细节。<img src="2.png"  /></p>
+</li>
+
+</ol>
+<h3 id='多道程序设计'>多道程序设计</h3>
+<ol start='' >
+<li><p>优点：</p>
+<ol start='' >
+<li>CPU 与外部设备充分并行</li>
+<li>外部设备之间充分并行</li>
+<li>发挥 CPU、内存和设备的使用效率</li>
+<li>提高单位时间的算题量（吞吐率）</li>
+
+</ol>
+</li>
+<li><p>多道程序设计的主要缺点：延长了作业的周转时间。</p>
+</li>
+<li><p>实现：进入内存执行的程序建立管理实体：进程动态概念，驻留在操作系统中。OS应该能管理与控制进程程序的执行，OS协调管理各类资源在进程间的使用。</p>
+</li>
+<li><p>实现要点：如何使用资源；如何复用CPU；如何使CPU和I/O设备并行；如何中断（让出CPU）；程序道数受到物理资源限制。</p>
+</li>
+<li><p>需要处理的问题：储存保护与程序浮动；处理器管理与分配；资源管理与调度。</p>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+<h3 id='os内核是中断驱动的中断是激活操作系统的唯一方式'><code>OS内核是中断驱动的/中断是激活操作系统的唯一方式</code></h3>
+<h3 id='为什么操作系统不能使用名空间没有高级语言为什么不可以通过名字来调用）'>为什么操作系统不能使用名空间?（没有高级语言，为什么不可以通过名字来调用）</h3>
+<p>操作系统处于系统底层之上，是不可以将高阶的名字，翻译成计算机操作系统可以理解的地址。底层是通过地址号来调用，而我们的按名访问本质上也只是完成了从名空间到地址空间的映射而已</p>
+<h3 id='寄存器'>寄存器</h3>
+<ol start='' >
+<li><p>用户可见寄存器</p>
+<ol start='' >
+<li><p>作用：可以使程序员减少访问主存储器的次数，提高指令执行的效。所有程序可使用，包括应用程序和系统程序。</p>
+</li>
+<li><p>数据（通用）寄存器：AX、BX、CX、DX等。</p>
+</li>
+<li><p>地址寄存器：索引（SI、DI）、栈指针（SP、BP）、段地址（CS、DS、SS、ES）、页表寄存器等。</p>
+</li>
+<li><p>控制和状态寄存器：控制和状态寄存器用于控制处理器的操作，主要是被具有特权的操作系统程序使用，以控制程序的执行。</p>
+<ol start='' >
+<li>程序计数器PC：存储将取指令的地址。</li>
+<li>指令寄存器IR：储存最近使用的指令。</li>
+<li>条件码CC：CPU为指令操作结果设置的位，标志正/负/零/溢出等结果。</li>
+<li>标志位：中断位等。</li>
+
+</ol>
+</li>
+<li><p>程序状态字PSW：记录当前程序运行的动态信息，包括：</p>
+<ol start='' >
+<li>程序计数器、指令寄存器、条件码</li>
+<li>中断字、中断允许/禁止、中断屏蔽、处理器模式、内存保护、调试控制</li>
+
+</ol>
+</li>
+<li><p>PSW 也是计算机系统的<strong>寄存器</strong></p>
+<ol start='' >
+<li>通常设置一组控制与状态寄存器</li>
+<li>也可以专设一个 PSW 寄存器</li>
+
+</ol>
+</li>
+<li><p>标志划分为三组：<strong>状态标志、控制标志和系统标志</strong>（更多见 P58）</p>
+<ol start='' >
+<li>状态标志：使得一条指令的执行结果影响其后指令的执行，比如溢出等标志</li>
+<li>控制指令：控制操作系统行为，比如模式转换等。</li>
+<li>系统标志：与进程管理有关，用于保护模式。</li>
+
+</ol>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+</body>
+</html>
