@@ -584,8 +584,8 @@
 <li><p>挂起态：随着不断创建进程，当系统资源尤其是内存资源已经不能满足进程运行的要求时，必须把某些进程<strong>挂起（suspend）</strong>，对换到磁盘对换区中，释放它占有的某些资源，暂时不参与低级调度，起到平滑系统负荷的目的；也可能系统出现故障，需要暂时挂起一些进程，以便故障消除后再接触挂起并恢复进程运行。进程挂起的原因是多种多样的。</p>
 </li>
 <li><p>进程状态的转换</p>
-<p><img src="../assets/OS_b_images/截屏2022-09-11 上午10.40.18.png" alt="/截屏2022-09-11 上午10.40.18.png"  /></p>
-<p><font color=green><strong>842书里面使用的五状态模型是就绪态、阻塞态、运行态、挂起就绪态、挂起阻塞态。</strong></font><img src="../assets/OS_b_images/截屏2023-02-08 下午1.39.24.png" alt="/截屏2023-02-08 下午1.39.24.png"  /></p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/截屏2022-09-11 上午10.40.18.png" alt="/截屏2022-09-11 上午10.40.18.png"  /></p>
+<p><font color=green><strong>842书里面使用的五状态模型是就绪态、阻塞态、运行态、挂起就绪态、挂起阻塞态。</strong></font><img src="https://wbw2333.github.io/assets/OS_b_images/截屏2023-02-08 下午1.39.24.png" alt="/截屏2023-02-08 下午1.39.24.png"  /></p>
 </li>
 
 </ol>
@@ -658,7 +658,7 @@
 </li>
 <li><p>进城的挂起：</p>
 <ol start='' >
-<li><p>概念：OS 无法预期进程的数目与资源需求，计算机系统在运行过程中可能出现资源不足的情况，此时系统就会表现出<em>性能低</em>和<em>死锁</em>。<img src="../assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-09-16%20%E4%B8%8A%E5%8D%889.03.22.png" alt="/./截屏2022-09-16 上午9.03.22.png"  /></p>
+<li><p>概念：OS 无法预期进程的数目与资源需求，计算机系统在运行过程中可能出现资源不足的情况，此时系统就会表现出<em>性能低</em>和<em>死锁</em>。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-09-16%20%E4%B8%8A%E5%8D%889.03.22.png" alt="/./截屏2022-09-16 上午9.03.22.png"  /></p>
 </li>
 <li><p>解决方法：剥夺某些进程的内存和资源，调入对换区。</p>
 </li>
@@ -800,7 +800,7 @@
 <ol start='9' >
 <li><p>Jacketing技术：Jacketing的目标是把一个产生阻塞的系统调用转化成一个非阻塞的系统调用。例如,当进程中的一个线程调用IO中断前，先调用一个应用级的I/O jacket例程，而不是直接调用一个系统I/O。让这个jacket例程检查并确定I/O设备是否忙。如果忙，则jacketing将控制权交给该进程的线程调度程序，决定该线程进入阻塞状态并将控制权传送给另一个线程（若无就绪态线程咋可能执行进程切换）。</p>
 </li>
-<li><p>Solaris多线程技术：引入了轻量级线程，将轻量级线程和内核级线程映射，是混合式线程。<img src="../assets/OS_b_images/28.png" alt="28"  /></p>
+<li><p>Solaris多线程技术：引入了轻量级线程，将轻量级线程和内核级线程映射，是混合式线程。<img src="https://wbw2333.github.io/assets/OS_b_images/28.png" alt="28"  /></p>
 <ol start='' >
 <li>Process 1：单进程单线程，内核级多线程；</li>
 <li>Process 2：单进程双线程，进程映射到两个轻量级线程，相当于用户级多线程；</li>
@@ -844,7 +844,7 @@
 </ol>
 </li>
 <li><p>三级调度的对比</p>
-<p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-16 上午9.21.25.png" alt="/./截屏2022-09-16 上午9.21.25.png"  /><img src="../assets/OS_b_images/22.png" alt="22"  /></p>
+<p><img src="https://wbw2333.github.io/assets/OS_b_images/./截屏2022-09-16 上午9.21.25.png" alt="/./截屏2022-09-16 上午9.21.25.png"  /><img src="https://wbw2333.github.io/assets/OS_b_images/22.png" alt="22"  /></p>
 </li>
 
 </ol>
@@ -1161,7 +1161,7 @@ flag[0] = false;
 
 Process2
 flag[1] = true;
-turn = 0;	
+turn = 0;
 while(flag[0] &amp;&amp; turn==0);
 access the critical section;
 flag[1] = false;
@@ -1383,7 +1383,7 @@ customer(){
 </li>
 <li><p>互斥信号量在缓冲区等于1的时候可以省略，但是当缓冲区大于1时，缺省互斥信号量可能会导致多生产者覆盖的现象。</p>
 </li>
-<li><p><img src="../assets/OS_b_images/48.png" referrerpolicy="no-referrer" alt="48"></p>
+<li><p><img src="https://wbw2333.github.io/assets/OS_b_images/48.png" referrerpolicy="no-referrer" alt="48"></p>
 </li>
 
 </ol>
@@ -1410,7 +1410,7 @@ while(1){
     random = random % 3;
     if (random == 0){
         	提供烟草和纸
-        	V(offerl); 
+        	V(offerl);
     }
     else if (random == 1){
     			提供烟草和胶水
@@ -1579,11 +1579,11 @@ writer(){
     if(wcount == 1)
     	P(rmutex);
     V(w);
-    
+
     P(rw)
     write into the file
     V(rw);
-    
+
     P(w);
     wcount--;
     if(wcount == 0)
@@ -1816,7 +1816,7 @@ process server_i(){
 <li>东西向汽车过独木桥，为了保证安全，只要桥上无车，则允许一方的汽车过桥，待一方的车全部过完后，另一方的车才允许过桥。</li>
 <li>以 3 辆汽车为一组，要求保证东方和西方以组为单位交替通过汽车。</li>
 <li>重点在于实现交替通过——设计两个mutex=3，每个方向的汽车的通行mutex交给对面方向V，而自己通行的时候P自己的，所以只有对面已经通行过，自己才能V。</li>
-<li>代码<img src="../assets/OS_b_images/65.png" alt="65"  /></li>
+<li>代码<img src="https://wbw2333.github.io/assets/OS_b_images/65.png" alt="65"  /></li>
 <li>注意这里countu和countd的设计，分别表示现在桥上正在走几个车和该方向已经走了几辆车。额外设计countd的目的就是记录该方向是否已经走过三辆车，如果已经走过三辆车才V，否则就一直封锁桥直到后面过来的车满足三辆。</li>
 
 </ol>
@@ -1826,7 +1826,7 @@ process server_i(){
 <li>东西向汽车过独木桥，为了保证安全，只要桥上无车，则允许一方的汽车过桥，待一方的车全部过完后，另一方的车才允许过桥。</li>
 <li>要求各方向的汽车串行过桥，但当另一方提出过桥时，应能阻止对方未上桥的后继车辆，待桥面上的汽车过完桥后，另一方的汽车开始过桥。</li>
 <li>如果没有条件2，那么这个问题就和多读者/多写者同时读写的代码一样，此时就需要设置新的信号量stop来封锁对面的车辆进入临界区去增加对面车辆的count，这样就可以避免对面后续到来的车辆上桥。</li>
-<li>代码<img src="../assets/OS_b_images/66.png" alt="66"  /></li>
+<li>代码<img src="https://wbw2333.github.io/assets/OS_b_images/66.png" alt="66"  /></li>
 
 </ol>
 <p>&nbsp;</p>
@@ -1889,7 +1889,7 @@ process server_i(){
    }
 }
 </code></pre>
-<p><a href='../assets/OS_b_images/https://eaglebear2002.github.io/2022Fall-计算机与操作系统/06-并发程序设计/67.png'><img src="../assets/OS_b_images/67.png" alt="img"  /></a></p>
+<p><a href='../assets/OS_b_images/https://eaglebear2002.github.io/2022Fall-计算机与操作系统/06-并发程序设计/67.png'><img src="https://wbw2333.github.io/assets/OS_b_images/67.png" alt="img"  /></a></p>
 <p>&nbsp;</p>
 </li>
 <li><p>管程的条件变量</p>
@@ -2157,7 +2157,7 @@ process server_i(){
 </li>
 <li><p>存储器</p>
 <ol start='' >
-<li>结构层次<img src="../assets/OS_b_images/3-2.png" referrerpolicy="no-referrer" alt="3-2"></li>
+<li>结构层次<img src="https://wbw2333.github.io/assets/OS_b_images/3-2.png" referrerpolicy="no-referrer" alt="3-2"></li>
 <li></li>
 
 </ol>
@@ -2400,7 +2400,7 @@ process server_i(){
 <li>段是信息的逻辑单位，分段的目的是为了更好地满足用户需求，一个段通常包含一组属于一个逻辑模块的信息，分段对用户是可见的，用户变成是需要显式的给出段名。</li>
 <li>页的大小固定，由系统决定，段的长度却不固定，决定于用户编写的程序。</li>
 <li>分页的用户进程地址空间是一维的，只需要给出记忆符就可以表示一个地址。分段的则是二维，程序员既要给出段名又要给出段内地址。</li>
-<li>分段比分页跟容易实现信息的共享和保护，页面并不是按照逻辑划分的，但是我们共享代码是常常按照功能分享。<img src="../assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%8810.14.37.png" alt="截屏2022-11-10 上午10.14.37"  /></li>
+<li>分段比分页跟容易实现信息的共享和保护，页面并不是按照逻辑划分的，但是我们共享代码是常常按照功能分享。<img src="https://wbw2333.github.io/assets/OS_b_images/%E6%88%AA%E5%B1%8F2022-11-10%20%E4%B8%8A%E5%8D%8810.14.37.png" alt="截屏2022-11-10 上午10.14.37"  /></li>
 
 </ol>
 </li>
