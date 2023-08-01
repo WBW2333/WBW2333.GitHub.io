@@ -1,0 +1,14 @@
+p #eaglebear {
+    color: #0366d6;
+}
+
+p a{
+    text-decoration: underline;
+}
+
+/* 可以定义其他样式，例如背景色等 */
+p a:hover {
+    background-color: lightblue; /* 鼠标移入链接时的背景色为浅蓝色 */
+    color: white; /* 文本颜色为白色 */
+    font-weight: bold; /* 加粗字体 */
+}
